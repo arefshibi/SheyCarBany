@@ -1,0 +1,261 @@
+
+const burger = document.querySelector('.bgmicon');
+const sidebar = document.querySelector('.sidebar');
+
+function clickburger(){
+
+
+  burger.addEventListener('click', function(){
+    
+    sidebar.classList.toggle('active');
+
+   
+  })
+}
+
+clickburger();
+
+
+
+const instbox = document.querySelector('.instabox');
+const hoverlink = document.querySelector('#link44');
+
+function showinstabox(){
+  hoverlink.addEventListener('mouseenter', function(){
+    instbox.classList.add('show');
+  })
+  hoverlink.addEventListener('mouseleave', function(){
+    instbox.classList.remove('show');
+  })
+
+  }
+
+showinstabox();
+function setupslider() {
+    const container = document.getElementById('compareBox');
+    const overlay = document.getElementById('afterImg');
+    const handle = document.getElementById('handle');
+
+    let isDragging = false;
+    let autoMoveDirection = 1; // 1 به راست، -1 به چپ
+    let currentPercent = 50;
+    
+    // سرعت حرکت خودکار (هرچه کمتر باشد، کندتر است و حرکت گام‌ها کوچک‌تر)
+    const speed = 0.2; 
+    
+    // --- تابع حرکت دهنده اصلی ---
+    function moveSlider(pos) {
+        const rect = container.getBoundingClientRect();
+        
+        // اطمینان از اینکه موقعیت در محدوده کانتینر باشد (0 تا عرض کانتینر)
+        if (pos < 0) pos = 0;
+        if (pos > rect.width) pos = rect.width;
+
+        const percent = (pos / rect.width) * 100;
+        overlay.style.clipPath = `inset(0 ${100 - percent}% 0 0)`;
+        handle.style.left = `${percent}%`;
+
+        // به روز رسانی درصد فعلی
+        currentPercent = percent;
+    }
+    
+    // --- تابع انیمیشن خودکار ---
+    function animateSlider() {
+        if (!isDragging) { // فقط در صورتی حرکت کن که کاربر در حال کشیدن نباشد
+            
+            // تعیین مقدار حرکت با توجه به سرعت
+            currentPercent += autoMoveDirection * speed; 
+
+            // بررسی برخورد با مرزها (بین 10% و 90%)
+            if (currentPercent >= 70) {
+                autoMoveDirection = -1; 
+            } else if (currentPercent <= 30) {
+                autoMoveDirection = 1; 
+            }
+
+            // تبدیل درصد جدید به مختصات x (برای فراخوانی moveSlider)
+            const rect = container.getBoundingClientRect();
+            const newPos = (currentPercent / 100) * rect.width;
+            
+            moveSlider(newPos);
+        }
+        
+        // درخواست فریم بعدی برای حرکت روان
+        requestAnimationFrame(animateSlider); 
+    }
+
+    // --- تنظیمات رویدادهای کاربری ---
+    const startDrag = () => { isDragging = true; };
+    const endDrag = () => { isDragging = false; };
+    
+    // رویدادهای موس
+    handle.addEventListener('mousedown', startDrag);
+    window.addEventListener('mouseup', endDrag);
+    window.addEventListener('mousemove', e => { 
+        if (isDragging) {
+            const rect = container.getBoundingClientRect();
+            moveSlider(e.clientX - rect.left); // ورودی باید موقعیت نسبی باشد
+        }
+    });
+
+    // رویدادهای لمس
+    handle.addEventListener('touchstart', startDrag);
+    window.addEventListener('touchend', endDrag);
+    container.addEventListener('touchmove', e => {
+        if (isDragging) {
+            const rect = container.getBoundingClientRect();
+            moveSlider(e.touches[0].clientX - rect.left); // ورودی باید موقعیت نسبی باشد
+        }
+    });
+
+    // --- شروع انیمیشن و موقعیت اولیه ---
+    
+    // 1. تنظیم موقعیت شروع در وسط
+    const rect = container.getBoundingClientRect();
+    moveSlider(rect.width / 2);
+    
+    // 2. شروع حلقه انیمیشن
+    requestAnimationFrame(animateSlider); 
+}
+
+setupslider();
+
+const tap1 = document.getElementById('radio-1');
+const tap2 = document.getElementById('radio-2');
+const tap3 = document.getElementById('radio-3');
+const tap4 = document.getElementById('radio-4');
+const tap5 = document.getElementById('radio-5');
+const imge = document.querySelector('.comparison-container');
+
+function taptap() {
+ 
+  tap1.addEventListener('click', function(){
+    imge.innerHTML = "";
+    imge.innerHTML = `
+    <img src="" id="beforeImg" />
+  <img src="" id="afterImg" class="overlay" />
+  <div class="slider-handle" id="handle"><div class="ttxx">
+    <span class="after">After</span>
+    <span class="before">Before</span>
+    </div>
+    </div>`;
+  setupslider();
+  })
+
+  
+  tap2.addEventListener('click', function(){
+    imge.innerHTML = "";
+    imge.innerHTML = `
+    <img src="" id="beforeImg" />
+  <img src="" id="afterImg" class="overlay" />
+  <div class="slider-handle" id="handle">
+  <div class="ttxx">
+    <span class="after">After</span>
+    <span class="before">Before</span>
+    </div></div>`;
+  setupslider();
+  })
+
+  function loadtap3(){
+    imge.innerHTML = "";
+    imge.innerHTML = `
+    <img src="befor.jpg" id="beforeImg" />
+  <img src="after.jpg" id="afterImg" class="overlay" />
+  <div class="slider-handle" id="handle">
+  <div class="ttxx">
+    <span class="after">After</span>
+    <span class="before">Before</span>
+    </div></div>`;
+  setupslider();
+  }
+  loadtap3();
+  tap3.addEventListener('click', loadtap3);
+
+  tap4.addEventListener('click', function(){
+    imge.innerHTML = "";
+    imge.innerHTML = `
+    <img src="" id="beforeImg" />
+  <img src="" id="afterImg" class="overlay" />
+  <div class="slider-handle" id="handle">
+  <div class="ttxx">
+    <span class="after">After</span>
+    <span class="before">Before</span>
+    </div></div>`;
+  setupslider();
+  })
+
+  tap5.addEventListener('click', function(){
+    imge.innerHTML = "";
+    imge.innerHTML = `
+    <img src="" id="beforeImg" />
+  <img src="" id="afterImg" class="overlay" />
+  <div class="slider-handle" id="handle">
+  <div class="ttxx">
+    <span class="after">After</span>
+    <span class="before">Before</span>
+    </div></div>`;
+  setupslider();
+  })
+  
+
+
+
+}
+
+
+taptap();
+
+
+// function infiniteSlide(selector, direction = "left", speed = 2) {
+//   const row = document.querySelector(selector);
+//   const parent = row.parentElement;
+
+//   // ساخت نسخه دوم
+//   const clone = row.cloneNode(true);
+//   parent.appendChild(clone);
+
+//   let pos1 = 0;
+//   let width = row.scrollWidth;
+//   let pos2 = direction === "left" ? width : -width;
+
+//   function loop() {
+//     if (direction === "left") {
+//       pos1 -= speed;
+//       pos2 -= speed;
+
+//       if (pos1 <= -width) pos1 = pos2 + width;
+//       if (pos2 <= -width) pos2 = pos1 + width;
+
+//     } else {
+//       pos1 += speed;
+//       pos2 += speed;
+
+//       if (pos1 >= width) pos1 = pos2 - width;
+//       if (pos2 >= width) pos2 = pos1 - width;
+//     }
+
+//     row.style.transform = `translateX(${pos1}px)`;
+//     clone.style.transform = `translateX(${pos2}px)`;
+
+//     requestAnimationFrame(loop);
+//   }
+
+//   loop();
+// }
+
+// infiniteSlide(".row1", "left", 2);
+// infiniteSlide(".row2", "right", 2);
+
+
+
+
+
+// const boxh = document.querySelector('.services');
+
+// boxh.addEventListener('mouseenter',function(){
+//   currentSpeed = slowSpeed;
+// })
+// boxh.addEventListener('mouseleave', function(){
+//   currentSpeed = speed;
+// })
+

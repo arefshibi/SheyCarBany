@@ -1,0 +1,107 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter Tight";
+    text-decoration: none;
+    list-style-type: none;
+    word-wrap: break-word;
+    text-align: center;
+    
+    color: white;
+}
+
+
+body{
+    background-image: url(vecteezy_lens-flare-and-light-leak-haze-texture-on-a-black-background_22510362.jpg);
+    background-size: cover;
+   
+}
+
+.navCountainer{
+    display: flex;
+    justify-content: center;
+    height: 74px;
+    width: 100%;
+    padding: 20px;
+    font-weight: 700;
+    font-size: 1rem;
+
+}
+.navbar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+.left{
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    align-items: center;
+    
+}
+
+.right{
+    display: flex;
+    gap: 30px;
+}
+
+.main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 426px;
+}
+
+.mainbox{
+    display: flex;
+    background : rgba(84, 79, 79, 0.435);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    height: 400px;
+    width: 400PX;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.maintxt{
+    position: fixed;
+    top: 10%;
+    font-size: 2rem;
+    font-weight: 900;
+}
+
+.inputs{
+margin: 20px;
+}
+
+.inputs h2{
+    display: flex;
+    font-size: 20px;
+}
+
+.inputs i{
+    border: 1px solid black;
+    display: flex;
+    cursor: pointer;
+}
+
+.inputs input[type="email"],
+.inputs input[type="password"]{
+background: transparent;
+border: 0;
+}
+
+.inputs input[type="email"]:focus,
+.inputs input[type="password"]:focus
+{
+
+    border: 0;
+    background: transparent;
+}
+
+
+

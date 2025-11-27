@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    
+    <link rel="stylesheet" href="res.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+
+   
+</head>
+<body>
+  
+    
+
+    <div class="blurOverlay"></div>
+    <div class="datebox" id="datebox">
+    </div>
+
+  
+
+
+ 
+
+<div class="container">
+    
+            <!-- From Uiverse.io by mrhyddenn --> 
+
+    <!-- Left Section -->
+    <section class="left">
+        <div>
+            <h1 class="title">سرویس خود را<br>انتخاب کنید</h1>
+            <p class="subtitle">سرویس مدنظر خود را با کلیک کردن انتخاب کنید</p>
+
+            <div class="steps">
+                <div class="step active">
+                    <div class="num">1</div>
+                    <div class="mtn">دیتیلینگ</div>
+                </div>
+
+                <div class="step">
+                    <div class="num">2</div>
+                    <div class="mtn">انتی یووی</div>
+                </div>
+
+                <div class="step">
+                    <div class="num">3</div>
+                    <div class="mtn">کاور</div>
+                </div>
+
+                <div class="step">
+                    <div class="num">4</div>
+                    <div class="mtn">رنگ امیزی</div>
+                </div>
+
+                <div class="step">
+                    <div class="num">5</div>
+                    <div class="mtn">صفرشویی</div>
+                </div>
+
+                <div class="step">
+                    <div class="num">6</div>
+                    <div class="mtn">تعمیرات</div>
+                </div>
+
+                <div class="step">
+                    <div class="num">7</div>
+                    <div class="mtn">صافکاری</div>
+                </div>
+                
+                <div class="step">
+                    <div class="num">8</div>
+                    <div class="mtn">0 - 100 %</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="left-footer">
+            <div>مرحله 1 از 3</div>
+            <div>شروع کنید — چند دقیقه بیشتر طول نمی‌کشد</div>
+        </div>
+    </section>
+
+    <!-- Right Section -->
+    <aside class="right">
+        <h2>ثبت اطلاعات</h2>
+        <p class="lead">اطلاعات خود را برای تحویل خودرو وارد کنید.</p>
+
+        <div class="socials">
+            <button class="btn">انتخاب تاریخ سرویس</button>
+            <div class="btn ghost" >.. / .. / روز</div>
+        </div>
+        <div class="vv">x</div>
+
+        
+        
+        
+        
+
+        <div class="or">مشخصات تحویل دهنده</div>
+
+        <form id="signup-form">
+            <div class="row">
+                <div class="field">
+                    <label>نام خانوادگی</label>
+                    <input type="text" placeholder="مثال = شیبانی">
+                </div>
+
+                <div class="field">
+                    <label>نام</label>
+                    <input type="text" placeholder="مثال = عارف">
+                </div>
+            </div>
+
+            <div class="field">
+                <label>شماره تماس</label>
+                <input type="text" id="numb" placeholder="مثال = ۰۹۱۲۳۴۵۶۷۸">
+            </div>
+
+            <div class="field">
+                <label>ایمیل</label>
+                <div class="password-wrap">
+                    <input id="car" type="text" placeholder="مثال = arf@gmail.com">
+                    
+                </div>
+                <!-- <div class="hint">Must be at least 8 characters.</div> -->
+            </div>
+
+            <button class="submit" type="submit">ثبت نوبت</button>
+
+            
+        </form>
+    </aside>
+
+</div>
+
+
+
+
+<div class="allticket">
+    <div class="ticket-container" onclick="tearTicket()">
+
+        <div class="ticket top">
+            <div class="head">
+            <div class="tick"><i class="fa-solid fa-check" style="color: #ffffff;"></i></div>
+            <div class="tnx">نوبت رزرو شما با موفقیت ثبت شد</div>
+            </div>
+
+            <hr class="dotted">
+            <div class="infos">
+                <div class="it rand"></div>
+                <div class="it servs"></div>
+                <div class= "it dates"></div>
+                
+                
+            </div>
+            <div class="infos">
+
+                <div class="cars"></div>
+            </div>
+
+            <div class="boxcart">
+                <i class="fa-solid fa-credit-card" style="color: #000000;"></i>
+                <div class="cartinfo">
+                    <h3>Aref Sheybany</h3>
+                    <h3>**** 8237</h3>
+                </div>
+                
+                
+            
+            
+            </div>
+            
+        </div>
+        <div class="separator1"></div>
+        <div class="separator"></div>
+
+        <div class="ticket bottom" id="bottomPart">
+
+            <div class="barcode-section">
+                <div class="barcode"></div>
+                <div class="barcode-number">
+                    <span>2</span>
+                    <span>8937261</span>
+                    <span>273610</span>
+                </div>
+            </div>
+
+            <!-- <div class="info">
+                <div><span>Month</span>10.06</div>
+                <div><span>day</span>18</div>
+                <div><span>weekday</span>12</div>
+            </div> -->
+            
+        </div>
+
+    </div>
+</div> 
+
+<div class="loader"></div>
+
+<script src="res.js"></script>
+</body>
+</html>

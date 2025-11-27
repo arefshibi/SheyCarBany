@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+<meta charset="UTF-8">
+<title>Real Ticket Tear</title>
+<style>
+    body {
+        background: #282828db;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: Arial, sans-serif;
+        backdrop-filter: blur(10px);
+    }
+
+    .ticket-container {
+        width: 320px;
+        
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        overflow-y: hidden;
+    }
+
+    .ticket {
+        background: #000000;
+        border-radius: 20px;
+        padding: 30px;
+        color: #fff;
+        text-align: center;
+    }
+
+    .ticket.top{
+        height: 310px;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        background-image: url(rrt.jpeg);
+        background-size: cover;
+
+    }
+
+    .logo {
+        font-size: 20px;
+        filter: drop-shadow(0 0 10px #000000);
+    }
+
+    .title { font-size: 20px; margin-top: 15px; }
+
+    .separator {
+        height: 3px;
+        background: repeating-linear-gradient(
+            to right,
+            transparent 0,
+            transparent 6px,
+            #000000 6px,
+            #534f4f 10px
+        );
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    .info {
+        display: flex;
+        justify-content: space-between;
+        opacity: 0.8;
+        margin-bottom: 20px;
+    }
+    .info span { font-size: 10px; opacity: 0.5; }
+    .access { letter-spacing: 3px; opacity: 0.7; }
+
+    /* -------- افکت پاره شدن -------- */
+
+    .bottom {
+        transform-origin: top center;
+        transition: transform 0.9s ease-out, opacity 0.6s ease-out;
+    }
+
+    .torn .separator {
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .torn .bottom {
+        transform: rotate(18deg) translateY(120px);
+        opacity: 0;
+    }
+
+    .infos{
+        position: relative;
+        top: 65%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: start;
+    }
+
+</style>
+</head>
+<body>
+
+<div class="ticket-container" onclick="tearTicket()">
+
+    <div class="ticket top">
+        <div class="infos">
+            <div class="logo">Service : <div class="service"></div> </div>
+            <div class="title">Date : <div class="date"></div></div>
+            <div class="title">Car : <div class="car"></div></div>
+        </div>
+    </div>
+
+    <div class="separator"></div>
+
+    <div class="ticket bottom" id="bottomPart">
+        <div class="info">
+            <div><span>Month</span>10.06</div>
+            <div><span>day</span>18</div>
+            <div><span>weekday</span>12</div>
+        </div>
+        <div class="access">جرش بده</div>
+    </div>
+
+</div>
+
+
+<script src="res.js"></script>
+
+</body>
+</html>
+
+<script>
+function tearTicket() {
+    let container = document.querySelector(".ticket-container");
+    let bottom = document.getElementById("bottomPart");
+
+    container.classList.add("torn");
+
+    // حذف کامل بعد از پایان انیمیشن
+    setTimeout(() => {
+        bottom.remove();
+    }, 900);
+}
+</script>

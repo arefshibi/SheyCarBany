@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   
+    <title>nobat</title>
+    <link rel="stylesheet" href="nobat.css">
+</head>
+<body>
+    
+
+    
+
+   <div class="nav">
+      <div class="left">
+            <div class="bgmicon">☰</div>
+            <div class="sidebar" id="sidebar">
+                <div class="lin">
+                <a href="" class="bgm">HOME</a>
+                <a href="" class="bgm">ABOUT</a>
+                <a href="" class="bgm">SERVICES</a>
+                <a href="" class="bgm">CONTACT</a>
+                <a href="" class="bgm">SHOP<i id="iccon" class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                </div>
+                
+            </div>
+        
+            <div class="logo" >
+                <a class="" href="">SheyCarBany</a> <i id="infinity" class="fa-solid fa-infinity"></i></div>
+      </div> 
+           
+       
+
+        <div class="login">
+            <a class="bot" id="login" href="">ورود</a>
+            <a class="bot" id="sign" href="">رزرو نوبت</a>
+        </div>
+    </div>
+        <div class="countainerbox">
+        <div class="boxres">
+
+            <div class="upcon">
+                <h1>سرویس را انتخاب کنید</h1>
+                <div class="boxse">
+
+                    <div class="service" data-service="1">صافکاری</div>
+                    <div class="service" data-service="2">شفاف سازی</div>
+                    <div class="service" data-service="3">کاور</div>
+                    <div class="service" data-service="4">رنگ آمیزی</div>
+                    <div class="service" data-service="5">ppf</div>
+                    
+
+                </div>
+                <div class="boxse">
+
+                    <div class="service" data-service="4">دیتیلینگ</div>
+                    <div class="service" data-service="5">صافکاری</div>
+                    <div class="service" data-service="6">انتی UVI </div>
+                    <div class="service" data-service="7">سایر</div>
+
+                </div>
+            </div>
+
+            <hr id="divider">
+            <div class="timecon" id="dateContainer">
+
+            </div>
+
+
+
+        </div>
+        <div class="carlist">
+            <h1>برند ماشبن خود را انتخاب کنید</h1>
+            <div class="boxcar">
+                <div class="car car1"><h2>BMW</h2> <img src="download.webp" alt=""></div>
+                <div class="car car2"><h2>Kia</h2><img src="download.webp" alt=""></div>
+                <div class="car car3"><h2>bmw</h2> <img src="download.webp" alt=""></div>
+                <div class="car car4"><h2>bmw</h2> <img src="download.webp" alt=""></div>
+                <div class="car car5"><h2>bmw</h2> <img src="download.webp" alt=""></div>
+                <div class="car car6"><h2>bmw</h2> <img src="download.webp" alt=""></div>
+                <div class="car car7"><h2>bmw</h2> <img src="download.webp" alt=""></div>
+                <div class="car car8"><h2>bmw</h2> <img src="download.webp" alt=""></div>
+                <div class="car car9"><h2>bmw</h2> <img src="download.webp" alt=""></div>
+                <div class="car car10"><h2>bmw</h2> <img src="download.webp" alt=""></div>
+                <div class="car car11"><h2>bmw</h2> <img src="download.webp" alt=""></div>
+                <div class="car car12"><h2>bmw</h2> <img src="download.webp" alt=""></div>
+                
+                
+            </div>
+        </div>
+           
+
+        <!-- HEADER -->
+
+        
+
+    </div>
+
+<script src="reserce.js"></script>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark Mode Ticket (No Animation)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- متغیرهای رنگی (Dark Mode) --- */
+        :root {
+            --bg-body: #111827;       /* پس‌زمینه صفحه */
+            --bg-ticket: #1f2937;     /* پس‌زمینه بلیت */
+            --bg-box: #374151;        /* پس‌زمینه باکس کارت */
+            --text-main: #f9fafb;     /* متن اصلی (سفید) */
+            --text-muted: #9ca3af;    /* متن فرعی (طوسی) */
+            --border-dashed: #4b5563; /* رنگ خط‌چین */
+            --barcode-color: #e5e7eb; /* رنگ بارکد */
+            
+            --notch-radius: 12px;     /* شعاع سوراخ‌های کناری */
+            --bottom-cut-size: 15px;  /* اندازه دالبرهای پایین */
+        }
+
+        body {
+            margin: 0;
+            padding: 20px;
+            background-color: var(--bg-body);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Inter', sans-serif;
+            color: var(--text-main);
+        }
+
+        .ticket-container {
+            filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.5));
+        }
+
+        .ticket {
+            background: var(--bg-ticket);
+            width: 340px;
+            border-radius: 24px 24px 0 0;
+            position: relative;
+            padding-bottom: calc(var(--bottom-cut-size) + 20px);
+            
+            /* برش‌های پایین (Masking) */
+            -webkit-mask-image: radial-gradient(circle at bottom center, transparent var(--bottom-cut-size), black calc(var(--bottom-cut-size) + 0.5px));
+            mask-image: radial-gradient(circle at bottom center, transparent var(--bottom-cut-size), black calc(var(--bottom-cut-size) + 0.5px));
+            -webkit-mask-size: calc(var(--bottom-cut-size) * 2) 100%;
+            mask-size: calc(var(--bottom-cut-size) * 2) 100%;
+            -webkit-mask-position: bottom center;
+            mask-position: bottom center;
+            -webkit-mask-repeat: repeat-x;
+            mask-repeat: repeat-x;
+        }
+
+        /* --- هدر --- */
+        .header {
+            text-align: center;
+            padding: 32px 24px 24px;
+        }
+
+        .icon-container {
+            font-size: 45px;
+            margin-bottom: 10px;
+            display: inline-block;
+            /* انیمیشن حذف شد */
+            filter: drop-shadow(0 5px 5px rgba(0,0,0,0.3));
+        }
+
+        .header h2 { margin: 0; font-size: 20px; font-weight: 700; color: var(--text-main); }
+        .header p { margin: 8px 0 0; font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+
+        /* --- خط‌چین جداکننده --- */
+        .divider {
+            position: relative;
+            height: 30px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .divider::after {
+            content: '';
+            width: 84%;
+            height: 1px;
+            border-top: 2px dashed var(--border-dashed);
+        }
+        /* دایره‌های برش خورده کناری */
+        .divider::before, .notch-right {
+            content: '';
+            position: absolute;
+            width: calc(var(--notch-radius) * 2);
+            height: calc(var(--notch-radius) * 2);
+            background-color: var(--bg-body); /* همرنگ پس‌زمینه */
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 2;
+        }
+        .divider::before { left: calc(var(--notch-radius) * -1); }
+        .notch-right { right: calc(var(--notch-radius) * -1); }
+
+        /* --- محتوا --- */
+        .content { padding: 0 24px; }
+        .row { display: flex; justify-content: space-between; margin-bottom: 20px; }
+        .label { font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+        .value { font-size: 15px; font-weight: 600; color: var(--text-main); }
+
+        .payment-box {
+            background-color: var(--bg-box);
+            border-radius: 16px;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+        .mc-logo { width: 32px; height: 20px; margin-right: 12px; }
+        .card-details { display: flex; flex-direction: column; }
+        .card-name { font-size: 13px; font-weight: 600; color: var(--text-main); }
+        .card-number { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+
+        /* --- بارکد --- */
+        .barcode-section { padding: 20px 24px 0px; text-align: center; }
+        .barcode {
+            height: 60px;
+            width: 100%;
+            background: repeating-linear-gradient(
+                to right, 
+                var(--barcode-color) 0px, var(--barcode-color) 2px, 
+                transparent 2px, transparent 5px,
+                var(--barcode-color) 5px, var(--barcode-color) 7px, 
+                transparent 7px, transparent 9px,
+                var(--barcode-color) 9px, var(--barcode-color) 10px, 
+                transparent 10px, transparent 14px
+            );
+            opacity: 0.9;
+        }
+        .barcode-number {
+            display: flex; justify-content: space-between;
+            font-size: 10px; letter-spacing: 3px; margin-top: 4px; color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="ticket-container">
+        <div class="ticket">
+            <div class="header">
+                <div class="icon-container">🎉</div>
+                <h2>Thank you!</h2>
+                <p>Your ticket has been issued<br>successfully</p>
+            </div>
+
+            <div class="divider">
+                <div class="notch-right"></div>
+            </div>
+
+            <div class="content">
+                <div class="row">
+                    <div>
+                        <div class="label">TICKET ID</div>
+                        <div class="value">0120034399434</div>
+                    </div>
+                    <div style="text-align: right;">
+                        <div class="label">Amount</div>
+                        <div class="value">$35.00</div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div>
+                        <div class="label">DATE & TIME</div>
+                        <div class="value">19 Jun 2025 • 10:15</div>
+                    </div>
+                </div>
+
+                <div class="payment-box">
+                    <svg class="mc-logo" viewBox="0 0 38 24" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="12" cy="12" r="12" fill="#EB001B"/>
+                        <circle cx="26" cy="12" r="12" fill="#F79E1B" fill-opacity="0.9"/>
+                    </svg>
+                    <div class="card-details">
+                        <span class="card-name">Liana Tudakova</span>
+                        <span class="card-number">•••• 8237</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="divider">
+                <div class="notch-right"></div>
+            </div>
+
+            <div class="barcode-section">
+                <div class="barcode"></div>
+                <div class="barcode-number">
+                    <span>2</span>
+                    <span>8937261</span>
+                    <span>273610</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

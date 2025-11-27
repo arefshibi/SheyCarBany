@@ -1,0 +1,487 @@
+*{
+   margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter Tight", "Lalezar",sans-serif;
+    text-decoration: none;
+    list-style-type: none;
+    word-wrap: break-word;
+    color: black;
+    text-align: center;
+    justify-content: center;
+    white-space: nowrap;
+    
+    
+}
+
+:root{
+   --navbar-height :74px;
+}
+
+
+body{
+
+background-image: url(rr.jpg);    
+background-size: cover;
+background-repeat: no-repeat;
+}
+
+
+#bigicon {
+    height: auto;
+    width: 80%;
+}
+
+
+.logo a{
+    color: #ffffff;
+    margin-left: 0;
+    cursor: no-drop;
+}
+.left{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    
+}
+p{
+    color: #e55b00;
+}
+
+.nav{
+   
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    height: var(--navbar-height);
+    background : rgba(28, 28, 28, 0.901);
+    backdrop-filter: blur(10px); 
+    z-index: 999999999999;
+    
+    
+
+    padding: 20px;
+
+    
+}
+.bgmicon{
+    color: white;
+    padding: 10px;
+    font-size: 23px;
+    cursor: pointer;
+    background-color: none;
+}
+.bgmicon1{
+    display: flex; 
+    color: red;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    margin: 10px 0 0 37px;
+    color: white;
+    padding: 10px;
+    font-size: 23px;
+    cursor: pointer;
+    background-color: none;
+    justify-content: flex-start;
+}
+.bgmicon1.active{
+    transform: translateY(0);
+}
+.bgm a{
+    background: none;
+    border-radius: 0;
+}
+
+.sidebar{
+
+    position: fixed;
+    background : rgb(0, 0, 0);
+    top: var(--navbar-height);
+    left: 0.0001px;
+    width: 100vw;
+    height: 87vh;
+    display: flex;
+    flex-direction: column;
+    transition: 0.9s ease-in-out;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    border-radius: none;
+    transform:translateY(-1500px);
+    transition: 0.5s ease-in-out;
+    overflow-y: hidden;
+}
+
+
+.loginnav{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+    color: white;
+    border-radius: 20px;
+
+    
+}
+.loginnav .bot1{
+    font-size: 30px;
+}
+
+
+.sidebar.active{
+    opacity: 1;
+    visibility: 1;
+    pointer-events: auto;
+    transition: 0.5s ease-in-out;
+    transform: translateY(0);
+    z-index: 1;
+    
+    
+}
+
+.lin{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    
+}
+.sidebar a{
+    display: flex;
+    text-decoration: none;
+    list-style: none;
+    color: rgb(255, 255, 255);
+    padding: 10px;
+    margin-top: 0;
+    height: 80%;
+    margin-right: 0;
+    border-radius: none;
+    background-color: transparent;
+    font-family: "Inter Tight";
+    font-weight: 900;
+    justify-content: space-between;
+    width: 100%;
+    justify-content: center;
+    
+    align-items:  center ;
+    font-size: 50px;
+    
+    transition: 0.01s ease-in-out;
+    
+}
+.sidebar .info{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 90px;
+    
+}
+.sidebar i{
+    color: rgb(255, 255, 255);
+        transition: 0.3s ease-in-out;
+
+    
+}
+
+.sidebar .txtinfo{
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.fa-house{
+    margin: 10px;
+}
+.fa-image{
+    margin: 10px;
+}
+.fa-circle-user{
+    margin: 10px;
+}
+ .fa-solid{
+    margin: 10px;
+ }
+.sidebar img{
+    height: 50px;
+    width: 50p;
+}
+.sidebar a:hover{
+    color: rgb(0, 0, 0);
+    transition: 0.3s;
+    background-color: #ffffffe5;
+
+
+ 
+    
+
+}
+.sidebar a:hover i{
+    color: rgb(0, 0, 0);
+    padding-left: 20px;
+    transition: 0.3s ease-in-out;
+    
+
+
+ 
+    
+
+}
+
+.logo{
+    display: flex;
+    margin-left: 0;
+    justify-content: center;
+    align-items: center;
+    position: static;
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: white;
+    transition: 0.6s ease-in-out;
+}
+
+
+
+
+
+
+.login{
+    display: flex;
+    
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.bot{
+    background-color: aliceblue;
+    width: 120px;
+    padding: 6px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    border-radius: 8px;
+    cursor: pointer;
+    color: black;
+    font-size: 1rem;
+    font-weight: 600;
+    transition:transform 0.6s ease-in-out;
+
+}
+
+.login #login {
+    background: rgba(150, 150, 150, 0.477);
+    backdrop-filter: blur(10px);
+    color: white;
+    border: 1px solid rgba(255,255,255, 0.2);
+    
+}
+.bot:hover{
+    background: rgb(195, 77, 22);
+    color: rgb(255, 255, 255);
+    
+    transform: scale(1.08);
+}
+
+#login:hover{
+    background: rgb(195, 77, 22);
+    color: black;
+}
+
+
+
+
+.countainerbox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column ;
+    margin-top: 70px;
+
+}
+
+.upcon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    top: -8%;
+    width: 100%;
+
+}
+.upcon h3{
+    margin: 10px;
+}
+.countainerbox h1{
+    color: white;
+    margin: 20px;
+    font-weight: 900;
+
+
+}
+.boxres{
+    height: fit-content;
+    width: 80%;
+    background-color: rgba(84, 84, 84, 0.706);
+    border-radius: 20px;
+    transition: height 0.4s ease;
+    display:flex ;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 40px;
+    transition: 0.4s ease;
+
+}
+
+
+hr{
+    width: 100%;
+    border: 1px solid rgba(0, 0, 0, 0);
+    position: relative;
+    top: 42px;
+
+}
+
+.boxse{
+    display: flex;
+    width: 90%;
+    height: 60px;
+    justify-content: center;
+    align-items: center;
+}
+.service{
+    background-color: rgba(0, 0, 0, 0.752);
+    color: white;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    padding: 20px;
+    word-wrap: break-word;
+    height: 30px;
+    width: 400px;
+    margin: 8px;
+    border-radius: 10px;
+    cursor: pointer;
+      box-shadow:  inset 1px 1px 4px rgba(255, 255, 255, 0.335),
+    inset -3px -3px 12px rgba(0, 0, 0, 0.5),
+    0 4px 12px rgba(0, 0, 0, 0.35);
+        transition: 0.2s ease-in-out;
+
+    
+}
+
+.service:hover{
+    color: black;
+    background-color: rgb(255, 255, 255);
+    transition: 0.2s ease-in-out;
+}
+
+.timecon{
+    display: grid;
+    justify-items: center;
+    grid-template-columns: repeat(4, 1fr);
+    opacity: 0;
+    transition: 0.4s ease;
+    height: 0;
+    margin-top: 20px;
+    transition: 0.4s ease;
+
+
+}
+.timecon.shown{
+    height: 280px;
+    opacity: 1;
+    background-color: rgba(25, 25, 25, 0.516);
+
+    
+
+}
+.time1{
+    width: 100px;
+    height: 40px;
+    margin: 10px;
+    cursor: pointer;
+
+    background: rgb(255, 255, 255);
+
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+    font-weight: 900;
+    color: black;
+    justify-content: center;
+    align-items: center;
+        border-radius: 10px;
+
+}
+
+
+.time1:hover{
+    background-color: black;
+    color: white;
+}
+
+.service.checked{
+    background-color: aqua;
+}
+
+.timecon{
+    background-color:  rgb(0, 0, 0);
+    
+    width: 100%;
+    padding: 20px;
+    overflow: hidden;
+}
+
+
+.carlist{
+    height: fit-content;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 20px;
+    
+background-color: rgba(84, 84, 84, 0.706);
+
+}
+.boxcar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+        flex-wrap: wrap;
+    max-height: fit-content;
+    color: #ffffff;
+    flex-direction: row;
+    
+
+}
+.boxcar h2{
+    color: white;
+}
+.boxcar img{
+    height: 20px;
+    width: 20px;
+}
+.car{
+    color: white;
+    width: 300px;
+    background-color: rgba(0, 0, 0, 0.571);
+    padding: 10px;
+    border-radius: 10px;
+    margin:15px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
