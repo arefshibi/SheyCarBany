@@ -95,8 +95,8 @@
 .txtbala h1{
 position: relative;
 top: 50px;
- 
-  letter-spacing: 6px;
+
+letter-spacing: 6px;
 font-size: 170px;
 font-weight: 800;
 color: rgb(255, 255, 255);
@@ -818,15 +818,15 @@ p{
     padding: 0 25px 0 25px;
     display: flex;
     flex: 1;
-
     justify-content: center;
     align-items: center;
 }
+
 .tex h1{
     font-size: 7rem;
     font-weight: 900;
     color: white;
-    margin-top: 0;
+    margin-top: 10px;
     
 }
 
@@ -835,6 +835,7 @@ p{
 
 
 .glass-radio-group {
+ 
   --bg: rgba(255, 255, 255, 0.06);
   --text: #ffffff;
     z-index: 99;
@@ -846,9 +847,9 @@ p{
   border-radius: 1rem;
   backdrop-filter: blur(12px);
   box-shadow:
-    inset 1px 1px 4px rgba(255, 255, 255, 0.2),
-    inset -1px -1px 6px rgba(0, 0, 0, 0.3),
-    0 4px 12px rgba(0, 0, 0, 0.15);
+  inset 1px 1px 4px rgba(255, 255, 255, 0.2),
+  inset -1px -1px 6px rgba(0, 0, 0, 0.3),
+  0 4px 12px rgba(0, 0, 0, 0.15);
   overflow: hidden;
   width: fit-content;
 }
@@ -1319,7 +1320,7 @@ margin-bottom: 10px;
   border-radius: 50px;
   box-shadow: inset 4px 4px 10px #e0e0e053, inset -4px -4px 10px #e0e0e053;
 position: relative;
-bottom: 10px;
+bottom: 23px;
   cursor: pointer;
   color: #ffffff;
   font-size: 18px;
@@ -1987,6 +1988,8 @@ border: 1px solid white;
 
 
 @media(max-width: 764px){
+
+
     .nav .butt{
         display: none;
         
@@ -2056,7 +2059,7 @@ border: 1px solid white;
         width: 350px;
     }
     .container{
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0);
 
     width: 100%;
     margin: 0;
@@ -2069,3 +2072,47 @@ border: 1px solid white;
 
 
 
+@media(max-width: 375px){
+
+
+.main{
+    
+    height: 700px;
+    width: 100%;
+    margin-bottom: -230px;
+}
+
+.logo i{
+  display: none;
+}
+#login{
+  display: none;
+}
+.nav{
+  width: 100%;
+  gap: 20px;
+  justify-content: space-around;
+  padding: 0;
+}
+.logo{
+  font-size: 20px;
+}
+
+#orange{
+  font-size: 40px;
+}
+.tex h1{
+  font-size: 20px;
+}
+.main{
+  width: 100%;
+  
+}
+.buttTxt{
+  font-size: 15px;
+}
+.neu-button{
+  padding: 5px 10px;
+  font-size: 10px;
+}
+}
