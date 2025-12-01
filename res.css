@@ -607,3 +607,14 @@ input {
     color: #9fd3c6;
 }
 
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        height: auto; /* چون column می‌شود باید ارتفاع خودکار شود */
+    }
+
+    .left, .right {
+        width: 100%;  /* هر دو بخش تمام عرض شوند */
+    }
+}
