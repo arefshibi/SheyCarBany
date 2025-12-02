@@ -1231,15 +1231,20 @@ html, body {
     .main{
       width: 100%;
       
-       background-image:url(img/px.jpg) center/ cover no-repeat;
-
-
-       mask-image:  linear-gradient(to bottom,
-       rgba(0,0,0,1) 0%
-       rgba(0,0,0,1) 70%
+       background-image:
+        linear-gradient(to bottom,
+       rgba(0,0,0,0) 0%,
+       rgba(0,0,0,0) 70%,
+       rgba(0,0,0,0.4) 85%,
+       rgba(0, 0, 0, 1.5) 100%
+       ),
        
-       rgba(0,0,0,0) 100%
-       );
+       
+       url(img/px.jpg);
+overflow: hidden;
+
+
+    
 
 
        
@@ -1247,7 +1252,7 @@ html, body {
       background-position-x: 20%;
         background-repeat: no-repeat;
         background-size: cover;
-        /* background-position: top center; */
+        background-position: top center;
         height: 700px;
       
     }
@@ -1257,7 +1262,7 @@ html, body {
       
       color: black;
 
-      left: 10px;
+      margin-bottom: 15px;
       
     }
     #orange{font-size: 60px;
@@ -1270,22 +1275,21 @@ top: 8px;}
     .buttTxt{font-size: 12px;
       font-weight: 900;
 
-      
+      left: 0;
 
       color: black;
 
-      left: 10px;
-
+      margin-bottom: 15px;
     }
     .neu-button{padding: 0 ;
     font-size: 13px;
-   
+   left: 7px;
 
 
 
 
 
-      left:10px;
+      
 
 
     
