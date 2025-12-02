@@ -406,7 +406,7 @@ display: flex;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width:  70% ;
+    width:  100% ;
     
 }
 
@@ -607,3 +607,35 @@ input {
     color: #9fd3c6;
 }
 
+
+@media(max-width: 764px){
+
+
+    .container {
+        flex-direction: column;
+        height: auto; /* چون column می‌شود باید ارتفاع خودکار شود */
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 0 !important;
+
+    }
+
+    .left, .right {
+        width: 100% !important;  /* هر دو بخش تمام عرض شوند */
+        flex: 1;
+    }
+    .steps{
+    
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    width: 100%;
+    
+    }
+    .step{
+        width: 100%;
+    }
+    body{
+        padding: 0;
+    }
+
+}

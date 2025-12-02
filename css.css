@@ -39,29 +39,19 @@
 }
 .main{
     display: flex;
+    
+    background-size: cover;
+    background-position: 0 -70px ;
+    background-repeat: no-repeat;
     flex-direction: column;
     justify-content: center;
     align-items: center;
         width: 100%;
-        margin-bottom: -230px;
     height: 700px;
+   
     
 }
-#backgroundVideo {
-    /* ثابت نگه داشتن موقعیت ویدیو */
-    position: absolute;
-    /* قرار دادن در گوشه بالا-چپ */
-    top: 20X;
-    left:-3;
-    /* اطمینان از قرارگیری در پشت محتوای اصلی */
-    z-index: -100;
-    /* پوشاندن کل صفحه */
-    min-width: 100%;
-    min-height: 200%;
-    /* شبیه به 'background-size: cover' برای ویدیو */
-    width: 100%;
-    height: 200%;
-}
+
 
 .boot1{
   display: flex;
@@ -75,16 +65,20 @@
 .tex h1{
   font-size: 120px;
   color: white;
+  position: relative;
+  top: -30px;
 }
 
 .main2{
-  background-color: rgb(0, 0, 0);
+    background-color: transparent;
+
   display: flex;
   width: 100%;
   height:300px;
 }
 .all{
-  background-image: linear-gradient(to bottom, rgba(0,0,0,0.2), rgb(0,0,0,0)), linear-gradient(to top,rgba(0,0,0,0.2), rgb(0,0,0,0)), url(oooi.jpg);
+    background-color: transparent;
+
   background-size: cover;
   background-position-y: -280px;
   display: flex;
@@ -95,9 +89,8 @@
 
 .main3{
   height: 750px;
-  
+  background-color: transparent;
   width: 100%;
-  background-color: rgb(0, 0, 0);
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -386,8 +379,7 @@ border-radius: 15px;
 body{
     
     background-position: 0 20px;
-    background-color: #000000;
-    background-size: contain;
+background: url(img/ii.png) top center no-repeat, linear-gradient(180deg,#e26a00,#311400);    background-size: 100% auto, cover;
     background-repeat: no-repeat;
     overflow-x: hidden;
     
@@ -710,7 +702,7 @@ p{
   margin-top: 120px;
 }
 #orange{
-    color: rgb(255, 72, 0);
+    color: rgb(0, 0, 0);
     font-size: 9rem;
 }
 
@@ -845,13 +837,15 @@ p{
 .buttTxt{
     color: white;
     user-select: none;
+    position: relative;
+    left: -300px;
     margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     color: white;
     font-size: 16px;
-    margin-top: -10px;
+    margin-top: -40px;
     
 }
 
@@ -864,9 +858,12 @@ p{
 .neu-button {
   background: #e0e0e053;
   border-radius: 50px;
-  box-shadow: inset 4px 4px 10px #e0e0e053, inset -4px -4px 10px #e0e0e053;
+  box-shadow:  inset 1px 1px 4px rgba(255, 255, 255, 0.2),
+    inset -3px -3px 12px rgba(0, 0, 0, 0.3),
+    0 4px 12px rgba(0, 0, 0, 0.15);
 position: relative;
 bottom: 23px;
+left: -350px;
   cursor: pointer;
   color: #000000;
   font-size: 18px;
@@ -1235,7 +1232,7 @@ html, body {
        background-image: url(img/px.jpg);
        mask-image : linear-gradient(to bottom, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);
       mask-size :100% 100%;
-      background-position-x: 30%;
+      background-position-x: 20%;
         background-repeat: no-repeat;
         background-size: cover;
         /* background-position: top center; */
@@ -1263,7 +1260,7 @@ top: 8px;}
       font-weight: 900;
 
       position: absolute;
-      top: 32%;
+      top: 30%;
 
       color: black;
 
@@ -1273,7 +1270,7 @@ top: 8px;}
     .neu-button{padding: 0 ;
     font-size: 13px;
    position: absolute;
-      top: 35%;
+      top: 33%;
 
 
 
@@ -1295,7 +1292,7 @@ top: 8px;}
   width: 96%;
 left: 7px;
 max-height: 0px;
-  background-color: rgba(0, 0, 0, 0.646);
+  background-color: rgb(0, 0, 0);
 border-radius: 15px;
 
 

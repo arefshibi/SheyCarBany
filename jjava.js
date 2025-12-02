@@ -135,8 +135,7 @@ function taptap() {
     <img src="" id="beforeImg" />
   <img src="" id="afterImg" class="overlay" />
   <div class="slider-handle" id="handle"><div class="ttxx">
-    <span class="after">After</span>
-    <span class="before">Before</span>
+    
     </div>
     </div>`;
   setupslider();
@@ -150,9 +149,8 @@ function taptap() {
   <img src="" id="afterImg" class="overlay" />
   <div class="slider-handle" id="handle">
   <div class="ttxx">
-    <span class="after">After</span>
-    <span class="before">Before</span>
-    </div></div>`;
+    </div>
+    </div>`;
   setupslider();
   })
 
@@ -163,8 +161,6 @@ function taptap() {
   <img src="img/after.jpg" id="afterImg" class="overlay" />
   <div class="slider-handle" id="handle">
   <div class="ttxx">
-    <span class="after">After</span>
-    <span class="before">Before</span>
     </div></div>`;
   setupslider();
   }
@@ -178,8 +174,6 @@ function taptap() {
   <img src="" id="afterImg" class="overlay" />
   <div class="slider-handle" id="handle">
   <div class="ttxx">
-    <span class="after">After</span>
-    <span class="before">Before</span>
     </div></div>`;
   setupslider();
   })
@@ -191,8 +185,6 @@ function taptap() {
   <img src="" id="afterImg" class="overlay" />
   <div class="slider-handle" id="handle">
   <div class="ttxx">
-    <span class="after">After</span>
-    <span class="before">Before</span>
     </div></div>`;
   setupslider();
   })
