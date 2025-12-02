@@ -379,7 +379,7 @@ border-radius: 15px;
 body{
     
     background-position: 0 20px;
-background: url(img/ii.png) top center no-repeat, linear-gradient(180deg,#e26a00,#311400);    background-size: 100% auto, cover;
+
     background-repeat: no-repeat;
     overflow-x: hidden;
     
@@ -1243,7 +1243,7 @@ html, body {
 
     .tex h1{font-size: 35px;
       position: absolute;
-      top: 4%;
+      top: 1%;
       color: black;
 
       left: 10px;
@@ -1270,7 +1270,7 @@ top: 8px;}
     .neu-button{padding: 0 ;
     font-size: 13px;
    position: absolute;
-      top: 33%;
+      top: 29%;
 
 
 
