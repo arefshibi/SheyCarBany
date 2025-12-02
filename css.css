@@ -1230,13 +1230,13 @@ html, body {
     .main{
       width: 100%;
        background-image: url(img/px.jpg);
-       mask-image : linear-gradient(to bottom, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);
+       mask-image : linear-gradient(to bottom, rgba(0,0,0,1) 80%, rgba(0,0,0,0) 100%);
       mask-size :100% 100%;
-      background-position-x: 20%;
+      background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
         /* background-position: top center; */
-        height: 1000px;
+        height: 700;
       
     }
    
@@ -1456,47 +1456,3 @@ position: absolute;
 
 
 
-@media(max-width: 375px){
-
-
-.main{
-    
-    height: 700px;
-    width: 100%;
-    margin-bottom: -230px;
-}
-
-.logo i{
-  display: none;
-}
-#login{
-  display: none;
-}
-.nav{
-  width: 100%;
-  gap: 20px;
-  justify-content: space-around;
-  padding: 0;
-}
-.logo{
-  font-size: 20px;
-}
-
-#orange{
-  font-size: 40px;
-}
-.tex h1{
-  font-size: 20px;
-}
-.main{
-  width: 100%;
-  
-}
-.buttTxt{
-  font-size: 15px;
-}
-.neu-button{
-  padding: 5px 10px;
-  font-size: 10px;
-}
-}
