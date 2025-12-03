@@ -1,13 +1,16 @@
 
 const burger = document.querySelector('.bgmicon');
 const sidebar = document.querySelector('.sidebar');
+const bluur = document.querySelector('.overlaymain');
 
 function clickburger(){
 
 
   burger.addEventListener('click', function(){
     
+    bluur.classList.toggle('active');
     sidebar.classList.toggle('active');
+
 
    
   })
