@@ -401,6 +401,131 @@ border-radius: 15px;
 }
 
 
+:root{
+  --bg: #efefef;
+  --card-width: 320px;
+  --card-height: 360px;
+  --gap: 18px;
+  --radius: 12px;
+  --dark: #111111;
+}
+
+/* تنظیمات کلی */
+html,body{
+  height:100%;
+  margin:0;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  background: transparent;
+  color: #fff;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* قاب اصلی */
+.phone-frame{
+  max-width:80%;
+  margin:18px auto;
+  background:transparent;
+  padding:18px;
+  border-radius:6px;
+  box-shadow: 0 6px 30px rgba(0,0,0,0.6);
+}
+
+.viewport{
+  background:transparent;
+  border-radius:10px;
+  padding:28px 20px;
+  min-height:520px;
+}
+
+/* ردیف کارت‌ها */
+.cards-row{
+  display:flex;
+  gap:var(--gap);
+  overflow-x:auto;
+  padding-bottom:12px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding-left:12px;
+  padding-right:12px;
+}
+
+/* اسکرول‌بار */
+.cards-row::-webkit-scrollbar { height:8px; }
+.cards-row::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.2); border-radius:999px; }
+.cards-row { scrollbar-width: thin; scrollbar-color: rgba(0,0,0,0.18) transparent; }
+
+/* کارت‌ها */
+.card{
+  flex: 0 0 var(--card-width);
+  height: 300px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+  scroll-snap-align: start;
+  background: linear-gradient(180deg, transparent 60%, rgba(0,0,0,0) 60%);
+  display:flex;
+  flex-direction:column;
+}
+
+/* بالای کارت (گرادیانت) */
+.card .visual{
+  flex: 0 0 55%;
+  background: red;
+}
+
+/* کارت دوم رنگ خاص */
+.card.magenta .visual{
+  background: red;
+}
+
+/* بخش متن پایین */
+.card .meta{
+  flex:1;
+  background: white;
+  color:#fff;
+  padding:22px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+
+.card h2{
+  margin:0 0 8px 0;
+  font-size:38px;
+  font-weight:400;
+}
+
+.card p{
+  margin:0;
+  opacity:0.9;
+  font-size:16px;
+  line-height:1.5;
+}
+
+/* نوار کوچک زیر کارت‌ها */
+.bottom-bar{
+  margin-top:34px;
+  display:flex;
+  justify-content:center;
+}
+
+.bottom-bar .bar{
+  width:110px;
+  height:12px;
+  background:#cfcfcf;
+  border-radius:999px;
+  opacity:0.45;
+}
+
+/* ریسپانسیو */
+@media(min-width:720px){
+  :root{
+    --card-width:400px;
+    --card-height:420px;
+  }
+}
+
+
 body{
     
     background-position: 0 20px;
@@ -411,6 +536,8 @@ body{
     
 
 }
+
+
 
 
 
