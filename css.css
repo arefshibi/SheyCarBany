@@ -48,7 +48,7 @@
     align-items: center;
         width: 100%;
     height: 700px;
-   
+   overflow: hidden;
     
 }
 
@@ -70,12 +70,12 @@
 }
 
 .main2{
-    background-color: transparent;
+    background-color: black;
     position: relative;
-    top: -200px;
+    top: 50px;
   display: flex;
   width: 100%;
-  height:300px;
+  height:400px;
 }
 .all{
     background-color: transparent;
@@ -486,6 +486,10 @@ p{
     border-radius: 0;
 }
 
+
+
+
+
 .sidebar{
 
     position: fixed;
@@ -506,7 +510,7 @@ p{
 }
 
 body {
-    background: #0f0f0f;
+    background: #000000;
     font-family: "Poppins", sans-serif;
     color: white;
 }
@@ -540,6 +544,26 @@ body {
     width: 120px;
     opacity: 0.9;
 }
+#img1{position: absolute;
+    right: -30px;
+    bottom: 25px;
+    width: 60%;}
+#img2{position: absolute;
+    right: -21px;
+    top: -30px;
+    width: 80%;}
+#img3{position: absolute;
+    width: 40%;
+    top: -35px;}
+#img4{width: 85%;
+left: 85px;
+top:-45px;
+}
+#img5{width: 85%;
+top:10px;
+left:30px;}
+#img6{width:180%;}
+
 
 .card a {
     margin-top: 15px;
@@ -561,7 +585,7 @@ body {
 }
 
 .lightblue {
-    background: linear-gradient(145deg, #438bb5, #7bc1e3);
+    background: linear-gradient(145deg, #282626, #ffffff);
 }
 
 .green {
@@ -573,11 +597,17 @@ body {
 }
 
 .purple {
-    background: linear-gradient(145deg, #3d2b5c, #6a4db5);
+    background: linear-gradient(145deg, #3f3b3f, #050505);
 }
 
 .red {
     background: linear-gradient(145deg, #511d1d, #b94d4d);
+}
+
+.card h2,.card a{
+  text-align: left;
+  
+
 }
 
 
@@ -1423,6 +1453,30 @@ border-radius: 15px;
 
 }
 
+
+#img1{position: absolute;
+    right: -30px;
+    bottom: 0px;
+    width: 60%;}
+#img2{position: absolute;
+    right: -21px;
+    top: -60px;
+    width: 80%;}
+#img3{position: absolute;
+    width: 30%;
+    
+    top: -35px;}
+#img4{width: 70%;
+left: 185px;
+top:-55px;
+}
+#img5{width: 85%;
+top:10px;
+left:30px;}
+#img6{width:180%;}
+
+
+
 #backgroundVideo{
   display: none;
 }
@@ -1447,9 +1501,17 @@ border-radius: 15px;
       width: 100%;
     }
     .main2{
-      display: none;
+     height: fit-content;
+     padding: 0;
+     position: relative;
+     top: 10px;
       justify-content: center;
       align-items: center;
+    }
+    .card-container{
+      display: grid;
+      grid-template-columns: repeat(1, 4fr);
+      
     }
     .row2{
       position: absolute;
@@ -1717,7 +1779,7 @@ border-radius: 15px;
       width: 100%;
     }
     .main2{
-      display: none;
+      display: flex;
       justify-content: center;
       align-items: center;
     }
