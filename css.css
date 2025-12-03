@@ -493,7 +493,7 @@ p{
     top: var(--navbar-height);
     left: 0.0001px;
     width: 100vw;
-    height: 87vh;
+    height: 0vh;
     display: flex;
     flex-direction: column;
     transition: 0.9s ease-in-out;
@@ -501,7 +501,6 @@ p{
     align-items: center;
     z-index: 1;
     border-radius: none;
-    transform:translateY(-1500px);
     transition: 0.5s ease-in-out;
     overflow-y: hidden;
 }
@@ -523,11 +522,9 @@ p{
 
 
 .sidebar.active{
-    opacity: 1;
-    visibility: 1;
+    height: 90vh;
     pointer-events: auto;
     transition: 0.5s ease-in-out;
-    transform: translateY(0);
     z-index: 1;
     
     
@@ -564,13 +561,7 @@ p{
     transition: 0.01s ease-in-out;
     
 }
-.sidebar .info{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 90px;
-    
-}
+
 .sidebar i{
     color: rgb(255, 255, 255);
         transition: 0.3s ease-in-out;
@@ -578,11 +569,7 @@ p{
     
 }
 
-.sidebar .txtinfo{
-    display: flex;
-    flex-direction: column;
-    
-}
+
 
 .fa-house{
     margin: 10px;
@@ -596,10 +583,7 @@ p{
  .fa-solid{
     margin: 10px;
  }
-.sidebar img{
-    height: 50px;
-    width: 50p;
-}
+
 .sidebar a:hover{
     color: rgb(0, 0, 0);
     transition: 0.3s;
