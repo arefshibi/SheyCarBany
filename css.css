@@ -550,12 +550,12 @@ body {
     width: 60%;}
 #img2{position: absolute;
     right: -21px;
-    top: -30px;
+    top: -45px;
     width: 80%;}
 #img3{position: absolute;
     width: 40%;
-    top: -35px;}
-#img4{width: 85%;
+    top: -20px;}
+#img4{width: 90%;
 left: 85px;
 top:-45px;
 }
@@ -564,7 +564,7 @@ top:10px;
 left:30px;}
 #img6{width:100%;
 left: 120px;
-top: -100px;}
+top: -80px;}
 
 
 .card a {
@@ -583,7 +583,7 @@ top: -100px;}
 /* رنگ‌های گرادینتی شبیه نمونه */
 
 .blue {
-    background: linear-gradient(145deg, #0f233e, #11476b);
+    background: linear-gradient(145deg, #0f233e, #202121);
 }
 
 .lightblue {
@@ -591,7 +591,7 @@ top: -100px;}
 }
 
 .green {
-    background: linear-gradient(145deg, #1da64a, #6ee68a);
+    background: linear-gradient(145deg, #232222, #dd6407);
 }
 
 .darkgreen {
@@ -603,7 +603,7 @@ top: -100px;}
 }
 
 .red {
-    background: linear-gradient(145deg, #511d1d, #b94d4d);
+    background: linear-gradient(145deg, #180f0f, #b94d4d);
 }
 
 .card h2,.card a{
