@@ -505,6 +505,81 @@ p{
     overflow-y: hidden;
 }
 
+body {
+    background: #0f0f0f;
+    font-family: "Poppins", sans-serif;
+    color: white;
+}
+
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    width: 90%;
+    max-width: 1200px;
+    margin: 40px auto;
+}
+
+.card {
+    position: relative;
+    padding: 25px;
+    height: 180px;
+    border-radius: 22px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    backdrop-filter: blur(8px);
+    transition: 0.3s;
+}
+
+.card img {
+    position: absolute;
+    right: 20px;
+    bottom: 10px;
+    width: 120px;
+    opacity: 0.9;
+}
+
+.card a {
+    margin-top: 15px;
+    color: white;
+    opacity: 0.9;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 20px 40px rgba(0,0,0,0.3);
+}
+
+/* رنگ‌های گرادینتی شبیه نمونه */
+
+.blue {
+    background: linear-gradient(145deg, #0f233e, #11476b);
+}
+
+.lightblue {
+    background: linear-gradient(145deg, #438bb5, #7bc1e3);
+}
+
+.green {
+    background: linear-gradient(145deg, #1da64a, #6ee68a);
+}
+
+.darkgreen {
+    background: linear-gradient(145deg, #0b2518, #124b2e);
+}
+
+.purple {
+    background: linear-gradient(145deg, #3d2b5c, #6a4db5);
+}
+
+.red {
+    background: linear-gradient(145deg, #511d1d, #b94d4d);
+}
+
 
 .loginnav{
     display: flex;
