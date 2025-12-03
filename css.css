@@ -1490,45 +1490,265 @@ position: absolute;
 
 @media(max-width: 375px){
 
+     .container{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow-x: hidden;
+      background-color: none;
+      background: none;
+      
+    }
+    .nav .butt{
+        display: none;
+        
 
-.main{
+    }
+    .nav{
+      width: 100%;
+         background-color: rgba(0, 0, 0, 0.646);
+      max-width: 370px;
+      border-radius: 15px;
+      position: fixed;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 10px;
+    }
+
+    #infinity,
+    .butt,
+    .bot#login{
+      display: none;
+    }
+
+    .sidebar{
+      height: 91vh;
+    }
+
+    .main{
+      width: 100%;
+      
+       background-image:
+        linear-gradient(to bottom,
+       rgba(0,0,0,0) 0%,
+       rgba(0,0,0,0) 70%,
+       rgba(0,0,0,0.4) 85%,
+       rgba(0, 0, 0, 1.5) 100%
+       ),
+       
+       
+       url(img/mob.jpg);
+
+
+
     
-    height: 700px;
-    width: 100%;
-    margin-bottom: -230px;
+
+
+       
+      
+      background-position-x: 20%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: top center;
+        height: 700px;
+      
+    }
+   
+
+    .tex h1{font-size: 45px;
+      
+      color: rgb(255, 255, 255);
+
+      margin-bottom: 25px;
+      
+    }
+    #orange{font-size: 60px;
+    color: rgb(255, 72, 0);
+  position: relative;
+top: 8px;}
+
+
+
+    .buttTxt{font-size: 12px;
+      font-weight: 700;
+
+      left: 0;
+
+      color: rgb(255, 255, 255);
+
+      margin-bottom: 15px;
+    }
+    .neu-button{padding: 0 ;
+    font-size: 13px;
+   left: 0px;
+
+
+
+      top: 120%;
+
+      
+
+
+    
+      height: 40px;
+      word-break: nowrap;
+      width: 140px;
+
 }
 
-.logo i{
-  display: none;
-}
-#login{
-  display: none;
-}
-.nav{
-  width: 100%;
-  gap: 20px;
-  justify-content: space-around;
-  padding: 0;
-}
-.logo{
-  font-size: 20px;
-}
-
-#orange{
-  font-size: 40px;
-}
-.tex h1{
-  font-size: 20px;
-}
-.main{
-  width: 100%;
+.sidebar{
+  justify-content: center;
+  align-items: center;
+  width: 96%;
+left: 7px;
+max-height: 0px;
   
+border-radius: 15px;
+
+
+
+
+
+
+
+  position: fixed;
+  transform: translateY(1px);
+
 }
-.buttTxt{
-  font-size: 15px;
+
+#backgroundVideo{
+  display: none;
 }
-.neu-button{
-  padding: 5px 10px;
-  font-size: 10px;
+.sidebar.active{
+  max-height: 600px;
+  
+
+
+
 }
+
+
+
+
+    .slideCon{
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      top: 60%;
+      left: -50%;
+      width: 100%;
+    }
+    .main2{
+      display: none;
+      justify-content: center;
+      align-items: center;
+    }
+    .row2{
+      position: absolute;
+      top: 80px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      width: 350%;
+      justify-content: center;
+      align-items: center;
+    }
+    .row1{
+      display: flex;
+      width: 170%;
+      justify-content: center;
+      align-items: center;
+    }
+    
+
+
+  
+    .all{
+      flex-direction: column-reverse;
+      height: 400px;
+      background: transparent;
+    }
+    .comparison-container{
+      width: 90%;
+      max-width: 700px;
+  min-height: 350px;
+  border-radius: 15px;
+  overflow: hidden;
+  aspect-ratio: 9/4;
+
+    }
+
+    .txtbala h1{
+      font-size: 20px;
+      color: white;
+      
+    }
+    
+    .tabs{
+      flex-direction: row;
+      margin-bottom: 30px;
+      background-color: #ffffff77;
+    }
+    .tab{
+      width: 60px;
+      color: black;
+
+      height: 35px;
+      
+    }
+  .container{
+    width: 100%;
+  }
+    .containerz input[id="radio-1"]:checked ~ .glider {
+  transform: translatex(90%);
 }
+
+
+
+.containerz input[id="radio-2"]:checked ~ .glider {
+  transform: translateX(180%);
+}
+
+.containerz input[id="radio-3"]:checked ~ .glider {
+  transform: translateX(275%);
+
+}
+
+.containerz input[id="radio-4"]:checked ~ .glider {
+  transform: translatex(365%);
+}
+
+.containerz input[id="radio-5"]:checked ~ .glider {
+  transform: translatex(460%);
+}
+.glass-radio-group{
+  width: 330px;
+}
+.glider{
+position: absolute;
+  display: flex;
+  height: 40px;
+  width: 65px;
+  top: 10px;
+  left: -48px;
+  background-color: #00000072;
+}
+
+.main3 article{
+  width: 300px;
+}
+.main3{
+  height:1500px ; 
+}
+.boxha{
+  flex-direction: column;
+}
+    :root{
+   --navbar-height :74px;
+}
+
+   
+}
+
