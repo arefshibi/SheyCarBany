@@ -1287,11 +1287,11 @@ html, body {
     }
    
 
-    .tex h1{font-size: 35px;
+    .tex h1{font-size: 45px;
       
-      color: black;
+      color: rgb(255, 255, 255);
 
-      margin-bottom: 15px;
+      margin-bottom: 25px;
       
     }
     #orange{font-size: 60px;
@@ -1302,11 +1302,11 @@ top: 8px;}
 
 
     .buttTxt{font-size: 12px;
-      font-weight: 900;
+      font-weight: 700;
 
       left: 0;
 
-      color: black;
+      color: rgb(255, 255, 255);
 
       margin-bottom: 15px;
     }
