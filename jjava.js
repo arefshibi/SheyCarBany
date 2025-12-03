@@ -251,3 +251,18 @@ taptap();
 //   currentSpeed = speed;
 // })
 
+
+
+
+window.addEventListener('scroll',  ()=>{
+const box = document.querySelector('.glass-radio-group');
+const totalH = document.documentElement.scrollHeight - window.innerHeight;
+const thirty = totalH * 0.15;
+  if(window.scrollY >= thirty){
+    box.classList.add('active');
+    box.style.transition = "0.5s ease";
+  }else if(window.scrollY <= thirty){
+    box.classList.remove('active');
+  }
+
+});

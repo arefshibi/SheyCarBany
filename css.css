@@ -5,7 +5,7 @@
 
 
 :root{
-   --navbar-height :74px;
+   --navbar-height :56px;
 }
 
 
@@ -71,7 +71,8 @@
 
 .main2{
     background-color: transparent;
-
+    position: relative;
+    top: -200px;
   display: flex;
   width: 100%;
   height:300px;
@@ -307,7 +308,19 @@ border-radius: 15px;
   white-space: nowrap;
   width: 100%;
   justify-content: center;
-  
+  background-color: #101014;
+  background: linear-gradient(
+    to bottom,
+    #000 0%,
+    #111217 50%,
+    #000 100%
+  );
+  height: 250px;
+  box-shadow: inset 0 0 40px rgba(0,0,0,1),
+  inset 0 0 10px rgba(0,0,0,0.7),
+   0 0 12px rgba(255,255,255,0.04);
+  position: relative;
+  top: 300px;
   align-items: center;
   flex-direction: column;
 }
@@ -315,22 +328,22 @@ border-radius: 15px;
 .row1{
   display: inline-flex;
   flex-direction: row;
-  position: absolute;
+  /* position: absolute;
   top: 95%;
-  left: 0;
+  left: 0; */
   width: 100%;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 }
 .row2{
   display: inline-flex;
   flex-direction: row;
   align-items: center;
-   position: absolute;
-  top: 117%;
-  left: 0;
+   /* position: absolute;
+  top: 130%;
+  left: 0; */
   width: 130%;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .slidebox{
@@ -341,17 +354,21 @@ border-radius: 15px;
   color: white;
   font-size: 3rem;
   font-weight: 500;
-  background-color: #403f3f96;
-  box-shadow:  inset 1px 1px 4px rgba(255, 255, 255, 0.2),
-    inset -3px -3px 12px rgba(0, 0, 0, 0.3),
-    0 4px 12px rgba(0, 0, 0, 0.15);
+  background-color: #141313be;
+ 
   height:80px;
   border-radius: 20px;
-  width: 400px;
-  padding: 20px;
+  width: 200px;
+  /* padding: 20px; */
 }
 
+
 .slidebox2{
+  margin: 10px;
+  height:90px;
+  border-radius: 20px;
+  width: 330px;
+  padding: 20px;
   margin: 10px;
   display: flex;
   justify-content: center;
@@ -362,16 +379,7 @@ border-radius: 15px;
   background-color: #141313be;
   height:80px;
   border-radius: 20px;
-  width: 400px;
-  padding: 20px;
-}
-
-.slidebox2{
-  margin: 10px;
-  background-color: #353434c0;
-  height:90px;
-  border-radius: 20px;
-  width: 330px;
+  width: 200px;
   padding: 20px;
 }
 
@@ -703,8 +711,9 @@ p{
   margin-top: 120px;
 }
 #orange{
-    color: rgb(0, 0, 0);
+    color: rgb(255, 89, 0);
     font-size: 9rem;
+    font-weight: 900;
 }
 
 
@@ -720,6 +729,7 @@ p{
   position: fixed;
   white-space: nowrap;
   bottom: 40px;
+  transform: translateY(200px);
   background: var(--bg);
   border-radius: 1rem;
   backdrop-filter: blur(12px);
@@ -729,6 +739,11 @@ p{
   0 4px 12px rgba(0, 0, 0, 0.15);
   overflow: hidden;
   width: fit-content;
+}
+
+.glass-radio-group.active{
+  transform: translateY(0);
+  transition: 0.5s ease;
 }
 
 .glass-radio-group input {
@@ -821,20 +836,37 @@ p{
 
 /*  */
 
-.boy{
+/* .boy{
     margin-top: 100PX;
-}
+} */
 .main{
     color: white;
+    background-image: linear-gradient(to bottom,
+       rgba(0,0,0,0) 0%,
+       rgba(0,0,0,0) 70%,
+       rgba(0,0,0,0.4) 85%,
+       rgba(0, 0, 0, 1.5) 100%
+       ),url(img/88k.jpg);
     display: flex;
+    background-position-y: 30px;
     align-items: center;
     justify-content: center;
-    margin-top: 0;
+    margin-top: -60px;
     font-size: 74px;
     margin-left: 200px;
     margin-right: 200px;
     
 }
+
+#what{
+position: relative;
+top: 320px;
+left: 0%;
+font-size: 30px;
+color: white;
+}
+
+
 .buttTxt{
     color: white;
     user-select: none;
@@ -863,7 +895,7 @@ p{
     inset -3px -3px 12px rgba(0, 0, 0, 0.3),
     0 4px 12px rgba(0, 0, 0, 0.15);
 position: relative;
-bottom: 23px;
+bottom: -10px;
 left: -350px;
   cursor: pointer;
   color: #000000;
@@ -1074,6 +1106,8 @@ left: -350px;
   border-radius: 99px;
 }
 
+
+
 .tabs * {
   z-index: 1;
 }
@@ -1165,13 +1199,8 @@ left: -350px;
 
 /*  */
 
-.slidebox,
-.slidebox2{
-  flex: 1;
-  min-width: 260px;
-  flex-wrap: wrap !important;
-  justify-content: center !important;
-}
+
+
 
 img{
   max-width: 100%;
@@ -1240,8 +1269,8 @@ html, body {
        ),
        
        
-       url(img/px1.jpg);
-overflow: hidden;
+       url(img/mob.jpg);
+
 
 
     
@@ -1365,18 +1394,7 @@ border-radius: 15px;
       align-items: center;
     }
     
-    .slidebox,
-.slidebox2{
-  flex: 1;
 
-  min-width: 100px;
-  height: 60px;
-  align-items: center !important;
-  padding: 0;
-  font-size: 40px;
-  flex-wrap: wrap !important;
-  justify-content: center !important;
-}
 
   
     .all{
