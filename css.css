@@ -562,7 +562,9 @@ top:-45px;
 #img5{width: 85%;
 top:10px;
 left:30px;}
-#img6{width:180%;}
+#img6{width:100%;
+left: 120px;
+top: -100px;}
 
 
 .card a {
@@ -1473,7 +1475,10 @@ top:-55px;
 #img5{width: 85%;
 top:10px;
 left:30px;}
-#img6{width:180%;}
+#img6{width:100%;
+
+
+}
 
 
 
