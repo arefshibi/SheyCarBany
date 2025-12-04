@@ -189,8 +189,8 @@ function taptap() {
   tap4.addEventListener('click', function(){
     imge.innerHTML = "";
     imge.innerHTML = `
-    <img src="" id="beforeImg" />
-  <img src="" id="afterImg" class="overlay" />
+    <img src="Picsart_25-11-25_03-15-27-219_upscaled.jpg" id="beforeImg" />
+  <img src="Picsart_25-11-25_03-15-22-013_upscaled.jpg" id="afterImg" class="overlay" />
   <div class="slider-handle" id="handle">
   <div class="ttxx">
     </div></div>`;
