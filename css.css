@@ -10,6 +10,7 @@
 
 
 *{
+
     
     margin: 0;
     padding: 0;
@@ -51,29 +52,6 @@
     
 }
 
-.fadetxt.show{
-  opacity: 1;
-  transition: 0.5s ease-in-out;
-  transform: translateY(0);
-}
-
-.fadetxt{
-  opacity: 0;
-  transform: translateY(20px);
-}
-
-.all-title{
-  width: 100%;
-  text-align: center;
-  margin-top: 100px;
-  color: white;
-}
-.all-title h1{
-font-size: 32px;
-font-weight: 800;
-letter-spacing: 3px;
-color: white;
-}
 
 .boot1{
   display: flex;
@@ -427,8 +405,9 @@ body{
     
     background-position: 0 20px;
     background-color: #000000;
-  overflow-x: hidden;
+  
     
+    overflow-x: hidden;
     
 
 }
@@ -560,45 +539,32 @@ body {
 
 .card img {
     position: absolute;
-    
-    max-width: 100%;
     right: 20px;
     bottom: 10px;
     width: 120px;
     opacity: 0.9;
 }
 #img1{position: absolute;
-  max-width: 100%;
     right: -30px;
     bottom: 25px;
     width: 60%;}
 #img2{position: absolute;
-  max-width: 100%;
     right: -21px;
     top: -45px;
     width: 80%;}
 #img3{position: absolute;
-  max-width: 100%;
     width: 40%;
     top: -20px;}
 #img4{width: 90%;
-  max-width: 100%;
 left: 85px;
 top:-45px;
 }
 #img5{width: 85%;
-  max-width: 100%;
 top:10px;
 left:30px;}
 #img6{width:100%;
-  max-width: 100%;
 left: 120px;
 top: -80px;}
-
-
-.txtupchange h1{
-  color: white;
-}
 
 
 .card a {
@@ -988,7 +954,7 @@ top: -80px;}
        rgba(0,0,0,0) 70%,
        rgba(0,0,0,0.4) 85%,
        rgba(0, 0, 0, 1.5) 100%
-       ),url(img/image07.webp);
+       ),url(img/88k.jpg);
     display: flex;
     background-position-y: 30px;
     align-items: center;
@@ -1348,7 +1314,9 @@ img{
   max-width: 100%;
   height: auto;
 }
-
+html, body {
+  /* overflow-x: hidden; */
+}
 
 /*  */
 
@@ -1366,6 +1334,7 @@ img{
       display: flex;
       justify-content: center;
       align-items: center;
+      /* overflow-x: hidden; */
       background-color: none;
       background: none;
       
@@ -1408,7 +1377,7 @@ img{
        ),
        
        
-       url(img/image01.webp);
+       url(img/mob.jpg);
 
 
 
@@ -1487,34 +1456,21 @@ border-radius: 15px;
 }
 
 
-.all-title{
-  width: 100%;
-  text-align: center;
-  margin-top: 100px;
-  color: white;
-}
-.all-title h1{
-  font-size: 32px;
-  font-weight: 800;
-  letter-spacing: 3px;
-  color: white;
-}
-
 #img1{position: absolute;
     right: -30px;
     bottom: 0px;
     width: 60%;}
 #img2{position: absolute;
     right: -21px;
-    top: -30px;
+    top: -60px;
     width: 80%;}
 #img3{position: absolute;
     width: 30%;
     
-    top: -5px;}
-#img4{width: 80%;
-left: 125px;
-top:-50px;
+    top: -35px;}
+#img4{width: 70%;
+left: 185px;
+top:-55px;
 }
 #img5{width: 85%;
 top:10px;
@@ -1562,24 +1518,7 @@ left:30px;}
       grid-template-columns: repeat(1, 4fr);
       
     }
-    .row2{
-      position: absolute;
-      top: 80px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      display: flex;
-      width: 350%;
-      justify-content: center;
-      align-items: center;
-    }
-    .row1{
-      display: flex;
-      width: 170%;
-      justify-content: center;
-      align-items: center;
-    }
-    
+   
 
 
   
@@ -1593,7 +1532,7 @@ left:30px;}
       max-width: 700px;
   min-height: 350px;
   border-radius: 15px;
-  overflow: hidden;
+  /* overflow: hidden; */
   aspect-ratio: 9/4;
 
     }
@@ -1679,6 +1618,7 @@ position: absolute;
       display: flex;
       justify-content: center;
       align-items: center;
+      /* overflow-x: hidden; */
       background-color: none;
       background: none;
       
@@ -1862,7 +1802,7 @@ border-radius: 15px;
       max-width: 700px;
   min-height: 350px;
   border-radius: 15px;
-  overflow: hidden;
+  /* overflow: hidden; */
   aspect-ratio: 9/4;
 
     }
