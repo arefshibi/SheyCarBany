@@ -954,7 +954,7 @@ top: -80px;}
        rgba(0,0,0,0) 70%,
        rgba(0,0,0,0.4) 85%,
        rgba(0, 0, 0, 1.5) 100%
-       ),url(img/New\ folder/image01_1.webp);
+       ),url(img/88k.jpg);
     display: flex;
     background-position-y: 30px;
     align-items: center;
@@ -1314,9 +1314,9 @@ img{
   max-width: 100%;
   height: auto;
 }
-/* html, body {
+html, body {
   overflow-x: hidden;
-} */
+}
 
 /*  */
 
@@ -1327,17 +1327,14 @@ img{
 @media(max-width: 764px){
 
 
-html, body{
-  overflow-x: hidden;
-  max-width: 100%;
-}
+
 
   
     .container{
       display: flex;
       justify-content: center;
       align-items: center;
-      /* overflow-x: hidden; */
+      overflow-x: hidden;
       background-color: none;
       background: none;
       
@@ -1380,7 +1377,7 @@ html, body{
        ),
        
        
-       url(img/New\ folder/image02_1.webp);
+       url(img/mob.jpg);
 
 
 
@@ -1465,15 +1462,15 @@ border-radius: 15px;
     width: 60%;}
 #img2{position: absolute;
     right: -21px;
-    top: -60px;
+    top: -30px;
     width: 80%;}
 #img3{position: absolute;
     width: 30%;
     
-    top: -35px;}
-#img4{width: 70%;
-left: 185px;
-top:-55px;
+    top: -5px;}
+#img4{width: 80%;
+left: 125px;
+top:-50px;
 }
 #img5{width: 85%;
 top:10px;
@@ -1521,7 +1518,24 @@ left:30px;}
       grid-template-columns: repeat(1, 4fr);
       
     }
-   
+    .row2{
+      position: absolute;
+      top: 80px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      width: 350%;
+      justify-content: center;
+      align-items: center;
+    }
+    .row1{
+      display: flex;
+      width: 170%;
+      justify-content: center;
+      align-items: center;
+    }
+    
 
 
   
@@ -1617,19 +1631,11 @@ position: absolute;
 
 @media(max-width: 375px){
 
-
-html, body{
-  overflow-x: hidden;
-  max-width: 100%;
-
-}
-
-
      .container{
       display: flex;
       justify-content: center;
       align-items: center;
-      /* overflow-x: hidden; */
+      overflow-x: hidden;
       background-color: none;
       background: none;
       
