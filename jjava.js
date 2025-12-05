@@ -276,11 +276,16 @@ taptap();
 window.addEventListener('scroll',  ()=>{
 const box = document.querySelector('.glass-radio-group');
 const totalH = document.documentElement.scrollHeight - window.innerHeight;
+const totalseven = document.documentElement.scrollHeight - window.innerHeight;
 const thirty = totalH * 0.15;
+const seventh = totalseven * 0.8;
   if(window.scrollY >= thirty){
     box.classList.add('active');
     box.style.transition = "0.5s ease";
   }else if(window.scrollY <= thirty){
+    box.classList.remove('active');
+  }
+   if(window.scrollY >= seventh){
     box.classList.remove('active');
   }
 

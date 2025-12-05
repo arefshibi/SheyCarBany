@@ -1,0 +1,371 @@
+/* --- متغیرها و تنظیمات پایه --- */
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;500;700;900&display=swap');
+
+:root {
+    /* رنگ‌های خاص Wrench Restoration (بنفش تیره، نقره‌ای و متالیک) */
+    --primary-color: #6f42c1; /* بنفش اصلی */
+    --secondary-color: #5a349c;
+    --accent-color: #ffd700; /* طلایی (متالیک) */
+    --background-dark: #1a1a2e; /* پس‌زمینه تیره برای کنتراست */
+    --background-light: #ffffff;
+    --text-light: #f0f0f0;
+    --text-dark: #22223b;
+    --shadow-ultimate: 0 25px 50px rgba(0, 0, 0, 0.2);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Vazirmatn', sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background-color: var(--background-light);
+    direction: rtl;
+    text-align: right;
+    overflow-x: hidden;
+    /* تنظیم اولیه برای انیمیشن لودر */
+    overflow: hidden; 
+}
+
+.container-ultimate {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+/* --- لودر صفحه (استفاده از انیمیشن ساده) --- */
+.page-loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--background-dark);
+    color: var(--text-light);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.loader-circle {
+    border: 5px solid rgba(255, 255, 255, 0.2);
+    border-top: 5px solid var(--accent-color);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* --- ۱. Hero Section فوق مدرن --- */
+.hero-restoration {
+    min-height: 100vh;
+    background-color: var(--background-dark);
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 0 40px;
+}
+
+.hero-visual-placeholder {
+    /* فضای مورد نیاز برای مدل 3D */
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    opacity: 0.6;
+    /* در دیزاین واقعی، این قسمت 3D را نمایش می‌دهد */
+    background: radial-gradient(circle at 10% 50%, rgba(111, 66, 193, 0.1) 0%, transparent 70%);
+}
+
+.hero-content-ultramodern {
+    position: relative;
+    z-index: 10;
+    width: 50%;
+    padding-top: 50px;
+}
+
+/* افکت Split-Text برای انیمیشن GSAP */
+.split-text {
+    font-size: 5.5rem;
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    text-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+}
+
+.split-text span {
+    display: inline-block; /* آماده برای انیمیشن جداگانه هر کلمه */
+    color: var(--text-light);
+}
+
+.hero-subline {
+    font-size: 1.8rem;
+    font-weight: 300;
+    color: var(--accent-color);
+    margin-bottom: 40px;
+}
+
+.cta-group a {
+    text-decoration: none;
+    font-weight: 700;
+    padding: 12px 30px;
+    border-radius: 5px;
+    margin-left: 15px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary-ghost {
+    background: transparent;
+    border: 2px solid var(--accent-color);
+    color: var(--accent-color);
+}
+
+.btn-primary-ghost:hover {
+    background: var(--accent-color);
+    color: var(--background-dark);
+}
+
+.btn-secondary-dark {
+    background: var(--secondary-color);
+    color: var(--text-light);
+}
+
+.btn-secondary-dark:hover {
+    background: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+/* --- ۲. باکس‌های خدمات اصلی با افکت Glow --- */
+.service-focus {
+    padding: 100px 0;
+}
+
+.section-heading-outline {
+    font-size: 4rem;
+    font-weight: 900;
+    text-align: center;
+    margin-bottom: 60px;
+    color: var(--background-light);
+    -webkit-text-stroke: 1px var(--primary-color);
+    text-stroke: 1px var(--primary-color);
+    opacity: 0.1; /* عنوان محو و بزرگ برای پس‌زمینه بصری */
+}
+
+.focus-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: -80px; /* بالا بردن برای همپوشانی با عنوان */
+}
+
+.glow-card {
+    background-color: var(--background-dark);
+    color: var(--text-light);
+    padding: 35px;
+    border-radius: 15px;
+    box-shadow: var(--shadow-ultimate);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.glow-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at center, rgba(111, 66, 193, 0.4) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.glow-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    border-color: var(--primary-color);
+    box-shadow: 0 0 30px rgba(111, 66, 193, 0.7); /* افکت نورانی */
+}
+
+.glow-card:hover::before {
+    opacity: 1;
+}
+
+.glow-card h4 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    margin-bottom: 15px;
+}
+
+/* --- ۳. فرآیند بازسازی (با Scroll-Triggered Animation) --- */
+.restoration-process {
+    padding: 80px 0;
+    background-color: var(--background-light);
+}
+
+.staged-timeline {
+    position: relative;
+    padding-top: 50px;
+}
+
+.staged-timeline::before {
+    /* خط عمودی مرکزی (در واقعیت با GSAP و SVG متحرک می‌شود) */
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 50%;
+    transform: translateX(50%);
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+}
+
+.timeline-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 40px 0;
+    position: relative;
+}
+
+/* المان‌های چپ و راست متناوب (نامتقارن) */
+.timeline-item:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.stage-number {
+    font-size: 5rem;
+    font-weight: 900;
+    color: var(--primary-color);
+    opacity: 0.1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+.stage-content {
+    width: 45%;
+    background-color: var(--background-dark);
+    color: var(--text-light);
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: var(--shadow-ultimate);
+    position: relative;
+    z-index: 2;
+    transition: transform 0.4s ease;
+}
+
+.timeline-item:nth-child(odd) .stage-content {
+    margin-right: 55%;
+}
+
+.timeline-item:nth-child(even) .stage-content {
+    margin-left: 55%;
+}
+
+.stage-content h4 {
+    color: var(--accent-color);
+    margin-bottom: 10px;
+    font-size: 1.4rem;
+}
+
+/* --- ۴. Quote/Testimonial در بک‌گراند تیره و نامتقارن --- */
+.dark-quote-section {
+    padding: 100px 0;
+    background-color: var(--background-dark);
+    margin-bottom: 0;
+    position: relative;
+}
+
+.testimonial-box {
+    max-width: 800px;
+    margin: 0 auto;
+    font-style: italic;
+    font-size: 2rem;
+    line-height: 1.4;
+    color: var(--text-light);
+    border-right: 5px solid var(--accent-color);
+    padding-right: 30px;
+    position: relative;
+}
+
+.testimonial-box::before {
+    content: "“";
+    position: absolute;
+    top: -50px;
+    right: 0;
+    font-size: 10rem;
+    color: var(--primary-color);
+    opacity: 0.3;
+    line-height: 1;
+}
+
+.testimonial-box footer {
+    font-size: 1.1rem;
+    font-style: normal;
+    font-weight: 500;
+    color: var(--accent-color);
+    margin-top: 20px;
+    display: block;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 1200px) {
+    .hero-restoration {
+        flex-direction: column;
+        text-align: center;
+        min-height: 70vh;
+    }
+    .hero-content-ultramodern {
+        width: 100%;
+    }
+    .hero-visual-placeholder {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .split-text {
+        font-size: 3rem;
+    }
+    .focus-grid {
+        grid-template-columns: 1fr;
+    }
+    .staged-timeline::before {
+        right: 30px;
+    }
+    .timeline-item {
+        flex-direction: column !important;
+        align-items: flex-end;
+    }
+    .stage-content {
+        width: 85%;
+        margin-right: 40px !important;
+        margin-left: 0 !important;
+    }
+    .stage-number {
+        opacity: 0.05;
+    }
+    .testimonial-box {
+        font-size: 1.5rem;
+    }
+}

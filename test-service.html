@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>احیای موتور و بازسازی مکانیکی | Wrench Restoration</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <div class="page-loader" id="loader">
+        <div class="loader-circle"></div>
+        <p>بازسازی آغاز شد...</p>
+    </div>
+
+    <section class="hero-restoration" id="section-hero">
+        <div class="hero-visual-placeholder">
+            </div>
+        <div class="hero-content-ultramodern">
+            <h1 class="split-text">
+                <span data-word="قلب">قلب</span> 
+                <span data-word="تپنده">تپنده</span> 
+                <span data-word="خودروی">خودروی</span> 
+                <span data-word="شما.">شما.</span>
+            </h1>
+            <h2 class="hero-subline">مهندسی دقیق در احیای موتورهای کلاسیک و مدرن.</h2>
+            <div class="cta-group">
+                <a href="#booking" class="btn-primary-ghost">مشاوره تخصصی رایگان</a>
+                <a href="#process" class="btn-secondary-dark">مشاهده فرآیند بازسازی</a>
+            </div>
+        </div>
+    </section>
+    
+    <main class="container-ultimate">
+
+        <section class="service-focus" id="core-services">
+            <h3 class="section-heading-outline">برترین تخصص‌های ما</h3>
+            <div class="focus-grid">
+
+                <div class="focus-card glow-card" data-focus="موتور">
+                    <h4>🛠️ تعمیرات اساسی موتور</h4>
+                    <p>باز کردن، عیب‌یابی دقیق و مونتاژ مجدد کامل موتور با رعایت استانداردها.</p>
+                </div>
+
+                <div class="focus-card glow-card" data-focus="گیربکس">
+                    <h4>⚙️ تعمیر تخصصی گیربکس</h4>
+                    <p>تعمیرات تخصصی گیربکس‌های اتوماتیک و دستی با استفاده از ابزار دقیق.</p>
+                </div>
+
+                <div class="focus-card glow-card" data-focus="تعلیق">
+                    <h4>🔗 سیستم تعلیق و جلوبندی</h4>
+                    <p>تنظیم و بازسازی سیستم تعلیق برای بهترین عملکرد و امنیت رانندگی.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="restoration-process" id="process">
+            <h3 class="section-heading-outline">فرآیند ۴ مرحله‌ای ما</h3>
+            <div class="staged-timeline">
+                
+                <div class="timeline-item" data-stage="1">
+                    <div class="stage-number">۰۱</div>
+                    <div class="stage-content">
+                        <h4>تشخیص فنی با متالورژی</h4>
+                        <p>استفاده از تجهیزات دیاگ پیشرفته و بررسی دقیق فلزات برای شناسایی ریشه مشکل.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-stage="2">
+                    <div class="stage-number">۰۲</div>
+                    <div class="stage-content">
+                        <h4>پاکسازی و آماده‌سازی قطعات</h4>
+                        <p>تمیزکاری قطعات با روش‌های اولتراسونیک و میکروبلاستینگ برای حذف کامل رسوبات.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-stage="3">
+                    <div class="stage-number">۰۳</div>
+                    <div class="stage-content">
+                        <h4>مونتاژ مجدد با تلرانس صفر</h4>
+                        <p>نصب قطعات جدید و احیا شده توسط مهندسین مکانیک با دقت حداکثری (Zero Tolerance).</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-stage="4">
+                    <div class="stage-number">۰۴</div>
+                    <div class="stage-content">
+                        <h4>تست دینامیک و تحویل</h4>
+                        <p>اجرای تست‌های سخت‌گیرانه (Bench Testing) برای تضمین عملکرد در شرایط واقعی.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="dark-quote-section">
+            <blockquote class="testimonial-box">
+                "سطح دقت و تخصص تیم شما بی‌نظیر است. موتور خودروی کلاسیک من از یک شیء تاریخی به یک ماشین عملکردی تبدیل شد."
+                <footer>— آقای س. محمدی، مالک BMW E30</footer>
+            </blockquote>
+        </section>
+
+    </main>
+
+    <script>
+        // در واقعیت: اینجا کدهای GSAP برای انیمیشن لودر، اسکرول، و عنوان Hero قرار می‌گیرد.
+        // مثال: انیمیشن لودر ساده (فقط CSS در این دمو استفاده شده)
+        document.addEventListener('DOMContentLoaded', () => {
+            const loader = document.getElementById('loader');
+            setTimeout(() => {
+                loader.style.opacity = '0';
+                loader.style.visibility = 'hidden';
+                document.body.style.overflow = 'auto';
+            }, 1500); // 1.5 ثانیه نمایش لودر
+        });
+    </script>
+
+</body>
+</html>
