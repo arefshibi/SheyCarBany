@@ -1339,7 +1339,7 @@ img{
   height: auto;
 }
 html, body {
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
 }
 
 /*  */
@@ -1358,7 +1358,7 @@ html, body {
       display: flex;
       justify-content: center;
       align-items: center;
-      overflow-x: hidden;
+      /* overflow-x: hidden; */
       background-color: none;
       background: none;
       
@@ -1663,7 +1663,7 @@ position: absolute;
       display: flex;
       justify-content: center;
       align-items: center;
-      overflow-x: hidden;
+      /* overflow-x: hidden; */
       background-color: none;
       background: none;
       

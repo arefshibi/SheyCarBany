@@ -176,8 +176,8 @@ function taptap() {
   function loadtap3(){
     imge.innerHTML = "";
     imge.innerHTML = `
-    <img loading="lazy" src="img/befor.jpg" id="beforeImg" />
-  <img loading="lazy" src="img/after.jpg" id="afterImg" class="overlay" />
+    <img  src="img/befor.jpg" id="beforeImg" />
+  <img src="img/after.jpg" id="afterImg" class="overlay" />
   <div class="slider-handle" id="handle">
   <div class="ttxx">
     </div></div>`;
