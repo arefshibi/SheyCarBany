@@ -1389,6 +1389,10 @@ html, body {
       height: 91vh;
     }
 
+    .all-title{
+        margin-bottom: 30px;
+    }
+
     .main{
       width: 100%;
       
@@ -1822,6 +1826,10 @@ border-radius: 15px;
       width: 350%;
       justify-content: center;
       align-items: center;
+    }
+
+    .all-title{
+        margin-bottom: 30px;
     }
     .row1{
       display: flex;
