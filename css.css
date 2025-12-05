@@ -1314,9 +1314,9 @@ img{
   max-width: 100%;
   height: auto;
 }
-html, body {
+/* html, body {
   overflow-x: hidden;
-}
+} */
 
 /*  */
 
@@ -1327,14 +1327,17 @@ html, body {
 @media(max-width: 764px){
 
 
-
+html, body{
+  overflow-x: hidden;
+  max-width: 100%;
+}
 
   
     .container{
       display: flex;
       justify-content: center;
       align-items: center;
-      overflow-x: hidden;
+      /* overflow-x: hidden; */
       background-color: none;
       background: none;
       
@@ -1614,11 +1617,17 @@ position: absolute;
 
 @media(max-width: 375px){
 
+
+html, body{
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
      .container{
       display: flex;
       justify-content: center;
       align-items: center;
-      overflow-x: hidden;
+      /* overflow-x: hidden; */
       background-color: none;
       background: none;
       
