@@ -10,7 +10,6 @@
 
 
 *{
-
     
     margin: 0;
     padding: 0;
@@ -52,6 +51,29 @@
     
 }
 
+.fadetxt.show{
+  opacity: 1;
+  transition: 0.5s ease-in-out;
+  transform: translateY(0);
+}
+
+.fadetxt{
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.all-title{
+  width: 100%;
+  text-align: center;
+  margin-top: 100px;
+  color: white;
+}
+.all-title h1{
+font-size: 32px;
+font-weight: 800;
+letter-spacing: 3px;
+color: white;
+}
 
 .boot1{
   display: flex;
@@ -83,8 +105,6 @@
   background-size: cover;
   background-position-y: -280px;
   display: flex;
-  position: relative;
-  top: 50px;
   justify-content: space-around;
   width: 100%;
   height: 500px;
@@ -407,9 +427,8 @@ body{
     
     background-position: 0 20px;
     background-color: #000000;
-  
+  overflow-x: hidden;
     
-    overflow-x: hidden;
     
 
 }
@@ -541,32 +560,45 @@ body {
 
 .card img {
     position: absolute;
+    
+    max-width: 100%;
     right: 20px;
     bottom: 10px;
     width: 120px;
     opacity: 0.9;
 }
 #img1{position: absolute;
+  max-width: 100%;
     right: -30px;
     bottom: 25px;
     width: 60%;}
 #img2{position: absolute;
+  max-width: 100%;
     right: -21px;
     top: -45px;
     width: 80%;}
 #img3{position: absolute;
+  max-width: 100%;
     width: 40%;
     top: -20px;}
 #img4{width: 90%;
+  max-width: 100%;
 left: 85px;
 top:-45px;
 }
 #img5{width: 85%;
+  max-width: 100%;
 top:10px;
 left:30px;}
 #img6{width:100%;
+  max-width: 100%;
 left: 120px;
 top: -80px;}
+
+
+.txtupchange h1{
+  color: white;
+}
 
 
 .card a {
@@ -1316,9 +1348,7 @@ img{
   max-width: 100%;
   height: auto;
 }
-html, body {
-  overflow-x: hidden;
-}
+
 
 /*  */
 
@@ -1336,7 +1366,6 @@ html, body {
       display: flex;
       justify-content: center;
       align-items: center;
-      overflow-x: hidden;
       background-color: none;
       background: none;
       
@@ -1457,6 +1486,19 @@ border-radius: 15px;
 
 }
 
+
+.all-title{
+  width: 100%;
+  text-align: center;
+  margin-top: 100px;
+  color: white;
+}
+.all-title h1{
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  color: white;
+}
 
 #img1{position: absolute;
     right: -30px;
@@ -1637,7 +1679,6 @@ position: absolute;
       display: flex;
       justify-content: center;
       align-items: center;
-      overflow-x: hidden;
       background-color: none;
       background: none;
       

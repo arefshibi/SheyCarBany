@@ -16,9 +16,25 @@ function clickburger(){
   })
 }
 
+
+
 clickburger();
 
 
+
+const items = document.querySelectorAll('.fadetxt');
+const observer = new IntersectionObserver((enteries) =>{
+
+  enteries.forEach(entry =>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('show');
+    }
+  });
+});
+
+items.forEach(item =>{
+  observer.observe(item)
+});
 
 const instbox = document.querySelector('.instabox');
 const hoverlink = document.querySelector('#link44');
@@ -160,8 +176,8 @@ function taptap() {
   function loadtap3(){
     imge.innerHTML = "";
     imge.innerHTML = `
-    <img src="img/befor.jpg" id="beforeImg" />
-  <img src="img/after.jpg" id="afterImg" class="overlay" />
+    <img loading="lazy" src="img/befor.jpg" id="beforeImg" />
+  <img loading="lazy" src="img/after.jpg" id="afterImg" class="overlay" />
   <div class="slider-handle" id="handle">
   <div class="ttxx">
     </div></div>`;
