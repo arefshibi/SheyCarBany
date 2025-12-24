@@ -36,6 +36,11 @@
     align-items: center;
     
 }
+
+html, body{
+height: 100%;
+  overflow: hidden;
+}
 .main{
     display: flex;
     
