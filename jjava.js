@@ -272,25 +272,6 @@ taptap();
 
 
 
-
-window.addEventListener('scroll',  ()=>{
-const box = document.querySelector('.glass-radio-group');
-const totalH = document.documentElement.scrollHeight - window.innerHeight;
-const totalseven = document.documentElement.scrollHeight - window.innerHeight;
-const thirty = totalH * 0.15;
-const seventh = totalseven * 0.8;
-  if(window.scrollY >= thirty){
-    box.classList.add('active');
-    box.style.transition = "0.5s ease";
-  }else if(window.scrollY <= thirty){
-    box.classList.remove('active');
-  }
-   if(window.scrollY >= seventh){
-    box.classList.remove('active');
-  }
-
-});
-
 // گرفتن سکشن‌ها
 const sections = document.querySelectorAll('.main, .main2, .all');
 let currentSection = 0;
@@ -300,21 +281,16 @@ function scrollToSection(index){
   if(index < 0 || index >= sections.length) return;
   isScrolling = true;
   sections[index].scrollIntoView({ behavior: 'smooth' });
-  setTimeout(()=>{ isScrolling = false }, 800); // مدت انیمیشن
+  setTimeout(()=>{ isScrolling = false }, 800); // زمان انیمیشن
 }
-window.addEventListener('scroll', e => {
-  e.preventDefault(); // جلوگیری از scroll آزاد
-}, { passive: false });
 
 // اسکرول موس
 window.addEventListener('wheel', e => {
   if(isScrolling) return;
 
   if(e.deltaY > 0){
-    // پایین
     currentSection = Math.min(currentSection + 1, sections.length - 1);
   } else {
-    // بالا
     currentSection = Math.max(currentSection - 1, 0);
   }
   scrollToSection(currentSection);
@@ -322,18 +298,14 @@ window.addEventListener('wheel', e => {
 
 // تاچ موبایل (swipe)
 let startY = 0;
-window.addEventListener('touchstart', e => {
-  startY = e.touches[0].clientY;
-});
+window.addEventListener('touchstart', e => { startY = e.touches[0].clientY; });
 window.addEventListener('touchend', e => {
   let endY = e.changedTouches[0].clientY;
   if(isScrolling) return;
 
   if(startY - endY > 50){
-    // بالا → پایین
     currentSection = Math.min(currentSection + 1, sections.length - 1);
   } else if(endY - startY > 50){
-    // پایین → بالا
     currentSection = Math.max(currentSection - 1, 0);
   }
   scrollToSection(currentSection);
