@@ -281,7 +281,7 @@ function scrollToSection(index){
   if(index < 0 || index >= sections.length) return;
   isScrolling = true;
   sections[index].scrollIntoView({ behavior: 'smooth' });
-  setTimeout(()=>{ isScrolling = false }, 800); // زمان انیمیشن
+  setTimeout(()=>{ isScrolling = false }, 200); // زمان انیمیشن
 }
 
 // اسکرول موس
