@@ -302,6 +302,9 @@ function scrollToSection(index){
   sections[index].scrollIntoView({ behavior: 'smooth' });
   setTimeout(()=>{ isScrolling = false }, 800); // مدت انیمیشن
 }
+window.addEventListener('scroll', e => {
+  e.preventDefault(); // جلوگیری از scroll آزاد
+}, { passive: false });
 
 // اسکرول موس
 window.addEventListener('wheel', e => {
