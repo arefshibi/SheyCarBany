@@ -526,6 +526,7 @@ body {
 
 .card {
     position: relative;
+    color: white;
     padding: 25px;
     height: 180px;
     border-radius: 22px;
@@ -542,7 +543,8 @@ body {
     right: 20px;
     bottom: 10px;
     width: 120px;
-    opacity: 0.9;
+    opacity: 0.5;
+    transition: 0.3s ease-in-out;
 }
 #img1{position: absolute;
     right: -30px;
@@ -579,7 +581,13 @@ top: -80px;}
     transform: translateY(-5px);
     box-shadow: 0px 20px 40px rgba(0,0,0,0.3);
 }
-
+.card:hover img{
+  transition: 0.3s ease-in-out;
+  opacity: 1;
+}
+.card:hover h2,a {
+  color: white;
+}
 /* رنگ‌های گرادینتی شبیه نمونه */
 
 .blue {
@@ -599,7 +607,7 @@ top: -80px;}
 }
 
 .purple {
-    background: linear-gradient(145deg, #3f3b3f, #050505);
+    background: linear-gradient(145deg, #141314, #00000058);
 }
 
 .red {
@@ -608,7 +616,7 @@ top: -80px;}
 
 .card h2,.card a{
   text-align: left;
-  
+  color: rgb(212, 206, 206);
 
 }
 
@@ -1344,29 +1352,62 @@ html, body {
 }
 
 /*  */
-footer img{
+
+
+
+
+
+
+.footcon{
+  display: block;
   width: 100%;
-  height: auto;
-  object-position: center;
-  object-fit: cover;
-  display: flex;
-}
-.inf{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  position: absolute;
-  top: 2200px;
-  gap: 30px;
-  width: 100%;
+  height: 500px;
+  justify-content: space-between;
+  align-items: center;
+  background-color: black;
+
 }
 
-.inf h4{
+.upfoot{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.leftfoot{
+  display: block;
+  word-break: break-all;
+  width: 100%;
+ 
+
+
+}
+.leftfoot h2{
+  font-size: 20px;
+  text-align: start;
+}
+.leftfoot h2,h6{
   color: white;
-  display: flex;
-  justify-content: space-around;
+    color: rgb(255, 255, 255);
+
 }
 
+.rightfoot{
+    display: flex;
+}
+.mtn{
+    display: flex;
+    justify-content: space-around;
+}
+.downfoot{
+    display: flex;
+    justify-content: space-between;
+}
+
+.footcon p,h2,h4,h5,h6, li{
+    color: white;
+}
 
 /* RESPONSIVE */
 
