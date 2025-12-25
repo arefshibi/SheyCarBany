@@ -91,18 +91,7 @@ height: 100%;
   width: 100%;
   height: 500px;
 }
-html, body {
-  height: 100%;
-  margin: 0;
-  overflow: hidden; /* جلوگیری از اسکرول آزاد */
-}
 
-.wrapper.main,
-.wrapper.main2,
-.wrapper.all {
-  scroll-snap-align: start; /* optional برای هماهنگی */
-  height: auto; /* اگر میخوای اندازه px ثابت باشه، همین بزار */
-}
 
 .main3{
   height: 750px;
