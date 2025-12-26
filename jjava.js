@@ -340,7 +340,10 @@ function loadVideo(i) {
     
     if(index === videos.length -1){
       
-    navShow.classList.add('story');}
+    navShow.classList.add('story');
+}else{
+navShow.classList.remove('story');
+}
 
     // فقط نمایش ضربدر روی آخرین ویدیو
     exitlogo.style.opacity = i === videos.length - 1 ? 1 : 0;
