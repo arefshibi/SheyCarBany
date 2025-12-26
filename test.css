@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Roboto:100,300,400,700&display=swap");
+ii@import url("https://fonts.googleapis.com/css?family=Roboto:100,300,400,700&display=swap");
 
 @import url("https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Lalezar&display=swap");
@@ -1368,18 +1368,11 @@ video {
     align-items: center;
     margin-top: 10px;
   }
- .navvv {
-    width: 100%;
-    transform: translateX(0);
-    background-color: rgba(0, 0, 0, 0.646);
-    max-width: 300px;
-    border-radius: 15px;
-    position: fixed;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 10px;
+ .nav.with{
+  transition : 0.5s ease
+  max-width: 300px;
   }
-  .navvv.story{
+  .nav.with.story{
   transform: translateX(-35px);
   transition: 1s ease-in-out;
 }
