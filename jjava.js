@@ -300,7 +300,7 @@ const bars = document.querySelectorAll(".bar span");
 const navRight = document.querySelector(".nav1.right1");
 const navLeft = document.querySelector(".nav1.left1");
 const exitlogo = document.querySelector(".mainLogo");
-const navShow = document.querySelector('.nav');
+const navShow = document.querySelector('.navvv');
 const bgmicon = document.querySelector('.bgmicon');
 
 
