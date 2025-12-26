@@ -1368,7 +1368,18 @@ video {
     align-items: center;
     margin-top: 10px;
   }
-  .nav.story{
+ .navvv {
+    width: 100%;
+    transform: translateX(0);
+    background-color: rgba(0, 0, 0, 0.646);
+    max-width: 300px;
+    border-radius: 15px;
+    position: fixed;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+  }
+  .navvv.story{
   transform: translateX(-35px);
   transition: 1s ease-in-out;
 }
