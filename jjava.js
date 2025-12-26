@@ -341,7 +341,7 @@ function loadVideo(i) {
     if(index === videos.length -1){
       
     navShow.classList.add('story');
-}else{
+}else if(index < videos.length) {
 navShow.classList.remove('story');
 }
 
