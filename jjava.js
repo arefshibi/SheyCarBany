@@ -321,7 +321,7 @@ exitlogo.addEventListener("click", () => {
 ========================= */
 function loadVideo(i) {
   lockscroll();
-  navShow classList.add('with');  
+ 
   bgmicon.classList.add('show');
   bars.forEach(b => (b.style.width = "0%"));
   cancelAnimationFrame(raf);
@@ -339,7 +339,7 @@ function loadVideo(i) {
     video.style.transition = "opacity 0.2s ease";
     
     if(index === videos.length -1){
-    navShow classList.add('with');  
+   
     navShow.classList.add('story');
 }else if(index < videos.length) {
 navShow.classList.remove('story');
