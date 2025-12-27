@@ -282,12 +282,20 @@ let index = 0;
 let raf = null;
 let storyFocused = false;
 
+function lockscroll(){
+  document.documentElement.style.overflow = "hidden";
+}
+function unlockscroll(){
+  document.documentElement.style.overflow ="";
+}
+
 /* =========================
    2. DOM ELEMENTS
 ========================= */
 
+
 const storySection = document.getElementById("storySectiion");
-const video = document.getElementById("video");
+const video = document.getElementById("videomain");
 const bars = document.querySelectorAll(".bar span");
 const navRight = document.querySelector(".nav1.right1");
 const navLeft = document.querySelector(".nav1.left1");
@@ -301,6 +309,7 @@ const navShow = document.querySelector('.nav');
 
 exitlogo.addEventListener("click", () => {
   navShow.style.opacity= 1;
+  unlockscroll();
   storySection.style.transition = "opacity 0.5s ease";
   storySection.style.opacity = 0;
 });
@@ -309,13 +318,14 @@ exitlogo.addEventListener("click", () => {
    4. VIDEO LOADER
 ========================= */
 function loadVideo(i) {
+  lockscroll();
   navShow.style.opacity= 0;
   bars.forEach(b => (b.style.width = "0%"));
   cancelAnimationFrame(raf);
 
   video.pause();
-  video.style.opacity = 0;
-
+ 
+  video.preload = "auto";
   video.src = videos[i];
   video.load();
 
@@ -323,7 +333,7 @@ function loadVideo(i) {
     video.play();
 
     video.style.opacity = 1;
-    video.style.transition = "opacity 0.9s ease";
+    video.style.transition = "opacity 0.2s ease";
 
     // فقط نمایش ضربدر روی آخرین ویدیو
     exitlogo.style.opacity = i === videos.length - 1 ? 1 : 0;
