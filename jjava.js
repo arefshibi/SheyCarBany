@@ -301,6 +301,7 @@ const navRight = document.querySelector(".nav1.right1");
 const navLeft = document.querySelector(".nav1.left1");
 const exitlogo = document.querySelector(".mainLogo");
 const navShow = document.querySelector('.nav');
+const bgmicon = document.querySelector('.bgmicon');
 
 
 /* =========================
@@ -308,6 +309,7 @@ const navShow = document.querySelector('.nav');
 ========================= */
 
 exitlogo.addEventListener("click", () => {
+  bgmicon.classList.remove('show');
   navShow.classList.remove('story')
   unlockscroll();
   storySection.style.transition = "opacity 0.5s ease";
@@ -320,6 +322,7 @@ exitlogo.addEventListener("click", () => {
 function loadVideo(i) {
   lockscroll();
   
+  bgmicon.classList.add('show');
   bars.forEach(b => (b.style.width = "0%"));
   cancelAnimationFrame(raf);
 
@@ -334,8 +337,9 @@ function loadVideo(i) {
 
     video.style.opacity = 1;
     video.style.transition = "opacity 0.2s ease";
-
+    
     if(index === videos.length -1){
+      
     navShow.classList.add('story');}
 
     // فقط نمایش ضربدر روی آخرین ویدیو
