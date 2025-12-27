@@ -272,7 +272,6 @@ taptap();
 
 
 
-<<<<<<< HEAD
 
 window.addEventListener('scroll',  ()=>{
 const box = document.querySelector('.glass-radio-group');
@@ -440,5 +439,3 @@ window.addEventListener("scroll", () => {
 ========================= */
 
 loadVideo(index);
-=======
->>>>>>> 2763d4b2fa57a7e65113321a5c837ab4a678ad4f
