@@ -311,7 +311,7 @@ exitlogo.addEventListener("click", () => {
   navShow.classList.remove('story')
   unlockscroll();
   storySection.style.transition = "opacity 0.5s ease";
-  storySection.style.opacity = 0;
+  storySection.style.display = "none";
 });
 
 /* =========================
