@@ -292,12 +292,15 @@ const bars = document.querySelectorAll(".bar span");
 const navRight = document.querySelector(".nav1.right1");
 const navLeft = document.querySelector(".nav1.left1");
 const exitlogo = document.querySelector(".mainLogo");
+const navShow = document.querySelector('.nav');
+
 
 /* =========================
    3. EXIT STORY
 ========================= */
 
 exitlogo.addEventListener("click", () => {
+  navShow.style.opacity= 1;
   storySection.style.transition = "opacity 0.5s ease";
   storySection.style.opacity = 0;
 });
@@ -305,8 +308,8 @@ exitlogo.addEventListener("click", () => {
 /* =========================
    4. VIDEO LOADER
 ========================= */
-
 function loadVideo(i) {
+  navShow.style.opacity= 0;
   bars.forEach(b => (b.style.width = "0%"));
   cancelAnimationFrame(raf);
 
@@ -399,3 +402,4 @@ window.addEventListener("scroll", () => {
 ========================= */
 
 loadVideo(index);
+
