@@ -308,7 +308,7 @@ const navShow = document.querySelector('.nav');
 ========================= */
 
 exitlogo.addEventListener("click", () => {
-  navShow.style.opacity= 1;
+  navShow.classList.remove('story')
   unlockscroll();
   storySection.style.transition = "opacity 0.5s ease";
   storySection.style.opacity = 0;
@@ -319,7 +319,7 @@ exitlogo.addEventListener("click", () => {
 ========================= */
 function loadVideo(i) {
   lockscroll();
-  navShow.style.opacity= 0;
+  
   bars.forEach(b => (b.style.width = "0%"));
   cancelAnimationFrame(raf);
 
@@ -334,6 +334,9 @@ function loadVideo(i) {
 
     video.style.opacity = 1;
     video.style.transition = "opacity 0.2s ease";
+
+    if(index === videos.length -1){
+    navShow.classList.add('story');}
 
     // فقط نمایش ضربدر روی آخرین ویدیو
     exitlogo.style.opacity = i === videos.length - 1 ? 1 : 0;
@@ -368,9 +371,13 @@ video.onpause = () => {
 
 video.onended = () => {
   index++;
+  
+  
   if (index < videos.length) {
+    
     loadVideo(index);
   }
+  
 };
 
 /* =========================
