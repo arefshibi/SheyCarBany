@@ -283,10 +283,6 @@ body {
     justify-content: center;
     align-items: center;
     padding: 40px;
-    
-}
-html,body{
-    height: 100%;
 }
 
 .container {
@@ -301,15 +297,20 @@ html,body{
 }
 
 .datebox{
-    display: flex;
-    position: absolute;
+    position: fixed;
+    
+        display: none;
+     
     flex-wrap: wrap;
     justify-content: center;
-    width: 100%;
-    height: 100%;
+    border-radius: 25px;
+    width: auto;
+    height: auto;
+    top: 5%;
+    left: 30%;
     padding: 10px;
     z-index: 11;
-    background-color: #000000;
+    background-color: #2a2b2b69;
     flex-direction: column;
     transition: 0.5s ease-in-out;
     box-shadow:  inset 1px 1px 4px rgba(255, 255, 255, 0.2),
@@ -650,116 +651,5 @@ input {
     .left, .right {
         width: 100%;  /* هر دو بخش تمام عرض شوند */
     }
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.card img {
-    position: absolute;
-    
-    max-width: 100%;
-    right: 20px;
-    bottom: 10px;
-    width: 120px;
-    opacity: 0.9;
-}
-#img1{position: absolute;
-  max-width: 100%;
-    right: -30px;
-    bottom: 25px;
-    width: 60%;}
-#img2{position: absolute;
-  max-width: 100%;
-    right: -21px;
-    top: -45px;
-    width: 80%;}
-#img3{position: absolute;
-  max-width: 100%;
-    width: 40%;
-    top: -20px;}
-#img4{width: 90%;
-  max-width: 100%;
-left: 85px;
-top:-45px;
-}
-#img5{width: 85%;
-  max-width: 100%;
-top:10px;
-left:30px;}
-#img6{width:100%;
-  max-width: 100%;
-left: 120px;
-top: -80px;}
-
-
-.txtupchange h1{
-  color: white;
-}
-
-
-
-
-/* mob */
-
-
-.all-title{
-  width: 100%;
-  text-align: center;
-  margin-top: 100px;
-  color: white;
-}
-.all-title h1{
-  font-size: 32px;
-  font-weight: 800;
-  letter-spacing: 3px;
-  color: white;
-}
-
-#img1{position: absolute;
-    right: -30px;
-    bottom: 0px;
-    width: 60%;}
-#img2{position: absolute;
-    right: -21px;
-    top: -30px;
-    width: 80%;}
-#img3{position: absolute;
-    width: 30%;
-    
-    top: -5px;}
-#img4{width: 80%;
-left: 125px;
-top:-50px;
-}
-#img5{width: 85%;
-top:10px;
-left:30px;}
-#img6{width:100%;
-
 
 }

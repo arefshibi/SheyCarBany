@@ -290,3 +290,152 @@ const seventh = totalseven * 0.8;
   }
 
 });
+
+/* =========================
+   1. STATE & DATA
+========================= */
+
+const videos = [
+  "img/12.mp4",
+  "img/12.mp4",
+  "img/12.mp4",
+  "img/12.mp4"
+];
+
+let index = 0;
+let storyLocked = false;
+let raf = null;
+
+
+/* =========================
+   2. DOM ELEMENTS
+========================= */
+
+const storySection = document.getElementById("storySectiion");
+const video = document.getElementById("video");
+const bars = document.querySelectorAll(".bar span");
+const navRight = document.querySelector(".nav1.right1");
+const navLeft = document.querySelector(".nav1.left1");
+
+
+/* =========================
+   3. SCROLL LOCK HELPERS
+========================= */
+
+function lockStory(){
+  document.documentElement.style.overflow = "hidden";
+  document.body.style.overflow = "hidden"
+}
+
+function unlockStory(){
+  document.documentElement.style.overflow = "";
+  document.body.style.overflow = "";
+}
+
+
+/* =========================
+   4. VIDEO LOADER
+========================= */
+
+function loadVideo(i){
+  bars.forEach(b => b.style.width = "0%");
+  cancelAnimationFrame(raf);
+
+  video.pause();
+  video.style.opacity = 0;
+
+  video.src = videos[i];
+  video.load();
+
+  video.onloadeddata = () => {
+    video.play();
+    video.style.opacity = 1;
+  };
+}
+
+
+/* =========================
+   5. PROGRESS BAR (SMOOTH)
+========================= */
+
+function animateBar(){
+  if(!video.duration) return;
+
+  bars[index].style.width =
+    (video.currentTime / video.duration) * 100 + "%";
+
+  raf = requestAnimationFrame(animateBar);
+}
+
+video.onplay = () => {
+  cancelAnimationFrame(raf);
+  animateBar();
+};
+
+video.onpause = () => {
+  cancelAnimationFrame(raf);
+};
+
+
+/* =========================
+   6. STORY END LOGIC
+========================= */
+
+video.onended = () => {
+  index++;
+
+  // ❗ باگ مهم اینجا بود
+  if(index >= videos.length){
+    unlockStory();
+    return;
+  }
+
+  loadVideo(index);
+};
+
+
+/* =========================
+   7. MANUAL NAVIGATION
+========================= */
+
+navRight.onclick = () => {
+  index++;
+
+  if(index >= videos.length){
+    unlockStory();
+    return;
+  }
+
+  loadVideo(index);
+};
+
+navLeft.onclick = () => {
+  index = Math.max(index - 1, 0);
+  loadVideo(index);
+};
+
+
+/* =========================
+   8. SCROLL DETECTION
+========================= */
+
+window.addEventListener("scroll", () => {
+  const rect = storySection.getBoundingClientRect();
+
+  if(
+    rect.top <= window.innerHeight * 0.3 &&
+    rect.bottom > window.innerHeight * 0.7 &&
+    !storyLocked
+  ){
+    lockStory();
+    storyLocked = true;
+    storySection.scrollIntoView({ behavior: "smooth" });
+  }
+});
+
+
+/* =========================
+   9. INIT
+========================= */
+
+loadVideo(index);
