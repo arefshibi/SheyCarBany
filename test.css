@@ -1375,7 +1375,7 @@ video {
   /* transform: translateX(-35px);
   transition: 1s ease-in-out; */
 }
-#sign{
+#sign.story{
   max-width: 60px ;
   font-size: 14px;
 }
