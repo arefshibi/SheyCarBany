@@ -1372,8 +1372,11 @@ video {
 
   .nav.story{
     max-width: 270px;
-  /* transform: translateX(-35px);
-  transition: 1s ease-in-out; */
+  
+}
+.nav.transform{
+transform: translateX(-35px);
+  transition: 1s ease-in-out;
 }
 #sign.story{
   max-width: 60px ;

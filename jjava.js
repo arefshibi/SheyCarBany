@@ -302,6 +302,7 @@ const navLeft = document.querySelector(".nav1.left1");
 const exitlogo = document.querySelector(".mainLogo");
 const navShow = document.querySelector('.nav');
 const bgmicon = document.querySelector('.bgmicon');
+const signbutt = document.getElementById('sign');
 
 
 /* =========================
@@ -309,6 +310,8 @@ const bgmicon = document.querySelector('.bgmicon');
 ========================= */
 
 exitlogo.addEventListener("click", () => {
+  signbutt.classList.remove('story');
+  navShow.classList.remove('transform');
   bgmicon.classList.remove('show');
   navShow.classList.remove('story')
   unlockscroll();
@@ -321,11 +324,8 @@ exitlogo.addEventListener("click", () => {
 ========================= */
 function loadVideo(i) {
   lockscroll();
-<<<<<<< HEAD
+  signbutt.classList.add('story');
   navShow.classList.add('story')
-=======
- 
->>>>>>> fbb818b228b65772892283081f30135bd634479c
   bgmicon.classList.add('show');
   bars.forEach(b => (b.style.width = "0%"));
   cancelAnimationFrame(raf);
@@ -343,11 +343,12 @@ function loadVideo(i) {
     video.style.transition = "opacity 0.2s ease";
     
     if(index === videos.length -1){
-   
+      
     navShow.classList.add('story');
-}else if(index < videos.length) {
-navShow.classList.remove('story');
-}
+      navShow.classList.add('transform');
+  }else{
+    navShow.classList.remove('transform');
+  }
 
     // فقط نمایش ضربدر روی آخرین ویدیو
     exitlogo.style.opacity = i === videos.length - 1 ? 1 : 0;
