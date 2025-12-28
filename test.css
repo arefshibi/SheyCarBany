@@ -1256,7 +1256,7 @@ li {
   inset: 0;
   width: 100vw;
   height: calc(var(--vh, 1vh) * 100);
-  background: #000;
+  background: #be2d2d;
   z-index: 40;
 }
 
