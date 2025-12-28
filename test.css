@@ -1252,10 +1252,10 @@ li {
 
 .story-container {
   position: fixed;
-  left: 0;
-  top: 0;
+  inset: 0;
   width: 100vw;
   height: 100vh;
+  background: #000;
   z-index: 40;
 }
 
@@ -1287,7 +1287,7 @@ video {
   right: 14px;
   display: flex;
   gap: 6px;
-  z-index: 10;
+  z-index: 99;
 }
 .bgmicon.show{
   display: none;
