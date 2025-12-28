@@ -935,7 +935,7 @@ a {
   left: -350px;
   cursor: pointer;
   color: #000000;
-  font-size: 18px;
+  font-size: 15px;
   padding: 15px 40px;
   transition: all 0.2s ease-in-out;
   border: none;
@@ -1457,15 +1457,19 @@ transform: translateX(-35px);
   }
   .neu-button {
     padding: 0;
-    font-size: 13px;
+    font-size: 20px;
     left: 0px;
 
-    top: 120%;
+    top: 140%;
 
     height: 40px;
     word-break: nowrap;
-    width: 140px;
+    width: 210px;
   }
+  .neu-button a{
+    color: black;
+  }
+ 
 
   .sidebar {
     justify-content: center;
