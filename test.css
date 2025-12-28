@@ -1368,9 +1368,16 @@ video {
     align-items: center;
     margin-top: 10px;
   }
+
+
   .nav.story{
-  transform: translateX(-35px);
-  transition: 1s ease-in-out;
+    max-width: 270px;
+  /* transform: translateX(-35px);
+  transition: 1s ease-in-out; */
+}
+#sign{
+  max-width: 60px ;
+  font-size: 14px;
 }
 
   #infinity,

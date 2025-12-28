@@ -321,7 +321,7 @@ exitlogo.addEventListener("click", () => {
 ========================= */
 function loadVideo(i) {
   lockscroll();
-  
+  navShow.classList.add('story')
   bgmicon.classList.add('show');
   bars.forEach(b => (b.style.width = "0%"));
   cancelAnimationFrame(raf);
