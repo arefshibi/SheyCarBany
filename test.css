@@ -5,6 +5,7 @@
 
 :root {
   --navbar-height: 56px;
+  --vh: 1h;
 }
 
 * {
@@ -1254,7 +1255,7 @@ li {
   position: fixed;
   inset: 0;
   width: 100vw;
-  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
   background: #000;
   z-index: 40;
 }
