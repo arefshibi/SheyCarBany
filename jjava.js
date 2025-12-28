@@ -1,13 +1,4 @@
-window.addEventListener("scroll", () => {
-      const scrollTop = window.scrollY;
-      const docHeight =
-        document.documentElement.scrollHeight - window.innerHeight;
 
-      const scrollPercent = (scrollTop / docHeight) * 100;
-
-      document.querySelector(".scroll-progress").style.width =
-        scrollPercent + "%";
-    });
 
 burger = document.querySelector(".bgmicon");
 const sidebar = document.querySelector(".sidebar");
