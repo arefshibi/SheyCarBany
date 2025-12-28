@@ -1381,6 +1381,7 @@ transform: translateX(-35px);
 }
 #sign.story{
   max-width: 60px ;
+  transition: 0.5s ease-in-out;
   font-size: 14px;
 }
 
@@ -1653,6 +1654,8 @@ transform: translateX(-35px);
   }
   #sign {
     max-width: 90px;
+      transition: 0.5s ease-in-out;
+
   }
 
   .sidebar {
