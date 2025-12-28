@@ -135,12 +135,13 @@
   background-color: #0507075a;
   backdrop-filter: blur(15px);
   z-index: 10;
-  display: none;
-  transition: 0.5s ease-in-out;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
 }
 .overlaymain.active {
   display: flex;
-  transition: 0.5s ease-in-out;
+  opacity: 1;
+  transition: opacity 0.8s ease-in-out;
 }
 hr {
   border: 1.5px solid rgba(206, 206, 206, 0.13);
