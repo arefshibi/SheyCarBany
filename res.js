@@ -61,11 +61,7 @@ function generatedates(count = 14) {
                 box.style.background = "red";
                 box.style.color = "white";
             })
-            delet.addEventListener('click', ()=>{
-                const del = "بدون تاریخ";
-                btng.textContent = del;
-                localStorage.setItem("none", del);
-            })
+           
             
 
         }
