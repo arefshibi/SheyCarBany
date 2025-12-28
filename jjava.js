@@ -310,13 +310,18 @@ const signbutt = document.getElementById('sign');
 ========================= */
 
 exitlogo.addEventListener("click", () => {
+  
   signbutt.classList.remove('story');
   navShow.classList.remove('transform');
   bgmicon.classList.remove('show');
   navShow.classList.remove('story')
   unlockscroll();
-  storySection.style.transition = "opacity 0.5s ease";
-  storySection.style.display = "none";
+  storySection.style.opacity = "0";
+  storySection.style.transition = "opacity 1s ease";
+  setTimeout(() => {
+    storySection.style.display = "none";
+  }, 1000);
+  
 });
 
 /* =========================
