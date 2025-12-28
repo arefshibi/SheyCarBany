@@ -53,6 +53,13 @@
   margin-top: -320px;
 }
 
+.scroll-progress {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #ff0055, #ff9900);
+      transition: width 0.1s linear;
+    }
+
 .tex h1 {
   font-size: 120px;
   color: white;
