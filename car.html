@@ -8,23 +8,21 @@
         @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap");
 
         :root {
-            --glass-bg: rgba(18, 18, 20, 0.75);
+            --glass-bg: rgba(22, 22, 24, 0.8);
             --glass-border: rgba(255, 255, 255, 0.08);
-            --accent-color: #007AFF;
-            --text-main: #ffffff;
-            --text-secondary: #8E8E93;
             --ios-blur: blur(40px) saturate(180%);
+            --text-secondary: #8E8E93;
         }
 
         body {
             margin: 0;
-            background: radial-gradient(circle at center, #1c1c1e 0%, #000000 100%);
-            font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #000;
+            font-family: "Inter", -apple-system, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            color: var(--text-main);
+            color: #fff;
             overflow: hidden;
         }
 
@@ -39,32 +37,32 @@
         .device-frame {
             width: 393px;
             height: 852px;
-            background: rgba(255, 255, 255, 0.02);
+            background: #000; /* مشکی خالص برای کل فریم */
             border-radius: 54px;
             position: relative;
             overflow: hidden;
-            border: 1px solid var(--glass-border);
-            box-shadow: 0 50px 100px rgba(0,0,0,0.9), inset 0 0 20px rgba(255,255,255,0.02);
+            border: 1px solid #222;
+            box-shadow: 0 50px 100px rgba(0,0,0,1);
             display: flex;
             flex-direction: column;
         }
 
+        /* بک‌گراند پشت عکس کاملاً مشکی */
         .product-area {
             flex: 1;
             display: flex;
             justify-content: center;
             align-items: center;
+            background: #000; 
             padding-bottom: 250px;
             z-index: 1;
         }
 
         .comparison-container {
             position: relative;
-            width: 90%;
-            height: 280px;
-            border-radius: 30px;
+            width: 100%;
+            height: 300px;
             overflow: hidden;
-            background: transparent;
         }
 
         .comparison-container img {
@@ -88,11 +86,9 @@
             left: 50%;
             width: 2px;
             height: 100%;
-            background: rgba(255,255,255,0.5);
-            backdrop-filter: blur(10px);
+            background: rgba(255,255,255,0.4);
             z-index: 10;
             transform: translateX(-50%);
-            cursor: ew-resize;
         }
 
         .slider-handle::after {
@@ -101,26 +97,25 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 40px;
-            height: 40px;
+            width: 44px;
+            height: 44px;
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(15px);
             border: 1px solid rgba(255,255,255,0.3);
             border-radius: 50%;
-            box-shadow: 0 0 20px rgba(0,0,0,0.5);
         }
 
         .config-sheet {
             position: absolute;
             bottom: 0;
             width: 100%;
-            height: 450px;
+            height: 460px;
             background: var(--glass-bg);
             backdrop-filter: var(--ios-blur);
             -webkit-backdrop-filter: var(--ios-blur);
             border-top: 1px solid var(--glass-border);
             border-radius: 45px 45px 0 0;
-            padding: 20px 30px;
+            padding: 20px 25px;
             box-sizing: border-box;
             transition: transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
             z-index: 20;
@@ -129,71 +124,72 @@
         .handle {
             width: 36px;
             height: 5px;
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.2);
             border-radius: 10px;
-            margin: 0 auto 25px auto;
+            margin: 0 auto 20px auto;
         }
 
         .header-row h2 {
-            font-size: 28px;
+            font-size: 26px;
             font-weight: 800;
-            letter-spacing: -0.5px;
             margin: 0;
-            background: linear-gradient(180deg, #fff 0%, #aaa 100%);
+            background: linear-gradient(180deg, #fff, #888);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .segmented-control {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 6px;
-            border-radius: 20px;
-            display: flex;
+        /* ۴ کاور شیشه‌ای برای رنگ‌ها */
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
             margin: 25px 0;
-            border: 1px solid rgba(255, 255, 255, 0.03);
         }
 
-        .seg-item {
-            flex: 1;
-            padding: 12px 0;
+        .color-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 15px 0;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
             cursor: pointer;
-            border-radius: 15px;
-            transition: all 0.4s ease;
+            transition: 0.3s;
         }
 
-        .seg-item.active {
+        .color-card.active {
             background: rgba(255, 255, 255, 0.12);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            border-color: rgba(255, 255, 255, 0.2);
             transform: scale(1.05);
         }
 
         .dot {
-            width: 24px;
-            height: 24px;
+            width: 28px;
+            height: 28px;
             border-radius: 50%;
-            border: 2px solid rgba(255,255,255,0.1);
+            margin-bottom: 8px;
+            border: 2px solid rgba(0,0,0,0.3);
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
         }
+
+        .color-name {
+            font-size: 10px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+        }
+
+        .active .color-name { color: #fff; }
 
         .info-card {
             background: rgba(255, 255, 255, 0.03);
-            padding: 18px;
-            border-radius: 24px;
+            padding: 15px;
+            border-radius: 20px;
             border: 1px solid var(--glass-border);
-            margin-bottom: 20px;
-        }
-
-        @media (min-width: 900px) {
-            .device-frame { width: 90%; height: 85vh; border-radius: 40px; flex-direction: row; }
-            .product-area { padding-bottom: 0; width: 60%; }
-            .config-sheet { position: relative; width: 40%; height: 100%; border-radius: 0; border-top: none; border-left: 1px solid var(--glass-border); transform: none !important; }
-            .handle { display: none; }
         }
 
         @media (max-width: 899px) {
-            /* تغییر از 320 به 210 برای دیده شدن اسم ماشین */
             .config-sheet.collapsed { transform: translateY(210px); }
         }
     </style>
@@ -216,25 +212,34 @@
             <div class="handle"></div>
             <div class="header-row" onclick="togglePanel()" style="cursor: pointer;">
                 <h2>Porsche 911 GT3</h2>
-                <p style="color: var(--text-secondary); font-size: 15px; margin: 5px 0 0 0;">Experience the ultimate ceramic finish.</p>
+                <p style="color: var(--text-secondary); font-size: 14px; margin-top: 4px;">Future Concept iOS 26</p>
             </div>
 
-            <div style="margin-top: 35px;">
-                <label style="font-size: 12px; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px;">Exterior Finish</label>
-                <div class="segmented-control">
-                    <div class="seg-item active" onclick="updateColor('white', this)"><div class="dot" style="background:#F0F0F0"></div></div>
-                    <div class="seg-item" onclick="updateColor('red', this)"><div class="dot" style="background:#D0021B"></div></div>
-                    <div class="seg-item" onclick="updateColor('blue', this)"><div class="dot" style="background:#004A99"></div></div>
-                    <div class="seg-item" onclick="updateColor('black', this)"><div class="dot" style="background:#111111"></div></div>
+            <div class="color-grid">
+                <div class="color-card active" onclick="updateColor('white', this)">
+                    <div class="dot" style="background:#fff"></div>
+                    <span class="color-name">White</span>
+                </div>
+                <div class="color-card" onclick="updateColor('red', this)">
+                    <div class="dot" style="background:#ff3b30"></div>
+                    <span class="color-name">Red</span>
+                </div>
+                <div class="color-card" onclick="updateColor('blue', this)">
+                    <div class="dot" style="background:#007aff"></div>
+                    <span class="color-name">Blue</span>
+                </div>
+                <div class="color-card" onclick="updateColor('black', this)">
+                    <div class="dot" style="background:#111"></div>
+                    <span class="color-name">Black</span>
                 </div>
             </div>
 
             <div class="info-card">
-                <div style="display:flex; justify-content:space-between; align-items:center;">
-                    <span style="font-weight:600; font-size: 14px;">Glass Coating Tech</span>
-                    <span style="color:#34C759; font-size:12px; font-weight: 700;">PRO ACTIVE</span>
+                <div style="display:flex; justify-content:space-between;">
+                    <span style="font-weight:600; font-size: 13px;">Glass Shaders</span>
+                    <span style="color:#34C759; font-size:11px; font-weight:700;">ACTIVE</span>
                 </div>
-                <p style="margin:10px 0 0 0; font-size:13px; color:var(--text-secondary); line-height:1.6;">iOS 26 dynamic shaders render real-time reflections.</p>
+                <p style="margin:8px 0 0 0; font-size:12px; color:var(--text-secondary); line-height:1.5;">سیستم رندرینگ هوشمند iOS 26 برای نمایش عمق رنگ و بازتاب‌های واقعی در این پنل فعال است.</p>
             </div>
         </div>
     </div>
@@ -294,7 +299,7 @@
     window.addEventListener("touchmove", handleMove);
 
     function updateColor(color, el) {
-        document.querySelectorAll('.seg-item').forEach(i => i.classList.remove('active'));
+        document.querySelectorAll('.color-card').forEach(i => i.classList.remove('active'));
         el.classList.add('active');
         document.getElementById('beforeImg').src = assets[color].b;
         document.getElementById('afterImgSrc').src = assets[color].a;
