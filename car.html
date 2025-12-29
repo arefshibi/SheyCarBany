@@ -1,59 +1,70 @@
 <!DOCTYPE html>
-<html lang="fa">
+<html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Car Configurator Auto-Slider</title>
+    <title>Porsche Configurator | iOS 26 Style</title>
     <style>
-        @import url("https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap");
+        @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap");
 
         :root {
-            --panel-bg: rgba(25, 25, 27, 0.92);
-            --ios-gray: rgba(118, 118, 128, 0.25);
-            --text-gray: #a1a1a6;
+            --glass-bg: rgba(18, 18, 20, 0.75);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --accent-color: #007AFF;
+            --text-main: #ffffff;
+            --text-secondary: #8E8E93;
+            --ios-blur: blur(40px) saturate(180%);
         }
 
         body {
             margin: 0;
-            background: #000;
-            font-family: "Inter Tight", sans-serif;
+            background: radial-gradient(circle at center, #1c1c1e 0%, #000000 100%);
+            font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            color: white;
+            min-height: 100vh;
+            color: var(--text-main);
             overflow: hidden;
         }
 
-        .iphone-frame {
-            width: 375px;
-            height: 812px;
-            background: black;
-            border-radius: 44px;
+        .main-wrapper {
+            display: flex;
+            width: 100%;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .device-frame {
+            width: 393px;
+            height: 852px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 54px;
             position: relative;
             overflow: hidden;
-            border: 1px solid #333;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 50px 100px rgba(0,0,0,0.9), inset 0 0 20px rgba(255,255,255,0.02);
+            display: flex;
+            flex-direction: column;
         }
 
-        /* بخش نمایش ماشین */
         .product-area {
-            position: absolute;
-            top: 60px;
-            width: 100%;
-            height: 40%;
+            flex: 1;
             display: flex;
             justify-content: center;
             align-items: center;
+            padding-bottom: 250px;
             z-index: 1;
         }
 
         .comparison-container {
             position: relative;
-            width: 92%;
-            height: 240px;
-            border-radius: 20px;
+            width: 90%;
+            height: 280px;
+            border-radius: 30px;
             overflow: hidden;
-            background: #0a0a0a;
+            background: transparent;
         }
 
         .comparison-container img {
@@ -61,7 +72,6 @@
             width: 100%;
             height: 100%;
             object-fit: contain;
-            pointer-events: none;
         }
 
         #afterImg {
@@ -69,124 +79,163 @@
             width: 100%;
             height: 100%;
             clip-path: inset(0 50% 0 0);
-            will-change: clip-path;
+            z-index: 2;
         }
 
         .slider-handle {
             position: absolute;
             top: 0;
             left: 50%;
-            width: 3px;
+            width: 2px;
             height: 100%;
-            background: #fff;
-            cursor: ew-resize;
+            background: rgba(255,255,255,0.5);
+            backdrop-filter: blur(10px);
             z-index: 10;
             transform: translateX(-50%);
-            will-change: left;
+            cursor: ew-resize;
         }
 
         .slider-handle::after {
-            content: "◀▶";
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            content: "";
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 32px;
-            height: 32px;
-            background: white;
-            color: black;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,255,255,0.3);
             border-radius: 50%;
-            font-size: 10px;
-            font-weight: bold;
-            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
         }
 
-        /* پنل تنظیمات */
         .config-sheet {
-            background: var(--panel-bg);
-            backdrop-filter: blur(40px) saturate(180%);
-            border-radius: 35px 35px 0 0;
-            padding: 24px;
             position: absolute;
             bottom: 0;
             width: 100%;
             height: 450px;
+            background: var(--glass-bg);
+            backdrop-filter: var(--ios-blur);
+            -webkit-backdrop-filter: var(--ios-blur);
+            border-top: 1px solid var(--glass-border);
+            border-radius: 45px 45px 0 0;
+            padding: 20px 30px;
             box-sizing: border-box;
-            border-top: 0.5px solid rgba(255,255,255,0.15);
-            transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+            transition: transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
             z-index: 20;
         }
 
-        .config-sheet.collapsed { transform: translateY(270px); }
+        .handle {
+            width: 36px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            margin: 0 auto 25px auto;
+        }
 
-        .handle { width: 36px; height: 5px; background: rgba(255,255,255,0.2); border-radius: 10px; margin: -10px auto 20px auto; }
+        .header-row h2 {
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin: 0;
+            background: linear-gradient(180deg, #fff 0%, #aaa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
         .segmented-control {
-            background: var(--ios-gray);
-            padding: 2px;
-            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 6px;
+            border-radius: 20px;
             display: flex;
-            margin: 10px 0 25px 0;
+            margin: 25px 0;
+            border: 1px solid rgba(255, 255, 255, 0.03);
         }
 
         .seg-item {
             flex: 1;
-            padding: 14px 0;
+            padding: 12px 0;
             display: flex;
             justify-content: center;
             align-items: center;
             cursor: pointer;
-            border-radius: 12px;
-            transition: 0.2s ease;
+            border-radius: 15px;
+            transition: all 0.4s ease;
         }
 
-        .seg-item.active { background: white; box-shadow: 0 3px 10px rgba(0,0,0,0.3); }
+        .seg-item.active {
+            background: rgba(255, 255, 255, 0.12);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transform: scale(1.05);
+        }
 
-        .dot { width: 20px; height: 20px; border-radius: 50%; border: 1px solid rgba(0,0,0,0.1); }
+        .dot {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: 2px solid rgba(255,255,255,0.1);
+        }
 
-        .footer { display: flex; justify-content: space-between; align-items: center; margin-top: 40px; }
-        .next-btn { background: white; color: black; border: none; padding: 12px 30px; border-radius: 20px; font-weight: 700; cursor: pointer; }
+        .info-card {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 18px;
+            border-radius: 24px;
+            border: 1px solid var(--glass-border);
+            margin-bottom: 20px;
+        }
+
+        @media (min-width: 900px) {
+            .device-frame { width: 90%; height: 85vh; border-radius: 40px; flex-direction: row; }
+            .product-area { padding-bottom: 0; width: 60%; }
+            .config-sheet { position: relative; width: 40%; height: 100%; border-radius: 0; border-top: none; border-left: 1px solid var(--glass-border); transform: none !important; }
+            .handle { display: none; }
+        }
+
+        @media (max-width: 899px) {
+            /* تغییر از 320 به 210 برای دیده شدن اسم ماشین */
+            .config-sheet.collapsed { transform: translateY(210px); }
+        }
     </style>
 </head>
 <body>
 
-<div class="iphone-frame">
-    <div class="product-area">
-        <div id="compareBox" class="comparison-container">
-            <img id="beforeImg" src="img/white.jpeg" alt="Before">
-            <div id="afterImg">
-                <img id="afterImgSrc" src="img/nowhite.jpeg" alt="After">
+<div class="main-wrapper">
+    <div class="device-frame">
+        <div class="product-area">
+            <div id="compareBox" class="comparison-container">
+                <img id="beforeImg" src="img/white.jpeg" alt="White">
+                <div id="afterImg">
+                    <img id="afterImgSrc" src="img/nowhite.jpeg" alt="Polished">
+                </div>
+                <div id="handle" class="slider-handle"></div>
             </div>
-            <div id="handle" class="slider-handle"></div>
-        </div>
-    </div>
-
-    <div class="config-sheet" id="config-panel">
-        <div class="handle"></div>
-        <div style="display:flex; justify-content:space-between; align-items:center; cursor:pointer;" onclick="togglePanel()">
-            <h2 style="margin:0; font-size:22px;">GT3 Configurator</h2>
-            <span id="arrow" style="transition:0.3s">↓</span>
         </div>
 
-        <span style="font-size:11px; color:var(--text-gray); text-transform:uppercase; margin-top:20px; display:block;">Select Paint</span>
-        <div class="segmented-control">
-            <div class="seg-item active" onclick="updateColor('white', this)"><div class="dot" style="background:#fff"></div></div>
-            <div class="seg-item" onclick="updateColor('red', this)"><div class="dot" style="background:#ff3b30"></div></div>
-            <div class="seg-item" onclick="updateColor('blue', this)"><div class="dot" style="background:#007aff"></div></div>
-            <div class="seg-item" onclick="updateColor('black', this)"><div class="dot" style="background:#1c1c1e"></div></div>
-        </div>
+        <div class="config-sheet collapsed" id="config-panel">
+            <div class="handle"></div>
+            <div class="header-row" onclick="togglePanel()" style="cursor: pointer;">
+                <h2>Porsche 911 GT3</h2>
+                <p style="color: var(--text-secondary); font-size: 15px; margin: 5px 0 0 0;">Experience the ultimate ceramic finish.</p>
+            </div>
 
-        <div style="background: rgba(118,118,128,0.1); padding:15px; border-radius:15px;">
-            <p style="margin:0; font-size:14px; font-weight:600;">Auto-Comparison Active</p>
-            <p style="margin:5px 0 0 0; font-size:12px; color:var(--text-gray);">نوار به صورت خودکار تفاوت پولیش را نشان می‌دهد.</p>
-        </div>
+            <div style="margin-top: 35px;">
+                <label style="font-size: 12px; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px;">Exterior Finish</label>
+                <div class="segmented-control">
+                    <div class="seg-item active" onclick="updateColor('white', this)"><div class="dot" style="background:#F0F0F0"></div></div>
+                    <div class="seg-item" onclick="updateColor('red', this)"><div class="dot" style="background:#D0021B"></div></div>
+                    <div class="seg-item" onclick="updateColor('blue', this)"><div class="dot" style="background:#004A99"></div></div>
+                    <div class="seg-item" onclick="updateColor('black', this)"><div class="dot" style="background:#111111"></div></div>
+                </div>
+            </div>
 
-        <div class="footer">
-            <span style="font-size:22px; font-weight:800;">$161,100</span>
-            <button class="next-btn">Continue</button>
+            <div class="info-card">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <span style="font-weight:600; font-size: 14px;">Glass Coating Tech</span>
+                    <span style="color:#34C759; font-size:12px; font-weight: 700;">PRO ACTIVE</span>
+                </div>
+                <p style="margin:10px 0 0 0; font-size:13px; color:var(--text-secondary); line-height:1.6;">iOS 26 dynamic shaders render real-time reflections.</p>
+            </div>
         </div>
     </div>
 </div>
@@ -202,54 +251,47 @@
     let isDragging = false;
     let autoMoveDirection = 1; 
     let currentPercent = 50;
-    const speed = 0.25; // سرعت حرکت خودکار
+    const speed = 0.15; 
 
     const container = document.getElementById("compareBox");
     const overlay = document.getElementById("afterImg");
     const handle = document.getElementById("handle");
 
     function moveSlider(percent) {
-        if (percent < 0) percent = 0;
-        if (percent > 100) percent = 100;
+        percent = Math.max(0, Math.min(percent, 100));
         overlay.style.clipPath = `inset(0 ${100 - percent}% 0 0)`;
         handle.style.left = `${percent}%`;
         currentPercent = percent;
     }
 
-    // انیمیشن خودکار
     function animateSlider() {
         if (!isDragging) {
             currentPercent += autoMoveDirection * speed;
-            if (currentPercent >= 90) autoMoveDirection = -1;
-            if (currentPercent <= 10) autoMoveDirection = 1;
+            if (currentPercent >= 85) autoMoveDirection = -1;
+            if (currentPercent <= 15) autoMoveDirection = 1;
             moveSlider(currentPercent);
         }
         requestAnimationFrame(animateSlider);
     }
 
-    // کنترل‌های کاربر
     const startDrag = () => isDragging = true;
     const endDrag = () => isDragging = false;
 
+    const handleMove = (e) => {
+        if (!isDragging) return;
+        const rect = container.getBoundingClientRect();
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        const x = clientX - rect.left;
+        const percent = (x / rect.width) * 100;
+        moveSlider(percent);
+    };
+
     handle.addEventListener("mousedown", startDrag);
     window.addEventListener("mouseup", endDrag);
-    window.addEventListener("mousemove", (e) => {
-        if (isDragging) {
-            const rect = container.getBoundingClientRect();
-            let percent = ((e.clientX - rect.left) / rect.width) * 100;
-            moveSlider(percent);
-        }
-    });
-
+    window.addEventListener("mousemove", handleMove);
     handle.addEventListener("touchstart", startDrag);
     window.addEventListener("touchend", endDrag);
-    container.addEventListener("touchmove", (e) => {
-        if (isDragging) {
-            const rect = container.getBoundingClientRect();
-            let percent = ((e.touches[0].clientX - rect.left) / rect.width) * 100;
-            moveSlider(percent);
-        }
-    });
+    window.addEventListener("touchmove", handleMove);
 
     function updateColor(color, el) {
         document.querySelectorAll('.seg-item').forEach(i => i.classList.remove('active'));
@@ -259,14 +301,12 @@
     }
 
     function togglePanel() {
-        const panel = document.getElementById('config-panel');
-        panel.classList.toggle('collapsed');
-        document.getElementById('arrow').style.transform = panel.classList.contains('collapsed') ? 'rotate(180deg)' : 'rotate(0deg)';
+        if (window.innerWidth < 900) {
+            document.getElementById('config-panel').classList.toggle('collapsed');
+        }
     }
 
-    // شروع حرکت
-    requestAnimationFrame(animateSlider);
+    animateSlider();
 </script>
-
 </body>
 </html>
