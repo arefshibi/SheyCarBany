@@ -1,5 +1,5 @@
 const statusData = [
-        { label: 'In progress', color: '#00d4ff', icon: '◐' },
+        { label: '24/7', color: '#00d4ff', icon: '&' },
         { label: 'To-do', color: '#6366f1', icon: '+' },
         { label: 'In Review', color: '#ffcc00', icon: '📋' },
         { label: 'Design Review', color: '#a855f7', icon: '⧉' },
@@ -39,7 +39,7 @@ const statusData = [
             badge.classList.add('show');
         }, index * 150); // هر دکمه ۱۵۰ میلی‌ثانیه بعد از قبلی ظاهر می‌شود
     });
-
+  
 burger = document.querySelector(".bgmicon");
 const sidebar = document.querySelector(".sidebar");
 const bluur = document.querySelector(".overlaymain");
