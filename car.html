@@ -56,7 +56,7 @@
             width: 100%;
             height: auto;
             object-fit: contain;
-            transition: opacity 0.3s ease, transform 0.4s ease;
+      
             filter: drop-shadow(0 15px 25px rgba(0,0,0,0.9));
         }
 
@@ -282,24 +282,22 @@
     }
 
     function updateDisplay() {
-        const carImg = document.getElementById('car-image');
-        const isPolished = document.querySelector('.switch input').checked;
-        
-        // افکت انیمیشن تعویض
-        carImg.style.opacity = "0";
-        carImg.style.transform = "scale(0.95)";
-
-        setTimeout(() => {
-            if (!selectedColor) {
-                carImg.src = carData.default;
-            } else {
-                const type = isPolished ? 'polished' : 'normal';
-                carImg.src = carData[selectedColor][type];
-            }
-            carImg.style.opacity = "1";
-            carImg.style.transform = "scale(1)";
-        }, 250);
+    const carImg = document.getElementById('car-image');
+    const isPolished = document.querySelector('.switch input').checked;
+    
+    // حذف کدهای مربوط به opacity و setTimeout
+    if (!selectedColor) {
+        carImg.src = carData.default;
+    } else {
+        const type = isPolished ? 'polished' : 'normal';
+        carImg.src = carData[selectedColor][type];
     }
+    
+    // اطمینان از اینکه عکس همیشه نمایش داده می‌شود
+    carImg.style.opacity = "1";
+    carImg.style.transform = "scale(1)";
+}
+
 </script>
 
 </body>
