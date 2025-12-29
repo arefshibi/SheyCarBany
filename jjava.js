@@ -1,5 +1,3 @@
-
-
 burger = document.querySelector(".bgmicon");
 const sidebar = document.querySelector(".sidebar");
 const bluur = document.querySelector(".overlaymain");
