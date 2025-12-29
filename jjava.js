@@ -201,6 +201,30 @@ function taptap() {
 
 taptap();
 
+
+
+
+const cardAnimation = document.querySelectorAll('.card');
+
+const observebox = new IntersectionObserver((enteries) => {
+  enteries.forEach(entry1 =>{
+if(entry1.intersectionRatio >= 0.7){
+entry1.target.classList.add('active');
+}else{
+  entry1.target.classList.remove('active');
+}
+  });
+
+},
+{
+  threshold: [0.7]
+}
+);
+cardAnimation.forEach(card =>{
+observebox.observe(card);
+})
+
+
 // function infiniteSlide(selector, direction = "left", speed = 2) {
 //   const row = document.querySelector(selector);
 //   const parent = row.parentElement;

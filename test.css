@@ -478,7 +478,14 @@ body {
   flex-direction: column;
   justify-content: space-between;
   backdrop-filter: blur(8px);
-  transition: 0.3s;
+  opacity: 0;
+  transform: translateY(-30px);
+}
+
+.card.active{
+  transform: translateY(0);
+  opacity: 1;
+  transition: transform 1s ease, opacity 1s ease;
 }
 
 .card img {
