@@ -1,22 +1,22 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="fa">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Car Configurator Pro</title>
+    <title>Car Configurator Classic</title>
     <style>
+        @import url("https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap");
+
         :root {
-            --bg-color: #000000;
-            --panel-bg: rgba(28, 28, 30, 0.9);
-            --ios-gray: rgba(118, 118, 128, 0.24);
+            --panel-bg: rgba(25, 25, 27, 0.9);
+            --ios-gray: rgba(118, 118, 128, 0.3);
             --text-gray: #a1a1a6;
-            --accent-green: #34c759;
         }
 
         body {
             margin: 0;
             background: #000;
-            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+            font-family: "Inter Tight", sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -35,54 +35,92 @@
             border: 1px solid #333;
         }
 
-        /* بخش نمایش ماشین */
+        /* بخش نمایش ماشین و اسلایدر */
         .product-area {
             position: absolute;
-            top: 0;
+            top: 50px;
             width: 100%;
-            height: 50%;
+            height: 40%;
             display: flex;
             justify-content: center;
             align-items: center;
-            transition: all 0.5s ease;
+            z-index: 1;
         }
 
-        .car-container {
-            width: 90%;
-            text-align: center;
+        .comparison-container {
+            position: relative;
+            width: 92%;
+            height: 220px;
+            border-radius: 15px;
+            overflow: hidden;
         }
 
-        #car-image {
+        .comparison-container img {
+            position: absolute;
             width: 100%;
-            height: auto;
+            height: 100%;
             object-fit: contain;
-            transition : none !important;
-            filter: drop-shadow(0 15px 25px rgba(0,0,0,0.9));
+            pointer-events: none;
+        }
+
+        #afterImg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            clip-path: inset(0 50% 0 0);
+        }
+
+        .slider-handle {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 3px;
+            height: 100%;
+            background: #fff;
+            cursor: ew-resize;
+            z-index: 10;
+            transform: translateX(-50%);
+        }
+
+        .slider-handle::after {
+            content: "◀▶";
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 30px;
+            height: 30px;
+            background: white;
+            color: black;
+            border-radius: 50%;
+            font-size: 10px;
+            font-weight: bold;
         }
 
         /* پنل تنظیمات */
         .config-sheet {
             background: var(--panel-bg);
-            backdrop-filter: blur(30px);
-            -webkit-backdrop-filter: blur(30px);
-            border-radius: 30px 30px 0 0;
+            backdrop-filter: blur(40px) saturate(180%);
+            border-radius: 35px 35px 0 0;
             padding: 20px 24px;
             position: absolute;
             bottom: 0;
             width: 100%;
-            height: 480px;
+            height: 460px;
             box-sizing: border-box;
-            border-top: 0.5px solid rgba(255,255,255,0.1);
+            border-top: 0.5px solid rgba(255,255,255,0.15);
             transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
-            z-index: 10;
+            z-index: 20;
         }
 
-        .config-sheet.collapsed { transform: translateY(300px); }
+        .config-sheet.collapsed { transform: translateY(260px); }
 
         .handle {
-            width: 36px;
-            height: 5px;
-            background: rgba(255,255,255,0.2);
+            width: 36px; height: 5px;
+            background: rgba(255,255,255,0.15);
             border-radius: 10px;
             margin: -5px auto 20px auto;
         }
@@ -95,107 +133,58 @@
             padding-bottom: 20px;
         }
 
-        .header-row h2 { font-size: 20px; margin: 0; letter-spacing: -0.5px; }
+        /* نوار رنگ ها دقیقاً مثل قبل (Segmented Control) */
+        .label { font-size: 11px; color: var(--text-gray); text-transform: uppercase; margin: 15px 0 8px 0; display: block; font-weight: 600; text-align: left; }
 
-        .label { 
-            font-size: 11px; 
-            color: var(--text-gray); 
-            text-transform: uppercase; 
-            margin: 20px 0 10px 0; 
-            display: block; 
-            letter-spacing: 0.5px;
-            text-align: right;
-        }
-
-        /* دکمه‌های رنگی */
-        .color-selector {
-            display: flex;
-            flex-direction: row-reverse;
-            gap: 15px;
-            margin-bottom: 25px;
-        }
-
-        .color-dot {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            border: 2px solid transparent;
-            cursor: pointer;
-            transition: 0.2s;
-            box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
-        }
-
-        .color-dot.active { 
-            border-color: #007aff; 
-            transform: scale(1.1); 
-            box-shadow: 0 0 15px rgba(0,122,255,0.4);
-        }
-
-        /* سوئیچ پولیش */
-        .option-card {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .segmented-control {
             background: var(--ios-gray);
-            padding: 16px;
+            padding: 2px;
             border-radius: 14px;
-            flex-direction: row-reverse;
+            display: flex;
+            margin-bottom: 22px;
         }
 
-        .switch {
-            position: relative;
-            display: inline-block;
-            width: 51px;
-            height: 31px;
-        }
-
-        .switch input { opacity: 0; width: 0; height: 0; }
-
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background-color: #39393d;
-            transition: .3s;
-            border-radius: 31px;
-        }
-
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 27px; width: 27px;
-            left: 2px; bottom: 2px;
-            background-color: white;
-            transition: .3s;
-            border-radius: 50%;
-        }
-
-        input:checked + .slider { background-color: var(--accent-green); }
-        input:checked + .slider:before { transform: translateX(20px); }
-
-        .footer { 
-            display: flex; 
-            justify-content: space-between; 
-            margin-top: 40px; 
+        .seg-item {
+            flex: 1;
+            padding: 12px 0;
+            display: flex;
+            justify-content: center;
             align-items: center;
-            flex-direction: row-reverse;
-        }
-        
-        .price { font-size: 22px; font-weight: 700; }
-        .next-btn { 
-            background: #fff; color: #000; border: none; 
-            padding: 12px 30px; border-radius: 25px; 
-            font-weight: 600; cursor: pointer;
+            cursor: pointer;
+            border-radius: 12px;
+            transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
+        .seg-item.active {
+            background: white;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.25);
+        }
+
+        /* دایره های رنگی داخل نوار */
+        .dot {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+
+        /* تغییر رنگ دایره وقتی نوار فعال است (برای زیبایی بیشتر) */
+        .active .dot { transform: scale(1.1); }
+
+        .footer { display: flex; justify-content: space-between; padding-top: 40px; align-items: center; }
+        .next-btn { font-weight: 700; color: black; background: white; border: none; padding: 12px 25px; border-radius: 20px; cursor: pointer; }
     </style>
 </head>
 <body>
 
 <div class="iphone-frame">
-    <div class="product-area" id="product-area">
-        <div class="car-container">
-            <img id="car-image" src="img/white.jpeg" alt="Car">
+    <div class="product-area">
+        <div id="compareBox" class="comparison-container">
+            <img id="beforeImg" src="img/white.jpeg" alt="Normal">
+            <div id="afterImg">
+                <img id="afterImgSrc" src="img/nowhite.jpeg" alt="Polished">
+            </div>
+            <div id="handle" class="slider-handle"></div>
         </div>
     </div>
 
@@ -203,101 +192,100 @@
         <div class="handle"></div>
         
         <div class="header-row" onclick="togglePanel()">
-            <span id="arrow-icon" style="color: var(--text-gray)">↓</span>
-            <h2>انتخاب بدنه</h2>
+            <h2 style="margin:0; font-size:20px;">Porsche Config</h2>
+            <span id="arrow" style="transition:0.3s">↓</span>
         </div>
 
-        <div class="options-content">
-            <span class="label">رنگ خودرو</span>
-            <div class="color-selector">
-                <div class="color-dot" style="background: #ffffff; border: 1px solid #444;" onclick="changeColor('white', this)"></div>
-                <div class="color-dot" style="background: #e74c3c;" onclick="changeColor('red', this)"></div>
-                <div class="color-dot" style="background: #3498db;" onclick="changeColor('blue', this)"></div>
-                <div class="color-dot" style="background: #2c3e50;" onclick="changeColor('black', this)"></div>
+        <span class="label">Body Color</span>
+        <div class="segmented-control">
+            <div class="seg-item active" onclick="updateColor('white', this)">
+                <div class="dot" style="background:#fff"></div>
             </div>
+            <div class="seg-item" onclick="updateColor('red', this)">
+                <div class="dot" style="background:#ff3b30"></div>
+            </div>
+            <div class="seg-item" onclick="updateColor('blue', this)">
+                <div class="dot" style="background:#007aff"></div>
+            </div>
+            <div class="seg-item" onclick="updateColor('black', this)">
+                <div class="dot" style="background:#1c1c1e"></div>
+            </div>
+        </div>
 
-            <span class="label">خدمات تخصصی</span>
-            <div class="option-card">
-                <span style="font-size: 16px;">پوشش نانو پولیش</span>
-                <label class="switch">
-                    <input type="checkbox" onchange="togglePolish()">
-                    <span class="slider"></span>
-                </label>
-            </div>
+        <div style="background: rgba(118, 118, 128, 0.15); padding: 16px; border-radius: 18px; text-align: left;">
+            <p style="margin:0; font-size:14px; font-weight:600;">Ceramic Polish Mode</p>
+            <p style="margin:5px 0 0 0; font-size:12px; color:var(--text-gray);">Move the center slider to compare paint quality.</p>
+        </div>
 
-            <div class="footer">
-                <div style="text-align: right;">
-                    <span style="display:block; font-size:12px; color:var(--text-gray)">قیمت نهایی</span>
-                    <span class="price">۱۶۱,۰۰۰ $</span>
-                </div>
-                <button class="next-btn">مرحله بعد</button>
+        <div class="footer">
+            <div style="text-align:left">
+                <span style="color:var(--text-gray); font-size:12px;">Total Price</span>
+                <div style="font-size:20px; font-weight:800;">$161,100</div>
             </div>
+            <button class="next-btn">Next</button>
         </div>
     </div>
 </div>
 
 <script>
-    // 1. آدرس تصاویر خود را اینجا تنظیم کنید
-    const carData = {
-        default: "img/white.jpeg", // عکسی که در ابتدا نشان داده می‌شود
-        white: { 
-            normal: "img/white.jpeg", 
-            polished: "img/nowhite.jpeg" 
-        },
-        red: { 
-            normal: "img/red.jpeg", 
-            polished: "img/nored.jpeg" 
-        },
-        blue: { 
-            normal: "img/blue.jpeg", 
-            polished: "img/blue-p.png" 
-        },
-        black: { 
-            normal: "img/black.jpeg", 
-            polished: "img/noblack.jpeg" 
-        }
+    const assets = {
+        white: { b: "img/white.jpeg", a: "img/nowhite.jpeg" },
+        red: { b: "img/red.jpeg", a: "img/nored.jpeg" },
+        blue: { b: "img/blue.jpeg", a: "img/noblue.jpeg" },
+        black: { b: "img/black.jpeg", a: "img/noblack.jpeg" }
     };
 
-    let selectedColor = null; // در ابتدا هیچ رنگی انتخاب نشده
+    function updateColor(color, el) {
+        // حذف کلاس active از تمام آیتم‌های نوار و اضافه کردن به آیتم کلیک شده
+        document.querySelectorAll('.seg-item').forEach(item => item.classList.remove('active'));
+        el.classList.add('active');
+
+        // آپدیت عکس‌ها
+        const beforeImg = document.getElementById('beforeImg');
+        const afterImgSrc = document.getElementById('afterImgSrc');
+
+        beforeImg.style.opacity = '0.6';
+        afterImgSrc.style.opacity = '0.6';
+
+        setTimeout(() => {
+            beforeImg.src = assets[color].b;
+            afterImgSrc.src = assets[color].a;
+            beforeImg.style.opacity = '1';
+            afterImgSrc.style.opacity = '1';
+        }, 150);
+    }
+
+    function initSlider() {
+        const container = document.getElementById("compareBox");
+        const overlay = document.getElementById("afterImg");
+        const handle = document.getElementById("handle");
+        let dragging = false;
+
+        function move(x) {
+            const rect = container.getBoundingClientRect();
+            let pos = x - rect.left;
+            if (pos < 0) pos = 0;
+            if (pos > rect.width) pos = rect.width;
+            let percent = (pos / rect.width) * 100;
+            overlay.style.clipPath = `inset(0 ${100 - percent}% 0 0)`;
+            handle.style.left = `${percent}%`;
+        }
+
+        handle.addEventListener("mousedown", () => dragging = true);
+        window.addEventListener("mouseup", () => dragging = false);
+        window.addEventListener("mousemove", (e) => dragging && move(e.clientX));
+        handle.addEventListener("touchstart", () => dragging = true);
+        window.addEventListener("touchend", () => dragging = false);
+        container.addEventListener("touchmove", (e) => dragging && move(e.touches[0].clientX));
+    }
 
     function togglePanel() {
         const panel = document.getElementById('config-panel');
         panel.classList.toggle('collapsed');
+        document.getElementById('arrow').style.transform = panel.classList.contains('collapsed') ? 'rotate(180deg)' : 'rotate(0deg)';
     }
 
-    function changeColor(color, element) {
-        // فعال کردن دکمه انتخابی
-        document.querySelectorAll('.color-dot').forEach(dot => dot.classList.remove('active'));
-        element.classList.add('active');
-        
-        selectedColor = color;
-        updateDisplay();
-    }
-
-    function togglePolish() {
-        // اگر رنگی انتخاب شده باشد، تصویر را آپدیت کن
-        if (selectedColor) {
-            updateDisplay();
-        }
-    }
-
-    function updateDisplay() {
-    const carImg = document.getElementById('car-image');
-    const isPolished = document.querySelector('.switch input').checked;
-    
-    // حذف کدهای مربوط به opacity و setTimeout
-    if (!selectedColor) {
-        carImg.src = carData.default;
-    } else {
-        const type = isPolished ? 'polished' : 'normal';
-        carImg.src = carData[selectedColor][type];
-    }
-    
-    // اطمینان از اینکه عکس همیشه نمایش داده می‌شود
-    carImg.style.opacity = "1";
-    carImg.style.transform = "scale(1)";
-}
-
+    initSlider();
 </script>
 
 </body>
