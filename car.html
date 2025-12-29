@@ -37,7 +37,7 @@
         .device-frame {
             width: 393px;
             height: 852px;
-            background: #000; /* مشکی خالص برای کل فریم */
+            background: #000;
             border-radius: 54px;
             position: relative;
             overflow: hidden;
@@ -47,15 +47,21 @@
             flex-direction: column;
         }
 
-        /* بک‌گراند پشت عکس کاملاً مشکی */
+        /* بخش نمایش تصویر با قابلیت جابجایی نرم به بالا */
         .product-area {
             flex: 1;
             display: flex;
             justify-content: center;
             align-items: center;
             background: #000; 
-            padding-bottom: 250px;
             z-index: 1;
+            transition: transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+            transform: translateY(-40px); /* پوزیشن پیش‌فرض کمی بالاتر */
+        }
+
+        /* وقتی پنل باز است، عکس بیشتر به بالا می‌رود */
+        .product-area.pushed-up {
+            transform: translateY(-120px);
         }
 
         .comparison-container {
@@ -138,7 +144,6 @@
             -webkit-text-fill-color: transparent;
         }
 
-        /* ۴ کاور شیشه‌ای برای رنگ‌ها */
         .color-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -180,8 +185,6 @@
             text-transform: uppercase;
         }
 
-        .active .color-name { color: #fff; }
-
         .info-card {
             background: rgba(255, 255, 255, 0.03);
             padding: 15px;
@@ -198,7 +201,7 @@
 
 <div class="main-wrapper">
     <div class="device-frame">
-        <div class="product-area">
+        <div class="product-area" id="p-area">
             <div id="compareBox" class="comparison-container">
                 <img id="beforeImg" src="img/white.jpeg" alt="White">
                 <div id="afterImg">
@@ -239,7 +242,7 @@
                     <span style="font-weight:600; font-size: 13px;">Glass Shaders</span>
                     <span style="color:#34C759; font-size:11px; font-weight:700;">ACTIVE</span>
                 </div>
-                <p style="margin:8px 0 0 0; font-size:12px; color:var(--text-secondary); line-height:1.5;">سیستم رندرینگ هوشمند iOS 26 برای نمایش عمق رنگ و بازتاب‌های واقعی در این پنل فعال است.</p>
+                <p style="margin:8px 0 0 0; font-size:12px; color:var(--text-secondary); line-height:1.5;">سیستم رندرینگ هوشمند iOS 26 برای نمایش عمق رنگ و بازتاب‌های واقعی فعال است.</p>
             </div>
         </div>
     </div>
@@ -261,6 +264,7 @@
     const container = document.getElementById("compareBox");
     const overlay = document.getElementById("afterImg");
     const handle = document.getElementById("handle");
+    const productArea = document.getElementById("p-area");
 
     function moveSlider(percent) {
         percent = Math.max(0, Math.min(percent, 100));
@@ -307,7 +311,15 @@
 
     function togglePanel() {
         if (window.innerWidth < 900) {
-            document.getElementById('config-panel').classList.toggle('collapsed');
+            const panel = document.getElementById('config-panel');
+            panel.classList.toggle('collapsed');
+            
+            // جابجایی همزمان عکس با پنل
+            if (panel.classList.contains('collapsed')) {
+                productArea.classList.remove('pushed-up');
+            } else {
+                productArea.classList.add('pushed-up');
+            }
         }
     }
 
