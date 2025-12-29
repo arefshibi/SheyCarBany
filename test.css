@@ -1421,7 +1421,7 @@ video {
         }
 
         .icon:hover {
-            color: #000;
+            color: #f9f9f9;
             
         }
 
@@ -1432,13 +1432,18 @@ video {
             color: rgba(250, 250, 250, 0.767); /* کمرنگ شدن کل متن */
         }
         .wrapper:has(.fa-instagram:hover) .domain {
-            color: #0066ff; /* آبی شدن بخش دامنه */
+            color: #e55b00; /* آبی شدن بخش دامنه */
             transform: translateY(-2px);
         }
 
         /* 2. وقتی روی آیکون ایمیل می‌رویم */
         .wrapper:has(.fa-envelope:hover) .al {
-            color: #0066ff; /* آبی شدن تمام متن */
+            color: #e55b00; /* آبی شدن تمام متن */
+        }
+
+        .wrapper:has(.fa-user:hover) .user{
+          color: #e55b00;
+          transform: translateY(-2px);
         }
 
 /* RESPONSIVE */
