@@ -283,6 +283,13 @@ const videos = [
   "img/12.mp4"
 ];
 
+const storytxt = [
+  "first story <br>this is for you",
+  "sec story <br>hi baby hope love",
+  "third story <br> come to my house hony",
+  "forth story <br> lets play ps5 together"
+];
+
 let index = 0;
 let raf = null;
 let storyFocused = false;
@@ -366,6 +373,28 @@ function loadVideo(i) {
 }
 
 /* =========================
+   5. txt bar
+========================= */
+
+function updatebartxt(i){
+  const txt = document.getElementById('bartxt');
+  txt.innerHTML = storytxt[i] || "";
+   
+  txt.classList.remove('animate');
+  void txt.offsetWidth;
+
+  txt.classList.add('animate');
+  
+
+
+  
+
+  
+}
+
+
+
+/* =========================
    5. PROGRESS BAR
 ========================= */
 
@@ -379,6 +408,7 @@ function animateBar() {
 }
 
 video.onplay = () => {
+  updatebartxt(index);
   cancelAnimationFrame(raf);
   animateBar();
 };
@@ -397,10 +427,13 @@ video.onended = () => {
   
   if (index < videos.length) {
     
+    
     loadVideo(index);
   }
   
 };
+
+
 
 /* =========================
    7. MANUAL NAVIGATION
@@ -409,12 +442,14 @@ video.onended = () => {
 navRight.onclick = () => {
   if (index < videos.length - 1) {
     index++;
+    
     loadVideo(index);
   }
 };
 
 navLeft.onclick = () => {
   index = Math.max(index - 1, 0);
+  
   loadVideo(index);
 };
 
