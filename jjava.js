@@ -1,7 +1,4 @@
-const version = Date.now();
-const script = document.createElement('script');
-script.src = `script.js?v=${version}`;
-document.body.appendChild(script);
+
 
 burger = document.querySelector(".bgmicon");
 const sidebar = document.querySelector(".sidebar");
