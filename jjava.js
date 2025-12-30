@@ -38,13 +38,15 @@ const statusData = [
       const observebadge = new IntersectionObserver((enteries1) => {
         enteries1.forEach((entry2)=> {
 
-                  entry2.target.classList.toggle('show', entry2.isIntersecting);
-
+                  if(entry2.isIntersecting){
+                    entry2.target.classList.add('show');
+        }else{
+          entry2.target.classList.remove('show');
+        }
       });
       },
     {
-      threshold: 0.9,
-      rootMargin: '-50px'
+      threshold: 0.2
       });
       observebadge.observe(badge);
     })
