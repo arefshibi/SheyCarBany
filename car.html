@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Configurator Pro</title>
+    <style>
+        :root {
+            --bg-color: #000000;
+            --panel-bg: rgba(28, 28, 30, 0.9);
+            --ios-gray: rgba(118, 118, 128, 0.24);
+            --text-gray: #a1a1a6;
+            --accent-green: #34c759;
+        }
+
+        body {
+            margin: 0;
+            background: #000;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: white;
+            overflow: hidden;
+        }
+
+        .iphone-frame {
+            width: 375px;
+            height: 812px;
+            background: black;
+            border-radius: 44px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #333;
+        }
+
+        /* بخش نمایش ماشین */
+        .product-area {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.5s ease;
+        }
+
+        .car-container {
+            width: 90%;
+            text-align: center;
+        }
+
+        #car-image {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            transition: opacity 0.3s ease, transform 0.4s ease;
+            filter: drop-shadow(0 15px 25px rgba(0,0,0,0.9));
+        }
+
+        /* پنل تنظیمات */
+        .config-sheet {
+            background: var(--panel-bg);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border-radius: 30px 30px 0 0;
+            padding: 20px 24px;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 480px;
+            box-sizing: border-box;
+            border-top: 0.5px solid rgba(255,255,255,0.1);
+            transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+            z-index: 10;
+        }
+
+        .config-sheet.collapsed { transform: translateY(300px); }
+
+        .handle {
+            width: 36px;
+            height: 5px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 10px;
+            margin: -5px auto 20px auto;
+        }
+
+        .header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            padding-bottom: 20px;
+        }
+
+        .header-row h2 { font-size: 20px; margin: 0; letter-spacing: -0.5px; }
+
+        .label { 
+            font-size: 11px; 
+            color: var(--text-gray); 
+            text-transform: uppercase; 
+            margin: 20px 0 10px 0; 
+            display: block; 
+            letter-spacing: 0.5px;
+            text-align: right;
+        }
+
+        /* دکمه‌های رنگی */
+        .color-selector {
+            display: flex;
+            flex-direction: row-reverse;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .color-dot {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: 0.2s;
+            box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+        }
+
+        .color-dot.active { 
+            border-color: #007aff; 
+            transform: scale(1.1); 
+            box-shadow: 0 0 15px rgba(0,122,255,0.4);
+        }
+
+        /* سوئیچ پولیش */
+        .option-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--ios-gray);
+            padding: 16px;
+            border-radius: 14px;
+            flex-direction: row-reverse;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 51px;
+            height: 31px;
+        }
+
+        .switch input { opacity: 0; width: 0; height: 0; }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: #39393d;
+            transition: .3s;
+            border-radius: 31px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 27px; width: 27px;
+            left: 2px; bottom: 2px;
+            background-color: white;
+            transition: .3s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider { background-color: var(--accent-green); }
+        input:checked + .slider:before { transform: translateX(20px); }
+
+        .footer { 
+            display: flex; 
+            justify-content: space-between; 
+            margin-top: 40px; 
+            align-items: center;
+            flex-direction: row-reverse;
+        }
+        
+        .price { font-size: 22px; font-weight: 700; }
+        .next-btn { 
+            background: #fff; color: #000; border: none; 
+            padding: 12px 30px; border-radius: 25px; 
+            font-weight: 600; cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="iphone-frame">
+    <div class="product-area" id="product-area">
+        <div class="car-container">
+            <img id="car-image" src="img/white.jpeg" alt="Car">
+        </div>
+    </div>
+
+    <div class="config-sheet" id="config-panel">
+        <div class="handle"></div>
+        
+        <div class="header-row" onclick="togglePanel()">
+            <span id="arrow-icon" style="color: var(--text-gray)">↓</span>
+            <h2>انتخاب بدنه</h2>
+        </div>
+
+        <div class="options-content">
+            <span class="label">رنگ خودرو</span>
+            <div class="color-selector">
+                <div class="color-dot" style="background: #ffffff; border: 1px solid #444;" onclick="changeColor('white', this)"></div>
+                <div class="color-dot" style="background: #e74c3c;" onclick="changeColor('red', this)"></div>
+                <div class="color-dot" style="background: #3498db;" onclick="changeColor('blue', this)"></div>
+                <div class="color-dot" style="background: #2c3e50;" onclick="changeColor('black', this)"></div>
+            </div>
+
+            <span class="label">خدمات تخصصی</span>
+            <div class="option-card">
+                <span style="font-size: 16px;">پوشش نانو پولیش</span>
+                <label class="switch">
+                    <input type="checkbox" onchange="togglePolish()">
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <div class="footer">
+                <div style="text-align: right;">
+                    <span style="display:block; font-size:12px; color:var(--text-gray)">قیمت نهایی</span>
+                    <span class="price">۱۶۱,۰۰۰ $</span>
+                </div>
+                <button class="next-btn">مرحله بعد</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // 1. آدرس تصاویر خود را اینجا تنظیم کنید
+    const carData = {
+        default: "img/white.jpeg", // عکسی که در ابتدا نشان داده می‌شود
+        white: { 
+            normal: "img/white.jpeg", 
+            polished: "img/nowhite.jpeg" 
+        },
+        red: { 
+            normal: "img/red.jpeg", 
+            polished: "img/nored.jpeg" 
+        },
+        blue: { 
+            normal: "img/blue.jpeg", 
+            polished: "img/blue-p.png" 
+        },
+        black: { 
+            normal: "img/black.jpeg", 
+            polished: "img/noblack.jpeg" 
+        }
+    };
+
+    let selectedColor = null; // در ابتدا هیچ رنگی انتخاب نشده
+
+    function togglePanel() {
+        const panel = document.getElementById('config-panel');
+        panel.classList.toggle('collapsed');
+    }
+
+    function changeColor(color, element) {
+        // فعال کردن دکمه انتخابی
+        document.querySelectorAll('.color-dot').forEach(dot => dot.classList.remove('active'));
+        element.classList.add('active');
+        
+        selectedColor = color;
+        updateDisplay();
+    }
+
+    function togglePolish() {
+        // اگر رنگی انتخاب شده باشد، تصویر را آپدیت کن
+        if (selectedColor) {
+            updateDisplay();
+        }
+    }
+
+    function updateDisplay() {
+        const carImg = document.getElementById('car-image');
+        const isPolished = document.querySelector('.switch input').checked;
+        
+        // افکت انیمیشن تعویض
+        carImg.style.opacity = "0";
+        carImg.style.transform = "scale(0.95)";
+
+        setTimeout(() => {
+            if (!selectedColor) {
+                carImg.src = carData.default;
+            } else {
+                const type = isPolished ? 'polished' : 'normal';
+                carImg.src = carData[selectedColor][type];
+            }
+            carImg.style.opacity = "1";
+            carImg.style.transform = "scale(1)";
+        }, 250);
+    }
+</script>
+
+</body>
+</html>
