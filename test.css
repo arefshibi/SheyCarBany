@@ -51,7 +51,7 @@
             /* وضعیت اولیه برای انیمیشن ورود */
             opacity: 0;
             transform: scale(0.5) translateY(30px);
-            transition: opacity 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+            transition: opacity 1s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
                         transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             
             /* انیمیشن شناور بودن دائمی */

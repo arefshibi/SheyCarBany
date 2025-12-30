@@ -34,11 +34,23 @@ const statusData = [
 
         container.appendChild(badge);
 
-        // اجرای انیمیشن ظهور با تاخیر برای هر دکمه
-        setTimeout(() => {
-            badge.classList.add('show');
-        }, index * 150); // هر دکمه ۱۵۰ میلی‌ثانیه بعد از قبلی ظاهر می‌شود
-    });
+
+      const observebadge = new IntersectionObserver((enteries1) => {
+        enteries1.forEach((entry2)=> {
+
+                  if(entry2.isIntersecting){
+                    entry2.target.classList.add('show');
+        }else{
+          entry2.target.classList.remove('show');
+        }
+      });
+      },
+    {
+      threshold: 1
+      });
+      observebadge.observe(badge);
+    })
+    
   
 burger = document.querySelector(".bgmicon");
 const sidebar = document.querySelector(".sidebar");
