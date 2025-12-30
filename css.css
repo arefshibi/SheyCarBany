@@ -542,7 +542,7 @@ body {
     right: 20px;
     bottom: 10px;
     width: 120px;
-    opacity: 0.9;
+    opacity: 1;
 }
 #img1{position: absolute;
     right: -30px;
@@ -570,7 +570,7 @@ top: -80px;}
 .card a {
     margin-top: 15px;
     color: white;
-    opacity: 0.9;
+    opacity: 1;
     font-size: 14px;
     text-decoration: none;
 }
