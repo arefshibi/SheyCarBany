@@ -43,7 +43,7 @@ const statusData = [
       });
       },
     {
-      threshold: 0.3,
+      threshold: 0.9,
       rootMargin: '-50px'
       });
       observebadge.observe(badge);
