@@ -1,4 +1,66 @@
 
+const assets = {
+    white: { b: "img/white.jpeg", a: "img/nowhite.jpeg" },
+    red: { b: "img/red.jpeg", a: "img/nored.jpeg" },
+    blue: { b: "img/blue.jpeg", a: "img/noblue.jpeg" },
+    black: { b: "img/black.jpeg", a: "img/noblack.jpeg" }
+};
+
+let isDragging = false;
+let autoMoveDirection = 1;
+let currentPercent = 50;
+const speed = 0.15;
+
+const container = document.getElementById("compareBox");
+const overlay = document.getElementById("afterImg");
+const handle = document.getElementById("handle");
+const productArea = document.getElementById("p-area");
+
+function moveSlider(percent) {
+    percent = Math.max(0, Math.min(percent, 100));
+    overlay.style.clipPath = `inset(0 ${100 - percent}% 0 0)`;
+    handle.style.left = percent + "%";
+    currentPercent = percent;
+}
+
+function animateSlider() {
+    if (!isDragging) {
+        currentPercent += autoMoveDirection * speed;
+        if (currentPercent >= 85) autoMoveDirection = -1;
+        if (currentPercent <= 15) autoMoveDirection = 1;
+        moveSlider(currentPercent);
+    }
+    requestAnimationFrame(animateSlider);
+}
+
+function updateColor(color, el) {
+    document.querySelectorAll(".color-card").forEach(c => c.classList.remove("active"));
+    el.classList.add("active");
+    beforeImg.src = assets[color].b;
+    afterImgSrc.src = assets[color].a;
+}
+
+function togglePanel() {
+    
+        const panel = document.getElementById("config-panel");
+        const frame = document.querySelector('.device-frame');
+        panel.classList.toggle("collapsed");
+        frame.classList.toggle('hight');
+        productArea.classList.toggle("pushed-up");
+    
+}
+
+handle.addEventListener("mousedown", () => isDragging = true);
+window.addEventListener("mouseup", () => isDragging = false);
+window.addEventListener("mousemove", e => {
+    if (!isDragging) return;
+    const rect = container.getBoundingClientRect();
+    moveSlider(((e.clientX - rect.left) / rect.width) * 100);
+});
+
+animateSlider();
+
+
 burger = document.querySelector(".bgmicon");
 const sidebar = document.querySelector(".sidebar");
 const bluur = document.querySelector(".overlaymain");
@@ -25,182 +87,182 @@ items.forEach((item) => {
   observer.observe(item);
 });
 
-const instbox = document.querySelector(".instabox");
-const hoverlink = document.querySelector("#link44");
+// const instbox = document.querySelector(".instabox");
+// const hoverlink = document.querySelector("#link44");
 
-function showinstabox() {
-  hoverlink.addEventListener("mouseenter", function () {
-    instbox.classList.add("show");
-  });
-  hoverlink.addEventListener("mouseleave", function () {
-    instbox.classList.remove("show");
-  });
-}
+// function showinstabox() {
+//   hoverlink.addEventListener("mouseenter", function () {
+//     instbox.classList.add("show");
+//   });
+//   hoverlink.addEventListener("mouseleave", function () {
+//     instbox.classList.remove("show");
+//   });
+// }
 
-showinstabox();
-function setupslider() {
-  const container = document.getElementById("compareBox");
-  const overlay = document.getElementById("afterImg");
-  const handle = document.getElementById("handle");
+// showinstabox();
+// function setupslider() {
+//   const container = document.getElementById("compareBox");
+//   const overlay = document.getElementById("afterImg");
+//   const handle = document.getElementById("handle");
 
-  let isDragging = false;
-  let autoMoveDirection = 1; // 1 به راست، -1 به چپ
-  let currentPercent = 50;
+//   let isDragging = false;
+//   let autoMoveDirection = 1; // 1 به راست، -1 به چپ
+//   let currentPercent = 50;
 
-  // سرعت حرکت خودکار (هرچه کمتر باشد، کندتر است و حرکت گام‌ها کوچک‌تر)
-  const speed = 0.2;
+//   // سرعت حرکت خودکار (هرچه کمتر باشد، کندتر است و حرکت گام‌ها کوچک‌تر)
+//   const speed = 0.2;
 
-  // --- تابع حرکت دهنده اصلی ---
-  function moveSlider(pos) {
-    const rect = container.getBoundingClientRect();
+//   // --- تابع حرکت دهنده اصلی ---
+//   function moveSlider(pos) {
+//     const rect = container.getBoundingClientRect();
 
-    // اطمینان از اینکه موقعیت در محدوده کانتینر باشد (0 تا عرض کانتینر)
-    if (pos < 0) pos = 0;
-    if (pos > rect.width) pos = rect.width;
+//     // اطمینان از اینکه موقعیت در محدوده کانتینر باشد (0 تا عرض کانتینر)
+//     if (pos < 0) pos = 0;
+//     if (pos > rect.width) pos = rect.width;
 
-    const percent = (pos / rect.width) * 100;
-    overlay.style.clipPath = `inset(0 ${100 - percent}% 0 0)`;
-    handle.style.left = `${percent}%`;
+//     const percent = (pos / rect.width) * 100;
+//     overlay.style.clipPath = `inset(0 ${100 - percent}% 0 0)`;
+//     handle.style.left = `${percent}%`;
 
-    // به روز رسانی درصد فعلی
-    currentPercent = percent;
-  }
+//     // به روز رسانی درصد فعلی
+//     currentPercent = percent;
+//   }
 
-  // --- تابع انیمیشن خودکار ---
-  function animateSlider() {
-    if (!isDragging) {
-      // فقط در صورتی حرکت کن که کاربر در حال کشیدن نباشد
+//   // --- تابع انیمیشن خودکار ---
+//   function animateSlider() {
+//     if (!isDragging) {
+//       // فقط در صورتی حرکت کن که کاربر در حال کشیدن نباشد
 
-      // تعیین مقدار حرکت با توجه به سرعت
-      currentPercent += autoMoveDirection * speed;
+//       // تعیین مقدار حرکت با توجه به سرعت
+//       currentPercent += autoMoveDirection * speed;
 
-      // بررسی برخورد با مرزها (بین 10% و 90%)
-      if (currentPercent >= 70) {
-        autoMoveDirection = -1;
-      } else if (currentPercent <= 30) {
-        autoMoveDirection = 1;
-      }
+//       // بررسی برخورد با مرزها (بین 10% و 90%)
+//       if (currentPercent >= 70) {
+//         autoMoveDirection = -1;
+//       } else if (currentPercent <= 30) {
+//         autoMoveDirection = 1;
+//       }
 
-      // تبدیل درصد جدید به مختصات x (برای فراخوانی moveSlider)
-      const rect = container.getBoundingClientRect();
-      const newPos = (currentPercent / 100) * rect.width;
+//       // تبدیل درصد جدید به مختصات x (برای فراخوانی moveSlider)
+//       const rect = container.getBoundingClientRect();
+//       const newPos = (currentPercent / 100) * rect.width;
 
-      moveSlider(newPos);
-    }
+//       moveSlider(newPos);
+//     }
 
-    // درخواست فریم بعدی برای حرکت روان
-    requestAnimationFrame(animateSlider);
-  }
+//     // درخواست فریم بعدی برای حرکت روان
+//     requestAnimationFrame(animateSlider);
+//   }
 
-  // --- تنظیمات رویدادهای کاربری ---
-  const startDrag = () => {
-    isDragging = true;
-  };
-  const endDrag = () => {
-    isDragging = false;
-  };
+//   // --- تنظیمات رویدادهای کاربری ---
+//   const startDrag = () => {
+//     isDragging = true;
+//   };
+//   const endDrag = () => {
+//     isDragging = false;
+//   };
 
-  // رویدادهای موس
-  handle.addEventListener("mousedown", startDrag);
-  window.addEventListener("mouseup", endDrag);
-  window.addEventListener("mousemove", (e) => {
-    if (isDragging) {
-      const rect = container.getBoundingClientRect();
-      moveSlider(e.clientX - rect.left); // ورودی باید موقعیت نسبی باشد
-    }
-  });
+//   // رویدادهای موس
+//   handle.addEventListener("mousedown", startDrag);
+//   window.addEventListener("mouseup", endDrag);
+//   window.addEventListener("mousemove", (e) => {
+//     if (isDragging) {
+//       const rect = container.getBoundingClientRect();
+//       moveSlider(e.clientX - rect.left); // ورودی باید موقعیت نسبی باشد
+//     }
+//   });
 
-  // رویدادهای لمس
-  handle.addEventListener("touchstart", startDrag);
-  window.addEventListener("touchend", endDrag);
-  container.addEventListener("touchmove", (e) => {
-    if (isDragging) {
-      const rect = container.getBoundingClientRect();
-      moveSlider(e.touches[0].clientX - rect.left); // ورودی باید موقعیت نسبی باشد
-    }
-  });
+//   // رویدادهای لمس
+//   handle.addEventListener("touchstart", startDrag);
+//   window.addEventListener("touchend", endDrag);
+//   container.addEventListener("touchmove", (e) => {
+//     if (isDragging) {
+//       const rect = container.getBoundingClientRect();
+//       moveSlider(e.touches[0].clientX - rect.left); // ورودی باید موقعیت نسبی باشد
+//     }
+//   });
 
-  // --- شروع انیمیشن و موقعیت اولیه ---
+//   // --- شروع انیمیشن و موقعیت اولیه ---
 
-  // 1. تنظیم موقعیت شروع در وسط
-  const rect = container.getBoundingClientRect();
-  moveSlider(rect.width / 2);
+//   // 1. تنظیم موقعیت شروع در وسط
+//   const rect = container.getBoundingClientRect();
+//   moveSlider(rect.width / 2);
 
-  // 2. شروع حلقه انیمیشن
-  requestAnimationFrame(animateSlider);
-}
+//   // 2. شروع حلقه انیمیشن
+//   requestAnimationFrame(animateSlider);
+// }
 
-setupslider();
+// setupslider();
 
-const tap1 = document.getElementById("radio-1");
-const tap2 = document.getElementById("radio-2");
-const tap3 = document.getElementById("radio-3");
-const tap4 = document.getElementById("radio-4");
-const tap5 = document.getElementById("radio-5");
-const imge = document.querySelector(".comparison-container");
+// const tap1 = document.getElementById("radio-1");
+// const tap2 = document.getElementById("radio-2");
+// const tap3 = document.getElementById("radio-3");
+// const tap4 = document.getElementById("radio-4");
+// const tap5 = document.getElementById("radio-5");
+// const imge = document.querySelector(".comparison-container");
 
-function taptap() {
-  tap1.addEventListener("click", function () {
-    imge.innerHTML = "";
-    imge.innerHTML = `
-    <img src="" id="beforeImg" />
-  <img src="" id="afterImg" class="overlay" />
-  <div class="slider-handle" id="handle"><div class="ttxx">
+// function taptap() {
+//   tap1.addEventListener("click", function () {
+//     imge.innerHTML = "";
+//     imge.innerHTML = `
+//     <img src="" id="beforeImg" />
+//   <img src="" id="afterImg" class="overlay" />
+//   <div class="slider-handle" id="handle"><div class="ttxx">
     
-    </div>
-    </div>`;
-    setupslider();
-  });
+//     </div>
+//     </div>`;
+//     setupslider();
+//   });
 
-  tap2.addEventListener("click", function () {
-    imge.innerHTML = "";
-    imge.innerHTML = `
-    <img src="" id="beforeImg" />
-  <img src="" id="afterImg" class="overlay" />
-  <div class="slider-handle" id="handle">
-  <div class="ttxx">
-    </div>
-    </div>`;
-    setupslider();
-  });
+//   tap2.addEventListener("click", function () {
+//     imge.innerHTML = "";
+//     imge.innerHTML = `
+//     <img src="" id="beforeImg" />
+//   <img src="" id="afterImg" class="overlay" />
+//   <div class="slider-handle" id="handle">
+//   <div class="ttxx">
+//     </div>
+//     </div>`;
+//     setupslider();
+//   });
 
-  function loadtap3() {
-    imge.innerHTML = "";
-    imge.innerHTML = `
-    <img  src="img/befor.jpg" id="beforeImg" />
-  <img src="img/after.jpg" id="afterImg" class="overlay" />
-  <div class="slider-handle" id="handle">
-  <div class="ttxx">
-    </div></div>`;
-    setupslider();
-  }
-  loadtap3();
-  tap3.addEventListener("click", loadtap3);
+//   function loadtap3() {
+//     imge.innerHTML = "";
+//     imge.innerHTML = `
+//     <img  src="img/befor.jpg" id="beforeImg" />
+//   <img src="img/after.jpg" id="afterImg" class="overlay" />
+//   <div class="slider-handle" id="handle">
+//   <div class="ttxx">
+//     </div></div>`;
+//     setupslider();
+//   }
+//   loadtap3();
+//   tap3.addEventListener("click", loadtap3);
 
-  tap4.addEventListener("click", function () {
-    imge.innerHTML = "";
-    imge.innerHTML = `
-    <img src="img/Picsart_25-11-25_03-15-27-219_upscaled.jpg" id="beforeImg" />
-  <img src="img/Picsart_25-11-25_03-15-22-013_upscaled.jpg" id="afterImg" class="overlay" />
-  <div class="slider-handle" id="handle">
-  <div class="ttxx">
-    </div></div>`;
-    setupslider();
-  });
+//   tap4.addEventListener("click", function () {
+//     imge.innerHTML = "";
+//     imge.innerHTML = `
+//     <img src="img/Picsart_25-11-25_03-15-27-219_upscaled.jpg" id="beforeImg" />
+//   <img src="img/Picsart_25-11-25_03-15-22-013_upscaled.jpg" id="afterImg" class="overlay" />
+//   <div class="slider-handle" id="handle">
+//   <div class="ttxx">
+//     </div></div>`;
+//     setupslider();
+//   });
 
-  tap5.addEventListener("click", function () {
-    imge.innerHTML = "";
-    imge.innerHTML = `
-    <img src="" id="beforeImg" />
-  <img src="" id="afterImg" class="overlay" />
-  <div class="slider-handle" id="handle">
-  <div class="ttxx">
-    </div></div>`;
-    setupslider();
-  });
-}
+//   tap5.addEventListener("click", function () {
+//     imge.innerHTML = "";
+//     imge.innerHTML = `
+//     <img src="" id="beforeImg" />
+//   <img src="" id="afterImg" class="overlay" />
+//   <div class="slider-handle" id="handle">
+//   <div class="ttxx">
+//     </div></div>`;
+//     setupslider();
+//   });
+// }
 
-taptap();
+// taptap();
 
 
 
