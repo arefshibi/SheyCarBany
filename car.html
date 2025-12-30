@@ -3,304 +3,328 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Car Configurator Pro</title>
+    <title>Porsche Configurator | iOS 26 Style</title>
     <style>
+        @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap");
+
         :root {
-            --bg-color: #000000;
-            --panel-bg: rgba(28, 28, 30, 0.9);
-            --ios-gray: rgba(118, 118, 128, 0.24);
-            --text-gray: #a1a1a6;
-            --accent-green: #34c759;
+            --glass-bg: rgba(22, 22, 24, 0.8);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --ios-blur: blur(40px) saturate(180%);
+            --text-secondary: #8E8E93;
         }
 
         body {
             margin: 0;
             background: #000;
-            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+            font-family: "Inter", -apple-system, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            color: white;
+            min-height: 100vh;
+            color: #fff;
             overflow: hidden;
         }
 
-        .iphone-frame {
-            width: 375px;
-            height: 812px;
-            background: black;
-            border-radius: 44px;
+        .main-wrapper {
+            display: flex;
+            width: 100%;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .device-frame {
+            width: 393px;
+            height: 852px;
+            background: #000;
+            border-radius: 54px;
             position: relative;
             overflow: hidden;
-            border: 1px solid #333;
+            border: 1px solid #222;
+            box-shadow: 0 50px 100px rgba(0,0,0,1);
+            display: flex;
+            flex-direction: column;
         }
 
-        /* بخش نمایش ماشین */
+        /* بخش نمایش تصویر با قابلیت جابجایی نرم به بالا */
         .product-area {
-            position: absolute;
-            top: 0;
-            width: 100%;
-            height: 50%;
+            flex: 1;
+            margin-bottom: 70px;
             display: flex;
             justify-content: center;
             align-items: center;
-            transition: all 0.5s ease;
+            background: #000; 
+            z-index: 1;
+            transition: transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+            transform: translateY(-40px); /* پوزیشن پیش‌فرض کمی بالاتر */
         }
 
-        .car-container {
-            width: 90%;
-            text-align: center;
+        /* وقتی پنل باز است، عکس بیشتر به بالا می‌رود */
+        .product-area.pushed-up {
+            transform: translateY(-120px);
         }
 
-        #car-image {
+        .comparison-container {
+            position: relative;
             width: 100%;
-            height: auto;
-            object-fit: contain;
-            transition: opacity 0.3s ease, transform 0.4s ease;
-            filter: drop-shadow(0 15px 25px rgba(0,0,0,0.9));
+            height: 300px;
+            overflow: hidden;
         }
 
-        /* پنل تنظیمات */
+        .comparison-container img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        #afterImg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            clip-path: inset(0 50% 0 0);
+            z-index: 2;
+        }
+
+        .slider-handle {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 2px;
+            height: 100%;
+            background: rgba(255,255,255,0.4);
+            z-index: 10;
+            transform: translateX(-50%);
+        }
+
+        .slider-handle::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 44px;
+            height: 44px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+        }
+
         .config-sheet {
-            background: var(--panel-bg);
-            backdrop-filter: blur(30px);
-            -webkit-backdrop-filter: blur(30px);
-            border-radius: 30px 30px 0 0;
-            padding: 20px 24px;
             position: absolute;
             bottom: 0;
             width: 100%;
-            height: 480px;
+            height: 460px;
+            background: var(--glass-bg);
+            backdrop-filter: var(--ios-blur);
+            -webkit-backdrop-filter: var(--ios-blur);
+            border-top: 1px solid var(--glass-border);
+            border-radius: 45px 45px 0 0;
+            padding: 20px 25px;
             box-sizing: border-box;
-            border-top: 0.5px solid rgba(255,255,255,0.1);
-            transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
-            z-index: 10;
+            transition: transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+            z-index: 20;
         }
-
-        .config-sheet.collapsed { transform: translateY(300px); }
 
         .handle {
             width: 36px;
             height: 5px;
-            background: rgba(255,255,255,0.2);
+            background: rgba(255, 255, 255, 0.2);
             border-radius: 10px;
-            margin: -5px auto 20px auto;
+            margin: 0 auto 20px auto;
         }
 
-        .header-row {
+        .header-row h2 {
+            font-size: 26px;
+            font-weight: 800;
+            margin: 0;
+            background: linear-gradient(180deg, #fff, #888);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin: 25px 0;
+        }
+
+        .color-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 15px 0;
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
             cursor: pointer;
-            padding-bottom: 20px;
+            transition: 0.3s;
         }
 
-        .header-row h2 { font-size: 20px; margin: 0; letter-spacing: -0.5px; }
-
-        .label { 
-            font-size: 11px; 
-            color: var(--text-gray); 
-            text-transform: uppercase; 
-            margin: 20px 0 10px 0; 
-            display: block; 
-            letter-spacing: 0.5px;
-            text-align: right;
+        .color-card.active {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
         }
 
-        /* دکمه‌های رنگی */
-        .color-selector {
-            display: flex;
-            flex-direction: row-reverse;
-            gap: 15px;
-            margin-bottom: 25px;
-        }
-
-        .color-dot {
-            width: 44px;
-            height: 44px;
+        .dot {
+            width: 28px;
+            height: 28px;
             border-radius: 50%;
-            border: 2px solid transparent;
-            cursor: pointer;
-            transition: 0.2s;
-            box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+            margin-bottom: 8px;
+            border: 2px solid rgba(0,0,0,0.3);
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
         }
 
-        .color-dot.active { 
-            border-color: #007aff; 
-            transform: scale(1.1); 
-            box-shadow: 0 0 15px rgba(0,122,255,0.4);
+        .color-name {
+            font-size: 10px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-transform: uppercase;
         }
 
-        /* سوئیچ پولیش */
-        .option-card {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: var(--ios-gray);
-            padding: 16px;
-            border-radius: 14px;
-            flex-direction: row-reverse;
+        .info-card {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 15px;
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
         }
 
-        .switch {
-            position: relative;
-            display: inline-block;
-            width: 51px;
-            height: 31px;
+        @media (max-width: 899px) {
+            .config-sheet.collapsed { transform: translateY(210px); }
         }
-
-        .switch input { opacity: 0; width: 0; height: 0; }
-
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background-color: #39393d;
-            transition: .3s;
-            border-radius: 31px;
-        }
-
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 27px; width: 27px;
-            left: 2px; bottom: 2px;
-            background-color: white;
-            transition: .3s;
-            border-radius: 50%;
-        }
-
-        input:checked + .slider { background-color: var(--accent-green); }
-        input:checked + .slider:before { transform: translateX(20px); }
-
-        .footer { 
-            display: flex; 
-            justify-content: space-between; 
-            margin-top: 40px; 
-            align-items: center;
-            flex-direction: row-reverse;
-        }
-        
-        .price { font-size: 22px; font-weight: 700; }
-        .next-btn { 
-            background: #fff; color: #000; border: none; 
-            padding: 12px 30px; border-radius: 25px; 
-            font-weight: 600; cursor: pointer;
-        }
-
     </style>
 </head>
 <body>
 
-<div class="iphone-frame">
-    <div class="product-area" id="product-area">
-        <div class="car-container">
-            <img id="car-image" src="img/white.jpeg" alt="Car">
-        </div>
-    </div>
-
-    <div class="config-sheet" id="config-panel">
-        <div class="handle"></div>
-        
-        <div class="header-row" onclick="togglePanel()">
-            <span id="arrow-icon" style="color: var(--text-gray)">↓</span>
-            <h2>انتخاب بدنه</h2>
-        </div>
-
-        <div class="options-content">
-            <span class="label">رنگ خودرو</span>
-            <div class="color-selector">
-                <div class="color-dot" style="background: #ffffff; border: 1px solid #444;" onclick="changeColor('white', this)"></div>
-                <div class="color-dot" style="background: #e74c3c;" onclick="changeColor('red', this)"></div>
-                <div class="color-dot" style="background: #3498db;" onclick="changeColor('blue', this)"></div>
-                <div class="color-dot" style="background: #2c3e50;" onclick="changeColor('black', this)"></div>
-            </div>
-
-            <span class="label">خدمات تخصصی</span>
-            <div class="option-card">
-                <span style="font-size: 16px;">پوشش نانو پولیش</span>
-                <label class="switch">
-                    <input type="checkbox" onchange="togglePolish()">
-                    <span class="slider"></span>
-                </label>
-            </div>
-
-            <div class="footer">
-                <div style="text-align: right;">
-                    <span style="display:block; font-size:12px; color:var(--text-gray)">قیمت نهایی</span>
-                    <span class="price">۱۶۱,۰۰۰ $</span>
+<div class="main-wrapper">
+    <div class="device-frame">
+        <div class="product-area" id="p-area">
+            <div id="compareBox" class="comparison-container">
+                <img id="beforeImg" src="img/white.jpeg" alt="White">
+                <div id="afterImg">
+                    <img id="afterImgSrc" src="img/nowhite.jpeg" alt="Polished">
                 </div>
-                <button class="next-btn">مرحله بعد</button>
+                <div id="handle" class="slider-handle"></div>
+            </div>
+        </div>
+
+        <div class="config-sheet collapsed" id="config-panel">
+            <div class="handle"></div>
+            <div class="header-row" onclick="togglePanel()" style="cursor: pointer;">
+                <h2>Porsche 911 GT3</h2>
+                <p style="color: var(--text-secondary); font-size: 14px; margin-top: 4px;">Future Concept iOS 26</p>
+            </div>
+
+            <div class="color-grid">
+                <div class="color-card active" onclick="updateColor('white', this)">
+                    <div class="dot" style="background:#fff"></div>
+                    <span class="color-name">White</span>
+                </div>
+                <div class="color-card" onclick="updateColor('red', this)">
+                    <div class="dot" style="background:#ff3b30"></div>
+                    <span class="color-name">Red</span>
+                </div>
+                <div class="color-card" onclick="updateColor('blue', this)">
+                    <div class="dot" style="background:#007aff"></div>
+                    <span class="color-name">Blue</span>
+                </div>
+                <div class="color-card" onclick="updateColor('black', this)">
+                    <div class="dot" style="background:#111"></div>
+                    <span class="color-name">Black</span>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <div style="display:flex; justify-content:space-between;">
+                    <span style="font-weight:600; font-size: 13px;">Glass Shaders</span>
+                    <span style="color:#34C759; font-size:11px; font-weight:700;">ACTIVE</span>
+                </div>
+                <p style="margin:8px 0 0 0; font-size:12px; color:var(--text-secondary); line-height:1.5;">سیستم رندرینگ هوشمند iOS 26 برای نمایش عمق رنگ و بازتاب‌های واقعی فعال است.</p>
             </div>
         </div>
     </div>
 </div>
 
 <script>
-    // 1. آدرس تصاویر خود را اینجا تنظیم کنید
-    const carData = {
-        default: "img/white.jpeg", // عکسی که در ابتدا نشان داده می‌شود
-        white: { 
-            normal: "img/white.jpeg", 
-            polished: "img/nowhite.jpeg" 
-        },
-        red: { 
-            normal: "img/red.jpeg", 
-            polished: "img/nored.jpeg" 
-        },
-        blue: { 
-            normal: "img/blue.jpeg", 
-            polished: "img/blue-p.png" 
-        },
-        black: { 
-            normal: "img/black.jpeg", 
-            polished: "img/noblack.jpeg" 
-        }
+    const assets = {
+        white: { b: "img/white.jpeg", a: "img/nowhite.jpeg" },
+        red: { b: "img/red.jpeg", a: "img/nored.jpeg" },
+        blue: { b: "img/blue.jpeg", a: "img/noblue.jpeg" },
+        black: { b: "img/black.jpeg", a: "img/noblack.jpeg" }
     };
 
-    let selectedColor = null; // در ابتدا هیچ رنگی انتخاب نشده
+    let isDragging = false;
+    let autoMoveDirection = 1; 
+    let currentPercent = 50;
+    const speed = 0.15; 
+
+    const container = document.getElementById("compareBox");
+    const overlay = document.getElementById("afterImg");
+    const handle = document.getElementById("handle");
+    const productArea = document.getElementById("p-area");
+
+    function moveSlider(percent) {
+        percent = Math.max(0, Math.min(percent, 100));
+        overlay.style.clipPath = `inset(0 ${100 - percent}% 0 0)`;
+        handle.style.left = `${percent}%`;
+        currentPercent = percent;
+    }
+
+    function animateSlider() {
+        if (!isDragging) {
+            currentPercent += autoMoveDirection * speed;
+            if (currentPercent >= 85) autoMoveDirection = -1;
+            if (currentPercent <= 15) autoMoveDirection = 1;
+            moveSlider(currentPercent);
+        }
+        requestAnimationFrame(animateSlider);
+    }
+
+    const startDrag = () => isDragging = true;
+    const endDrag = () => isDragging = false;
+
+    const handleMove = (e) => {
+        if (!isDragging) return;
+        const rect = container.getBoundingClientRect();
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        const x = clientX - rect.left;
+        const percent = (x / rect.width) * 100;
+        moveSlider(percent);
+    };
+
+    handle.addEventListener("mousedown", startDrag);
+    window.addEventListener("mouseup", endDrag);
+    window.addEventListener("mousemove", handleMove);
+    handle.addEventListener("touchstart", startDrag);
+    window.addEventListener("touchend", endDrag);
+    window.addEventListener("touchmove", handleMove);
+
+    function updateColor(color, el) {
+        document.querySelectorAll('.color-card').forEach(i => i.classList.remove('active'));
+        el.classList.add('active');
+        document.getElementById('beforeImg').src = assets[color].b;
+        document.getElementById('afterImgSrc').src = assets[color].a;
+    }
 
     function togglePanel() {
-        const panel = document.getElementById('config-panel');
-        panel.classList.toggle('collapsed');
-    }
-
-    function changeColor(color, element) {
-        // فعال کردن دکمه انتخابی
-        document.querySelectorAll('.color-dot').forEach(dot => dot.classList.remove('active'));
-        element.classList.add('active');
-        
-        selectedColor = color;
-        updateDisplay();
-    }
-
-    function togglePolish() {
-        // اگر رنگی انتخاب شده باشد، تصویر را آپدیت کن
-        if (selectedColor) {
-            updateDisplay();
+        if (window.innerWidth < 900) {
+            const panel = document.getElementById('config-panel');
+            panel.classList.toggle('collapsed');
+            
+            // جابجایی همزمان عکس با پنل
+            if (panel.classList.contains('collapsed')) {
+                productArea.classList.remove('pushed-up');
+            } else {
+                productArea.classList.add('pushed-up');
+            }
         }
     }
 
-    function updateDisplay() {
-        const carImg = document.getElementById('car-image');
-        const isPolished = document.querySelector('.switch input').checked;
-        
-        // افکت انیمیشن تعویض
-        carImg.style.opacity = "0";
-        carImg.style.transform = "scale(0.95)";
-
-        setTimeout(() => {
-            if (!selectedColor) {
-                carImg.src = carData.default;
-            } else {
-                const type = isPolished ? 'polished' : 'normal';
-                carImg.src = carData[selectedColor][type];
-            }
-            carImg.style.opacity = "1";
-            carImg.style.transform = "scale(1)";
-        }, 250);
-    }
+    animateSlider();
 </script>
-
 </body>
 </html>
