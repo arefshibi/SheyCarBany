@@ -1201,7 +1201,6 @@ a {
   display: flex;
   position: fixed;
   
-  left: 15%;
   white-space: nowrap;
   bottom: 40px;
   transform: translateY(200px);
