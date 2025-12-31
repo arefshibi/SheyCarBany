@@ -45,7 +45,54 @@ body { background:#0b0b0b; color:#f5f5f5; padding:60px 0; }
 
 
 
- 
+ .hero {
+  font-size: 64px;
+  font-weight: 800;
+  color: #000;
+  line-height: 1.2;
+}
+
+.highlight {
+  display: inline-block;
+  white-space: nowrap;
+  border-radius: 12px;
+
+  /* subtle padding */
+  padding: 4px 8px;
+
+  will-change: width, background-color;
+
+  transition:
+    width 0.55s cubic-bezier(0.22, 1.02, 0.36, 1),
+    background-color 0.45s ease;
+}
+
+.measure {
+  position: absolute;
+  visibility: hidden;
+  white-space: nowrap;
+  font-size: 64px;
+  font-weight: 800;
+  font-family: Inter, Arial, sans-serif;
+  padding: 4px 8px;
+}
+
+/* ===== Mobile (<=764px) ===== */
+@media (max-width: 764px) {
+  body {
+    padding-left: 20px;
+  }
+
+  .hero {
+    font-size: 36px;
+  }
+
+  .highlight,
+  .measure {
+    font-size: 36px;
+    padding: 2px 6px;
+  }
+}
 
         
 
