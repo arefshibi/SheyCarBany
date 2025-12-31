@@ -1200,6 +1200,8 @@ a {
   z-index: 99;
   display: flex;
   position: fixed;
+  
+  left: 15%;
   white-space: nowrap;
   bottom: 40px;
   transform: translateY(200px);
@@ -2188,6 +2190,7 @@ transform: translate(-50%,-50%);
   }
   .glass-radio-group {
     width: 330px;
+    
   }
   .glider {
     position: absolute;
