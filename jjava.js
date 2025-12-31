@@ -1,3 +1,12 @@
+const bany = document.querySelector('.bany');
+const car = document.querySelector('.car');
+function txtAni(){
+  setTimeout(() => {
+    bany.classList.add('active');
+    car.classList.add('active');
+  }, 2000);
+}
+txtAni();
 
 const assets = {
     white: { b: "img/white.jpeg", a: "img/nowhite.jpeg" },

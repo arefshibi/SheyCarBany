@@ -1783,13 +1783,26 @@ video {
   top: 161px;
   color: #e55b00;
   left: 15px;
+  opacity: 0;
+}
+.car.active{
+  opacity: 1;
+    transition: 1.6s ease;
+
 }
 .bany {
   font-size: 70px;
   position: absolute;
   top: 221px;
   left: 15px;
+  transform: translateY(-65px);
+  transition: 0.8s ease;
 }
+.bany.active{
+    transform: translateY(0);
+
+}
+
 
 
 
