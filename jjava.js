@@ -1,3 +1,93 @@
+const voids = document.querySelectorAll('.void-card');
+
+let lastScrollY = window.scrollY;
+let scrollSpeed = 0;
+let isOnCard = false;
+
+// محاسبه progress کارت (0 تا 1)
+function getScrollProgress(obscura){
+  const rect = obscura.getBoundingClientRect();
+  const windowHeight = window.innerHeight;
+  const cardHeight = rect.height;
+  let veil = 1 - (rect.top - (windowHeight - cardHeight)) / cardHeight;
+  return Math.min(Math.max(veil,0),1);
+}
+
+// متن و عدد proportional با تاخیر
+function animateGlyphAndFlux(obscura){
+  const glyphEl = obscura.querySelector('.glyph');
+  const fluxEl = obscura.querySelector('.flux');
+
+  if(!glyphEl.dataset.sigils){
+    const sigils = glyphEl.innerText.split(' ');
+    glyphEl.dataset.sigils = JSON.stringify(sigils);
+    glyphEl.innerHTML = sigils.map(s=>`<span>${s} </span>`).join('');
+  }
+  const sigils = JSON.parse(glyphEl.dataset.sigils);
+
+  let veil = getScrollProgress(obscura);
+
+  // تاخیر شروع (مثلاً 30٪)
+  const threshold = 0.3;
+  let aether = (veil - threshold) / (1 - threshold);
+  aether = Math.min(Math.max(aether,0),1);
+
+  // نمایش کلمات
+  const numRunesToShow = Math.floor(aether * sigils.length);
+  const runes = glyphEl.querySelectorAll('span');
+  runes.forEach((rune,i)=>{
+    if(i<numRunesToShow){
+      rune.style.opacity=1;
+      rune.style.transform='translateY(0)';
+    } else {
+      rune.style.opacity=0;
+      rune.style.transform='translateY(12px)';
+    }
+  });
+
+  // عدد proportional به aether
+  const target = +fluxEl.dataset.target;
+  const current = Math.floor(aether * target);
+  fluxEl.textContent = current + "+";
+}
+
+// تشخیص اینکه کاربر روی کارت است
+function checkOnCard(){
+  isOnCard = false;
+  voids.forEach(obscura => {
+    const rect = obscura.getBoundingClientRect();
+    if(rect.top < window.innerHeight && rect.bottom > 0){
+      isOnCard = true;
+    }
+  });
+}
+
+// MAIN LOOP
+window.addEventListener('scroll', () => {
+  voids.forEach(obscura => animateGlyphAndFlux(obscura));
+});
+
+// محاسبه سرعت اسکرول
+window.addEventListener('scroll', () => {
+  scrollSpeed = Math.abs(window.scrollY - lastScrollY);
+  lastScrollY = window.scrollY;
+});
+
+// مقاومت اسکرول روی کارت‌ها
+window.addEventListener('wheel', (e) => {
+  checkOnCard();
+  if(isOnCard){
+    e.preventDefault();
+    window.scrollBy({
+      top: e.deltaY * 0.1, // عدد کمتر → اسکرول کندتر
+      left: 0,
+      behavior: 'auto'
+    });
+  }
+}, { passive: false });
+
+
+const shey = document.querySelector('.shey');
 const bany = document.querySelector('.bany');
 const car = document.querySelector('.car');
 const boz = document.querySelector('.boz');
