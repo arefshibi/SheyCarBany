@@ -1,7 +1,10 @@
-
 const voids = document.querySelectorAll('.void-card');
 
-// محاسبه veil کارت (0 تا 1)
+let lastScrollY = window.scrollY;
+let scrollSpeed = 0;
+let isOnCard = false;
+
+// محاسبه progress کارت (0 تا 1)
 function getScrollProgress(obscura){
   const rect = obscura.getBoundingClientRect();
   const windowHeight = window.innerHeight;
@@ -10,7 +13,7 @@ function getScrollProgress(obscura){
   return Math.min(Math.max(veil,0),1);
 }
 
-// متن و عدد با تاخیر شروع
+// متن و عدد proportional با تاخیر
 function animateGlyphAndFlux(obscura){
   const glyphEl = obscura.querySelector('.glyph');
   const fluxEl = obscura.querySelector('.flux');
@@ -29,7 +32,7 @@ function animateGlyphAndFlux(obscura){
   let aether = (veil - threshold) / (1 - threshold);
   aether = Math.min(Math.max(aether,0),1);
 
-  // تعداد کلمات برای نمایش
+  // نمایش کلمات
   const numRunesToShow = Math.floor(aether * sigils.length);
   const runes = glyphEl.querySelectorAll('span');
   runes.forEach((rune,i)=>{
@@ -48,13 +51,43 @@ function animateGlyphAndFlux(obscura){
   fluxEl.textContent = current + "+";
 }
 
+// تشخیص اینکه کاربر روی کارت است
+function checkOnCard(){
+  isOnCard = false;
+  voids.forEach(obscura => {
+    const rect = obscura.getBoundingClientRect();
+    if(rect.top < window.innerHeight && rect.bottom > 0){
+      isOnCard = true;
+    }
+  });
+}
+
 // MAIN LOOP
 window.addEventListener('scroll', () => {
   voids.forEach(obscura => animateGlyphAndFlux(obscura));
 });
 
+// محاسبه سرعت اسکرول
+window.addEventListener('scroll', () => {
+  scrollSpeed = Math.abs(window.scrollY - lastScrollY);
+  lastScrollY = window.scrollY;
+});
+
+// مقاومت اسکرول روی کارت‌ها
+window.addEventListener('wheel', (e) => {
+  checkOnCard();
+  if(isOnCard){
+    e.preventDefault();
+    window.scrollBy({
+      top: e.deltaY * 0.3, // عدد کمتر → اسکرول کندتر
+      left: 0,
+      behavior: 'auto'
+    });
+  }
+}, { passive: false });
 
 
+const shey = document.querySelector('.shey');
 const bany = document.querySelector('.bany');
 const car = document.querySelector('.car');
 function txtAni(){
