@@ -1200,9 +1200,11 @@ a {
   z-index: 99;
   display: flex;
   position: fixed;
-  
+  margin: auto;
   white-space: nowrap;
   bottom: 40px;
+  left: 15%;
+  transform: translateX(-50%);
   transform: translateY(200px);
   background: var(--bg);
   border-radius: 1rem;
