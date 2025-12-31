@@ -153,26 +153,6 @@
 }
 
 
-.shey {
-  font-size: 70px;
-  position: absolute;
-  color: white;
-  left: 15px;
-}
-.car {
-  font-size: 70px;
-  position: absolute;
-  top: 131px;
-  color: #e55b00;
-  left: 25%;
-}
-.bany {
-  font-size: 70px;
-  position: absolute;
-  top: 191px;
-  left: 39%;
-}
-
 
 
 /* Slider */
@@ -1781,7 +1761,7 @@ video {
   .nav {
     width: 100%;
     transform: translateX(0);
-    background-color: rgba(0, 0, 0, 0.646);
+    background-color: rgba(35, 35, 35, 0.468);
     max-width: 370px;
     border-radius: 15px;
     position: fixed;
@@ -1789,6 +1769,29 @@ video {
     align-items: center;
     margin-top: 10px;
   }
+
+  .shey {
+  font-size: 70px;
+  position: absolute;
+  color: white;
+  left: 15px;
+  top: 80px;
+}
+.car {
+  font-size: 70px;
+  position: absolute;
+  top: 141px;
+  color: #e55b00;
+  left: 25%;
+}
+.bany {
+  font-size: 70px;
+  position: absolute;
+  top: 201px;
+  left: 39%;
+}
+
+
 
 
 
