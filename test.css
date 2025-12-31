@@ -68,6 +68,15 @@
             color: white;
             direction: ltr;
             text-align: right;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: 0.9s ease;
+        }
+
+        .boz.active{
+          opacity: 1;
+          transition: 0.9s ease;
+          transform: translateY(0px);
         }
 
         .intro-text {
@@ -121,7 +130,6 @@
             grid-column: 1 / span 2;
             min-height: 160px;
             background: linear-gradient(135deg, #121212 0%, #1a1a1a 100%);
-            border-bottom: 2px solid var(--accent-orange);
             text-align: center;
         }
 
@@ -152,6 +160,8 @@
             color: #555;
             text-decoration: none;
             margin-top: 10px;
+            text-align: left;
+            padding: 18px;
             font-weight: bold;
         }
 

@@ -1,7 +1,9 @@
 const bany = document.querySelector('.bany');
 const car = document.querySelector('.car');
+const boz = document.querySelector('.boz');
 function txtAni(){
   setTimeout(() => {
+    boz.classList.add('active');
     bany.classList.add('active');
     car.classList.add('active');
   }, 500);
