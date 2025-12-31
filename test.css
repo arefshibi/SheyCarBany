@@ -297,7 +297,6 @@
 
 .main {
   display: flex;
-
   background-size: cover;
   background-position: 0 -70px;
   background-repeat: no-repeat;
@@ -327,10 +326,9 @@
 }
 
 .main2 {
-background:
-        radial-gradient(circle at 30% 20%, rgba(255,255,255,0.06), transparent 40%),
-        radial-gradient(circle at 70% 80%, rgba(255,255,255,0.04), transparent 45%),
-        #000;  position: relative;
+
+      
+         position: relative;
   top: 50px;
   display: flex;
   width: 100%;
@@ -1172,7 +1170,7 @@ a {
       rgba(0, 0, 0, 0.4) 85%,
       rgba(0, 0, 0, 1.5) 100%
     ),
-    url(img/aref/image01_1.webp);
+    url(img/img.png);
   display: flex;
   background-position-y: 30px;
   align-items: center;
@@ -1818,7 +1816,7 @@ transform: translateX(-35px);
         rgba(0, 0, 0, 0.4) 85%,
         rgba(0, 0, 0, 1.5) 100%
       ),
-      url(img/aref/image02_1.webp);
+      url(img/img.png);
 
     background-position-x: 20%;
     background-repeat: no-repeat;
@@ -1935,6 +1933,7 @@ transform: translateX(-35px);
     top: 10px;
     justify-content: center;
     align-items: center;
+    
   }
   .card-container {
     display: grid;
@@ -2085,7 +2084,7 @@ transform: translateX(-35px);
         rgba(0, 0, 0, 0.4) 85%,
         rgba(0, 0, 0, 1.5) 100%
       ),
-      url(img/aref/image02_1.webp);
+      url(img/img.png);
 
     background-position-x: 20%;
     background-repeat: no-repeat;
