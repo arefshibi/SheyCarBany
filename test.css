@@ -188,9 +188,8 @@ body { background:#0b0b0b; color:#f5f5f5; padding:60px 0; }
   margin-top: 60px;
   padding: 25px;
   font-weight: 800;
-  color: #ffffff;
-  direction: ltr;
-  text-align: left;
+  color: #ffffff;
+  text-align: center;
   line-height: 1.2;
 }
 
@@ -2177,6 +2176,7 @@ video {
 
 .hero {
     font-size: 30px;
+text-align:center;
   }
 
   .highlight,
