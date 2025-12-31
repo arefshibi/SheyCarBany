@@ -21,7 +21,7 @@ function animateGlyphAndFlux(obscura){
   if(!glyphEl.dataset.sigils){
     const sigils = glyphEl.innerText.split(' ');
     glyphEl.dataset.sigils = JSON.stringify(sigils);
-    glyphEl.innerHTML = sigils.map(s=>`<span>${s} </span>`).join('');
+    
   }
   const sigils = JSON.parse(glyphEl.dataset.sigils);
 
