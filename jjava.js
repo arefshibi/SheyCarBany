@@ -4,7 +4,7 @@ function txtAni(){
   setTimeout(() => {
     bany.classList.add('active');
     car.classList.add('active');
-  }, 2000);
+  }, 500);
 }
 txtAni();
 
