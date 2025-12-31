@@ -79,7 +79,7 @@ window.addEventListener('wheel', (e) => {
   if(isOnCard){
     e.preventDefault();
     window.scrollBy({
-      top: e.deltaY * 0.1, // عدد کمتر → اسکرول کندتر
+      top: e.deltaY * 0.2, // عدد کمتر → اسکرول کندتر
       left: 0,
       behavior: 'auto'
     });
@@ -87,18 +87,25 @@ window.addEventListener('wheel', (e) => {
 }, { passive: false });
 
 
-const shey = document.querySelector('.shey');
-const bany = document.querySelector('.bany');
-const car = document.querySelector('.car');
-const boz = document.querySelector('.boz');
-function txtAni(){
-  setTimeout(() => {
-    boz.classList.add('active');
-    bany.classList.add('active');
-    car.classList.add('active');
-  }, 500);
-}
-txtAni();
+
+
+
+
+
+const txxc = document.querySelectorAll('.shey, .bany, .car, .boz, .intro-text');
+
+const observerall = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("active");
+    }
+  });
+});
+
+txxc.forEach(item => {
+  observerall.observe(item);
+});
+
 
 const assets = {
     white: { b: "img/white.jpeg", a: "img/nowhite.jpeg" },
