@@ -79,7 +79,7 @@ window.addEventListener('wheel', (e) => {
   if(isOnCard){
     e.preventDefault();
     window.scrollBy({
-      top: e.deltaY * 0.3, // عدد کمتر → اسکرول کندتر
+      top: e.deltaY * 0.1, // عدد کمتر → اسکرول کندتر
       left: 0,
       behavior: 'auto'
     });
