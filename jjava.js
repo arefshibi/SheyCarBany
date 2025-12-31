@@ -1,3 +1,56 @@
+
+const words = [
+  { text: "the internet", color: "#9EDC2C" },
+  { text: "web3",        color: "#2F6BFF" },
+  { text: "blockchain",  color: "#FF6B2F" },
+  { text: "AI",          color: "#9B2FFF" }
+];
+
+const highlight = document.getElementById("highlight");
+const measure = document.getElementById("measure");
+
+let index = 0;
+let locked = false;
+
+function measureWidth(text) {
+  measure.textContent = text;
+  return measure.offsetWidth;
+}
+
+function update() {
+  if (locked) return;
+  locked = true;
+
+  index = (index + 1) % words.length;
+  const next = words[index];
+
+  const w = measureWidth(next.text);
+
+  requestAnimationFrame(() => {
+    highlight.style.width = w + "px";
+
+    requestAnimationFrame(() => {
+      highlight.textContent = next.text;
+      highlight.style.backgroundColor = next.color;
+
+      setTimeout(() => locked = false, 600);
+    });
+  });
+}
+
+// init
+highlight.style.backgroundColor = words[0].color;
+highlight.style.width = measureWidth(words[0].text) + "px";
+
+setInterval(update, 1800);
+
+window.addEventListener("resize", () => {
+  highlight.style.width = measureWidth(words[index].text) + "px";
+});
+
+
+
+
 const voids = document.querySelectorAll('.void-card');
 
 let lastScrollY = window.scrollY;
