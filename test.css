@@ -153,6 +153,28 @@
 }
 
 
+.shey {
+  font-size: 70px;
+  position: absolute;
+  color: white;
+  left: 15px;
+}
+.car {
+  font-size: 70px;
+  position: absolute;
+  top: 131px;
+  color: #e55b00;
+  left: 25%;
+}
+.bany {
+  font-size: 70px;
+  position: absolute;
+  top: 191px;
+  left: 39%;
+}
+
+
+
 /* Slider */
 .slider-handle {
     position: absolute;
@@ -1842,9 +1864,11 @@ transform: translateX(-35px);
   .buttTxt {
     font-size: 12px;
     font-weight: 700;
-
-    left: 0;
-
+    position: absolute;
+    text-wrap: nowrap;
+    left: 50%;
+top: 142%;
+transform: translate(-50%,-50%);
     color: rgb(255, 255, 255);
 
     margin-bottom: 15px;
