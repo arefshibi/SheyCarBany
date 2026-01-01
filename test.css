@@ -188,7 +188,8 @@ body { background:#0b0b0b; color:#f5f5f5; padding:60px 0; }
   margin-top: 60px;
   padding: 25px;
   font-weight: 800;
-  color: #ffffff;
+  color: #ffffff;
+
   text-align: center;
   line-height: 1.2;
 }
@@ -2140,6 +2141,13 @@ video {
     margin-top: 10px;
   }
 
+.conimg {
+  width: 100%;
+  height: auto;
+  mask-image: linear-gradient(to bottom, transparent, black 20%,black 80%, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 20%,black 80%, transparent);
+}
+
   .shey {
   font-size: 70px;
   position: absolute;
@@ -2176,6 +2184,9 @@ video {
 
 .hero {
     font-size: 30px;
+    position: relative;
+    top: 82px;
+    z-index: 777;
 text-align:center;
   }
 
