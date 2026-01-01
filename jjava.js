@@ -5,7 +5,7 @@ gsap.registerPlugin(ScrollTrigger);
         const wordz = textElement.innerText.split(" ");
         textElement.innerHTML = "";
 
-        words.forEach(word => {
+        wordz.forEach(word => {
             const span = document.createElement("span");
             span.innerHTML = word + "&nbsp;";
             span.classList.add("word");
