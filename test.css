@@ -2201,22 +2201,41 @@ video {
     }
 
     .color-circle {
-      width: 60px;
-      height: 60px;
-      border: 0.5px solid rgba(0, 0, 0, 0.328);
-      border-radius: 50%;
-      cursor: pointer;
-      transition: transform 0.2s;
-    }
+  width: 50px;                      /* بزرگ‌تر از قبل */
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2); /* سایه برای عمق */
+}
 
-    .color-circle:hover {
-      transform: scale(1.2);
-    }
+.color-circle::after {
+  content: "";
+  position: absolute;
+  top: -6px;
+  left: -6px;
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  border: 2px solid transparent;    /* خط دور برای حالت active */
+  transition: border-color 0.3s;
+}
 
-    .red { background: red; }
-    .white { background: white; }
-    .black { background: black; }
-    .orange { background: orange; }
+.color-circle:hover {
+  transform: scale(1.15);           /* بزرگ شدن با hover */
+  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+}
+
+.color-circle.active::after {
+  border-color: #333;               /* نمایش انتخاب فعال */
+}
+
+/* رنگ‌ها با گرادیان جذاب‌تر */
+.red    { background: linear-gradient(135deg, #ff4d4d, #b30000); }
+.white  { background: linear-gradient(135deg, #ffffff, #e0e0e0); }
+.black  { background: linear-gradient(135deg, #000000, #434343); }
+.orange { background: linear-gradient(135deg, #ff9933, #cc6600); }
 .hero {
     font-size: 30px;
     position: relative;
