@@ -210,6 +210,9 @@ function togglePanel() {
         const frame = document.querySelector('.device-frame');
         panel.classList.toggle("collapsed");
         frame.classList.toggle('hight');
+        
+            
+        
         productArea.classList.toggle("pushed-up");
     
 }
