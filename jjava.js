@@ -23,7 +23,7 @@ gsap.registerPlugin(ScrollTrigger);
                 scrub: true, 
                 markers: false // اگر این را true کنید، خطوط راهنما را می‌بینید
             },
-            color: "#000", // تبدیل به مشکی
+            color:"orange", // تبدیل به مشکی
             opacity: 1,
             stagger: 0.9,
             ease: "none"
