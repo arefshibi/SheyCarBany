@@ -2148,14 +2148,14 @@ video {
             align-items: center;
             justify-content: center;
             background: #fdfdfd;
-            color: #ccc;
+            color: orange;
         }
 
         .containerp{
             max-width: 900px;
             margin: 0 auto;
             padding: 200px 20px;
-background-color:white;
+
         }
 
         .reveal-text {
@@ -2169,7 +2169,7 @@ background-color:white;
         .word {
             display: inline-block;
             /* رنگ کلمات در حالت پیش‌فرض (کمرنگ) */
-            color: red; 
+            color: white; 
             will-change: color, opacity;
         }
 
