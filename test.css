@@ -44,6 +44,145 @@ body { background:#0b0b0b; color:#f5f5f5; padding:60px 0; }
 
 
 
+.containerm {
+            width: 100%;
+            max-width: 850px;
+            background-color: rgb(0, 0, 0);
+            min-height: 100vh;
+        }
+
+        /* --- ۱. بخش نظرات (نارنجی متمایل به مشکی) --- */
+        .testimonials-container {
+            background: transparent;
+            padding: 20px 0px;
+            border-bottom-left-radius: 50px;
+            border-bottom-right-radius: 50px;
+            border-top-left-radius: 50px;
+            border-top-right-radius: 50px;
+        }
+
+        .testimonial-slider {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            padding: 20px 10px;
+                        width: 105%;
+
+            scrollbar-width: none; /* Firefox */
+        }
+        .testimonial-slider::-webkit-scrollbar { display: none; } /* Chrome/Safari */
+
+        .comment-box {
+            min-width: 280px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(108, 108, 108, 0.327);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            padding: 20px;
+            color: #eee;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+        }
+
+        .comment-text {
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: #ccc;
+            direction: rtl;
+            text-align: right;
+        }
+
+        .user-footer {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 15px;
+        }
+
+        .user-avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: #444;
+            border: 2px solid var(--orange-accent);
+        }
+
+        .rating-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stars {
+            display: flex;
+            gap: 2px;
+            color: #ffcc00;
+            font-size: 12px;
+        }
+
+        /* --- ۲. بخش ابزارها (چیدمان دقیق بیضی) --- */
+        .tools-wrapper {
+            position: relative;
+            height: 550px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 40px;
+        }
+
+        .center-title {
+            font-size: 36px;
+            font-weight: 800;
+            text-align: center;
+            max-width: 300px;
+            color: #d15801;
+            z-index: 10;
+        }
+
+        .tool-bubble {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.07);
+            z-index: 5;
+            font-weight: bold;
+        }
+
+        /* فواصل دقیق بر اساس مرکز */
+        .t1 { width: 80px; height: 80px; top: 16%; left: 9%; } /* Zoom */
+        .t2 { width: 65px; height: 65px; top: 20%; left: 42%; } /* Git */
+        .t3 { width: 90px; height: 90px; top: 15%; right: 5%; font-size: 30px; } /* Meta */
+        .t4 { width: 55px; height: 55px; top: 48%; left: 1%; } /* Notion */
+        .t5 { width: 55px; height: 55px; top: 45%; right: 1%; color: red; } /* YT */
+        .t6 { width: 85px; height: 85px; bottom: 20%; left: 15%; } /* Windows */
+        .t7 { width: 75px; height: 75px; bottom: 23%; left: 47%; } /* TG */
+        
+        .t9 { width: 100px; height: 100px; bottom: 20%; right: 4%; font-style: italic; font-weight: 900; } /* Visa */
+
+        /* --- ۳. بخش سوالات (FAQ) --- */
+        .faq-section { padding: 40px 30px; }
+        .faq-box {
+            border-radius: 15px;
+            padding: 18px;
+            direction: rtl;
+            text-align: right;
+            margin-bottom: 12px;
+            border: 1px solid #eee;
+            color: #007bff;
+            font-weight: bold;
+        }
+
+
+
+
+/*  */
+
 
  .hero {
   font-size: 64px;
