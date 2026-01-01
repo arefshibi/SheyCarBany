@@ -2169,6 +2169,7 @@ video {
 
         .word {
             display: inline-block;
+            opacity:0;
             /* رنگ کلمات در حالت پیش‌فرض (کمرنگ) */
             color: white; 
             will-change: color, opacity;
