@@ -2,7 +2,7 @@ gsap.registerPlugin(ScrollTrigger);
 
         // ۱. تکه‌تکه کردن متن به کلمات
         const textElement = document.getElementById('reveal-text');
-        const words = textElement.innerText.split(" ");
+        const wordz = textElement.innerText.split(" ");
         textElement.innerHTML = "";
 
         words.forEach(word => {
