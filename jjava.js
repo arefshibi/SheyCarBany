@@ -1,4 +1,33 @@
+gsap.registerPlugin(ScrollTrigger);
 
+        // ۱. تکه‌تکه کردن متن به کلمات
+        const textElement = document.getElementById('reveal-text');
+        const words = textElement.innerText.split(" ");
+        textElement.innerHTML = "";
+
+        words.forEach(word => {
+            const span = document.createElement("span");
+            span.innerHTML = word + "&nbsp;";
+            span.classList.add("word");
+            textElement.appendChild(span);
+        });
+
+        // ۲. تنظیم انیمیشن برای پررنگ شدن در ۴۰٪ پایین صفحه
+        gsap.to(".word", {
+            scrollTrigger: {
+                trigger: ".reveal-text",
+                // شروع: وقتی بالای متن به ۶۰٪ ارتفاع مرورگر (یعنی ۴۰٪ مانده به پایین) رسید
+                start: "top 70%", 
+                // پایان: وقتی انتهای متن به ۲۰٪ بالای صفحه رسید
+                end: "bottom 50%",
+                scrub: true, 
+                markers: false // اگر این را true کنید، خطوط راهنما را می‌بینید
+            },
+            color: "#000", // تبدیل به مشکی
+            opacity: 1,
+            stagger: 0.9,
+            ease: "none"
+        });
 const redCar = "img/image04.webp";
     const whiteCar = "img/image01.webp";
     const blackCar = "img/image02.webp";
