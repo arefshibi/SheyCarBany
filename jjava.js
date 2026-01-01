@@ -9,20 +9,19 @@ const words = [
 const highlight = document.getElementById("highlight");
 const measure = document.getElementById("measure");
 
-let index = 0;
+let index0 = 0;
 let locked = false;
 
 function measureWidth(text) {
   measure.textContent = text;
   return measure.offsetWidth;
 }
-
 function update() {
   if (locked) return;
   locked = true;
 
-  index = (index + 1) % words.length;
-  const next = words[index];
+  index0 = (index0 + 1) % words.length;   // ✅ خود index0 آپدیت میشه
+  const next = words[index0];             // ✅ کلمه درست
 
   const w = measureWidth(next.text);
 
@@ -45,7 +44,7 @@ highlight.style.width = measureWidth(words[0].text) + "px";
 setInterval(update, 1800);
 
 window.addEventListener("resize", () => {
-  highlight.style.width = measureWidth(words[index].text) + "px";
+  highlight.style.width = measureWidth(words[index0].text) + "px";
 });
 
 
