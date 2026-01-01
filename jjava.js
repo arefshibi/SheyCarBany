@@ -1,9 +1,13 @@
 
 const words = [
-  { text: "the internet", color: "#9EDC2C" },
-  { text: "web3",        color: "#2F6BFF" },
-  { text: "blockchain",  color: "#FF6B2F" },
-  { text: "AI",          color: "#9B2FFF" }
+  { text: "Color", color: "#9EDC2C" },
+  { text: "Anti UVI",        color: "#2F6BFF" },
+  { text: "Cover",  color: "#FF6B2F" },
+  { text: "Caliper",          color: "#9B2FFF" },
+  { text: "Car",          color: "#ff2fafff" },
+  { text: "Design",          color: "#2ffcffff" },
+  { text: "HeadLight",          color: "#cbff2fff" },
+  { text: "Vibe",          color: "#ff2f2fff" }
 ];
 
 const highlight = document.getElementById("highlight");
