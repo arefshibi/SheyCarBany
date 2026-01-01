@@ -2182,6 +2182,40 @@ video {
 }
 
 
+    .car-container {
+      margin-top: 40px;
+    }
+
+    #carImage{
+      position: relative;
+      bottom: 40px;
+    }
+
+    .color-selector {
+      position: relative;
+      top:-80px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .color-circle {
+      width: 60px;
+      height: 60px;
+      border: 0.5px solid rgba(0, 0, 0, 0.328);
+      border-radius: 50%;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .color-circle:hover {
+      transform: scale(1.2);
+    }
+
+    .red { background: red; }
+    .white { background: white; }
+    .black { background: black; }
+    .orange { background: orange; }
 .hero {
     font-size: 30px;
     position: relative;

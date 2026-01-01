@@ -1,4 +1,15 @@
 
+const redCar = "img/image04.webp";
+    const whiteCar = "img/image01.webp";
+    const blackCar = "img/image02.webp";
+    const orangeCar = "img/image03.webp";
+
+    function changeCar(imagePath) {
+      document.getElementById('carImage').src = imagePath;
+    }
+
+
+
 const words = [
   { text: "Color", color: "#9EDC2C" },
   { text: "Anti UVI",        color: "#2F6BFF" },
