@@ -66,7 +66,7 @@ function renderDepth() {
         const norm = relativePos / cardGap;
         const absNorm = Math.abs(norm);
 
-        const moveX = relativePos * 0.1;
+        const moveX = relativePos * 0.9;
         const moveZ = -absNorm * 120;
         const scale = 1 - absNorm * 0.15;
         const rotateY = norm * -12;
