@@ -53,6 +53,7 @@ body { font-family: 'Inter', sans-serif, 'Vazir'; background:#0b0b0b; color:#f5f
             display: flex;
             align-items: center;
             justify-content: center;
+            overflow:hidden;
         }
 
         .stack {
