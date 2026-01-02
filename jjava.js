@@ -46,7 +46,7 @@ window.addEventListener('pointerup', () => {
 window.addEventListener('pointermove', e => {
     if (!dragActive || !stackActivated) return;
     const delta = pointerStartX - e.clientX;
-    scrollTarget += delta * 1.5;
+    scrollTarget += delta * 0.2;
     pointerStartX = e.clientX;
     renderDepth();
 });
