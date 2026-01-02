@@ -1,7 +1,6 @@
 
 // card 3d
 
-
 const depthStackEl = document.getElementById('depthStack');
 const depthCards = Array.from(document.querySelectorAll('.depth-card'));
 
@@ -10,8 +9,14 @@ let dragActive = false;
 let pointerStartX = 0;
 let scrollTarget = 0;
 
+let velocity = 0;
+let lastMoveTime = 0;
+
 const cardGap = 280;
 
+/* =========================
+   حالت اولیه استک
+========================= */
 function setupDepthStack() {
     depthCards.forEach((card, index) => {
         card.style.transform = `
@@ -24,6 +29,9 @@ function setupDepthStack() {
 }
 setupDepthStack();
 
+/* =========================
+   فعال‌سازی استک
+========================= */
 depthStackEl.addEventListener('click', () => {
     if (!stackActivated) {
         stackActivated = true;
@@ -31,32 +39,73 @@ depthStackEl.addEventListener('click', () => {
     }
 });
 
+/* =========================
+   Pointer Down
+========================= */
 window.addEventListener('pointerdown', e => {
     if (!stackActivated) return;
+
     dragActive = true;
     pointerStartX = e.clientX;
+    velocity = 0;
+    lastMoveTime = performance.now();
 });
 
-window.addEventListener('pointerup', () => {
-    dragActive = false;
-    scrollTarget = Math.round(scrollTarget / cardGap) * cardGap;
-    renderDepth();
-});
-
+/* =========================
+   Pointer Move (نرم + موبایل)
+========================= */
 window.addEventListener('pointermove', e => {
     if (!dragActive || !stackActivated) return;
+
+    const now = performance.now();
     const delta = pointerStartX - e.clientX;
-    scrollTarget += delta * 0.2;
+    const dt = now - lastMoveTime || 1;
+
+    const sensitivity = window.innerWidth < 768 ? 0.7 : 0.25;
+
+    scrollTarget += delta * sensitivity;
+    velocity = delta / dt;
+
     pointerStartX = e.clientX;
+    lastMoveTime = now;
+
     renderDepth();
 });
 
+/* =========================
+   Pointer Up + Inertia
+========================= */
+window.addEventListener('pointerup', () => {
+    if (!stackActivated) return;
+    dragActive = false;
+
+    let momentum = velocity * 60;
+
+    function inertia() {
+        if (Math.abs(momentum) < 0.1) return;
+
+        scrollTarget += momentum;
+        momentum *= 0.92;
+
+        renderDepth();
+        requestAnimationFrame(inertia);
+    }
+
+    inertia();
+});
+
+/* =========================
+   Wheel (دسکتاپ)
+========================= */
 window.addEventListener('wheel', e => {
     if (!stackActivated) return;
-    scrollTarget += e.deltaY * 0.2;
+    scrollTarget += e.deltaY * 0.3;
     renderDepth();
 });
 
+/* =========================
+   Render Depth
+========================= */
 function renderDepth() {
     const maxScroll = (depthCards.length - 1) * cardGap;
     scrollTarget = Math.max(0, Math.min(scrollTarget, maxScroll));
@@ -84,7 +133,6 @@ function renderDepth() {
         card.style.zIndex = Math.round(1000 - absNorm * 100);
     });
 }
-
 
 gsap.registerPlugin(ScrollTrigger);
 
