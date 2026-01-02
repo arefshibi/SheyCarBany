@@ -53,7 +53,7 @@ window.addEventListener('pointermove', e => {
 
 window.addEventListener('wheel', e => {
     if (!stackActivated) return;
-    scrollTarget += e.deltaY * 0.5;
+    scrollTarget += e.deltaY * 0.2;
     renderDepth();
 });
 
