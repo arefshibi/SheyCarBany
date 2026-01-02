@@ -2,21 +2,17 @@
 // card 3d
 
 const depthStackEl = document.getElementById('depthStack');
-const depthCards = Array.from(document.querySelectorAll('.depth-card'));
+const depthCards = [...document.querySelectorAll('.depth-card')];
 
-let stackActivated = false;
-let dragActive = false;
-let pointerStartX = 0;
-let scrollTarget = 0;
-
+let isDragging = false;
+let startX = 0;
+let scrollX = 0;
 let velocity = 0;
-let lastMoveTime = 0;
+let lastTime = 0;
 
-const cardGap = 280;
+const CARD_GAP = 280;
 
-/* =========================
-   حالت اولیه استک
-========================= */
+/* حالت اولیه */
 function setupDepthStack() {
     depthCards.forEach((card, index) => {
         card.style.transform = `
@@ -29,110 +25,72 @@ function setupDepthStack() {
 }
 setupDepthStack();
 
-/* =========================
-   فعال‌سازی استک
-========================= */
-depthStackEl.addEventListener('click', () => {
-    if (!stackActivated) {
-        stackActivated = true;
-        renderDepth();
-    }
-});
-
-/* =========================
-   Pointer Down
-========================= */
-window.addEventListener('pointerdown', e => {
-    if (!stackActivated) return;
-
-    dragActive = true;
-    pointerStartX = e.clientX;
+/* شروع swipe */
+depthStackEl.addEventListener('pointerdown', e => {
+    isDragging = true;
+    startX = e.clientX;
     velocity = 0;
-    lastMoveTime = performance.now();
+    lastTime = performance.now();
+    depthStackEl.setPointerCapture(e.pointerId);
 });
 
-/* =========================
-   Pointer Move (نرم + موبایل)
-========================= */
-window.addEventListener('pointermove', e => {
-    if (!dragActive || !stackActivated) return;
+/* حرکت swipe */
+depthStackEl.addEventListener('pointermove', e => {
+    if (!isDragging) return;
 
     const now = performance.now();
-    const delta = pointerStartX - e.clientX;
-    const dt = now - lastMoveTime || 1;
+    const dx = startX - e.clientX;
+    const dt = now - lastTime || 1;
 
-    const sensitivity = window.innerWidth < 768 ? 0.7 : 0.25;
+    scrollX += dx * 0.9;      // حساسیت موبایل
+    velocity = dx / dt;
 
-    scrollTarget += delta * sensitivity;
-    velocity = delta / dt;
+    startX = e.clientX;
+    lastTime = now;
 
-    pointerStartX = e.clientX;
-    lastMoveTime = now;
-
-    renderDepth();
+    render();
 });
 
-/* =========================
-   Pointer Up + Inertia
-========================= */
-window.addEventListener('pointerup', () => {
-    if (!stackActivated) return;
-    dragActive = false;
+/* رها کردن + اینرسی */
+depthStackEl.addEventListener('pointerup', e => {
+    isDragging = false;
+    depthStackEl.releasePointerCapture(e.pointerId);
 
-    let momentum = velocity * 60;
+    let momentum = velocity * 80;
 
     function inertia() {
         if (Math.abs(momentum) < 0.1) return;
-
-        scrollTarget += momentum;
+        scrollX += momentum;
         momentum *= 0.92;
-
-        renderDepth();
+        render();
         requestAnimationFrame(inertia);
     }
 
     inertia();
 });
 
-/* =========================
-   Wheel (دسکتاپ)
-========================= */
-window.addEventListener('wheel', e => {
-    if (!stackActivated) return;
-    scrollTarget += e.deltaY * 0.3;
-    renderDepth();
-});
-
-/* =========================
-   Render Depth
-========================= */
-function renderDepth() {
-    const maxScroll = (depthCards.length - 1) * cardGap;
-    scrollTarget = Math.max(0, Math.min(scrollTarget, maxScroll));
+/* رندر کارت‌ها */
+function render() {
+    const maxScroll = (depthCards.length - 1) * CARD_GAP;
+    scrollX = Math.max(0, Math.min(scrollX, maxScroll));
 
     depthCards.forEach((card, index) => {
-        const relativePos = (index * cardGap) - scrollTarget;
-        const norm = relativePos / cardGap;
-        const absNorm = Math.abs(norm);
-
-        const moveX = relativePos * 0.9;
-        const moveZ = -absNorm * 120;
-        const scale = 1 - absNorm * 0.15;
-        const rotateY = norm * -12;
-        const opacity = 1 - absNorm * 0.4;
-        const blur = Math.min(absNorm * 4, 10);
+        const pos = index * CARD_GAP - scrollX;
+        const norm = pos / CARD_GAP;
+        const abs = Math.abs(norm);
 
         card.style.transform = `
-            translateX(${moveX}px)
-            translateZ(${moveZ}px)
-            rotateY(${rotateY}deg)
-            scale(${scale})
+            translateX(${pos}px)
+            translateZ(${-abs * 120}px)
+            rotateY(${-norm * 12}deg)
+            scale(${1 - abs * 0.15})
         `;
-        card.style.opacity = Math.max(0, opacity);
-        card.style.filter = `blur(${blur}px)`;
-        card.style.zIndex = Math.round(1000 - absNorm * 100);
+        card.style.opacity = 1 - abs * 0.4;
+        card.style.filter = `blur(${Math.min(abs * 4, 10)}px)`;
+        card.style.zIndex = 1000 - abs * 100;
     });
 }
+  
 
 gsap.registerPlugin(ScrollTrigger);
 
