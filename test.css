@@ -21,9 +21,6 @@
 
 
 
-body, html {
-  user-select: auto;
-}
 * { margin:0; padding:0; box-sizing:border-box; font-family: 'Inter', sans-serif, 'Vazir'; }
 body { font-family: 'Inter', sans-serif, 'Vazir'; background:#0b0b0b; color:#f5f5f5; padding:60px 0; }
 .sanctum { width:90%; max-width:420px; margin:auto; margin-top: 40px; }
