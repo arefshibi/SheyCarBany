@@ -1,3 +1,8 @@
+
+
+
+
+
 gsap.registerPlugin(ScrollTrigger);
 
         // ۱. تکه‌تکه کردن متن به کلمات
@@ -23,7 +28,7 @@ gsap.registerPlugin(ScrollTrigger);
                 scrub: true, 
                 markers: false // اگر این را true کنید، خطوط راهنما را می‌بینید
             },
-            color:"orange", // تبدیل به مشکی
+            color:"rgb(255, 98, 0)", // تبدیل به مشکی
             opacity: 1,
             stagger: 0.9,
             ease: "none"
@@ -142,9 +147,11 @@ function animateGlyphAndFlux(obscura){
   });
 
   // عدد proportional به aether
+  const two = document.querySelector('.two');
   const target = +fluxEl.dataset.target;
   const current = Math.floor(aether * target);
-  fluxEl.textContent = current + "+";
+  
+  fluxEl.textContent = current + "-Days";
 }
 
 // تشخیص اینکه کاربر روی کارت است
