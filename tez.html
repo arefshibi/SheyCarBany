@@ -3,58 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3D Stack Focus Scroll</title>
+    <title>Apple Style 3D Stack</title>
     <style>
+        :root {
+            --card-width: 320px;
+            --card-height: 460px;
+            --bg-color: #050505;
+        }
+
         body {
             margin: 0;
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #000;
+            background-color: var(--bg-color);
             overflow: hidden;
             touch-action: none;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
         }
 
         .scene {
             position: relative;
-            width: 320px;
-            height: 450px;
-            perspective: 1500px;
+            width: 100%;
+            height: 100%;
+            perspective: 2500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: radial-gradient(circle at center, #1a1a1a 0%, #050505 100%);
         }
 
         .stack {
-            width: 100%;
-            height: 100%;
+            width: var(--card-width);
+            height: var(--card-height);
             position: relative;
             transform-style: preserve-3d;
-            transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
             cursor: grab;
         }
 
-        .stack.opened {
-            transform: rotateX(5deg) rotateY(-35deg) translateX(100px);
-        }
+        .stack:active { cursor: grabbing; }
 
-        .cardo {
+        .card {
             position: absolute;
             width: 100%;
             height: 100%;
-            border-radius: 25px;
+            border-radius: 32px;
             overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-            background: #111;
-            border: 1px solid rgba(255,255,255,0.1);
-            /* اضافه کردن ترنزیشن برای نرم شدن اسکیل و جابجایی */
-            transition: transform 0.3s ease-out, opacity 0.4s, filter 0.3s;
-            pointer-events: none;
+            /* استایل شیشه‌ای اپل */
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+            
+            /* انیمیشن نرم اپلی */
+            transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), 
+                        opacity 0.6s ease, 
+                        filter 0.6s ease;
+            
+            will-change: transform, opacity, filter;
         }
 
-        .cardo img {
+        .card img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            user-select: none;
+            pointer-events: none;
+            /* ایجاد یک لایه نوری روی عکس */
+            mask-image: linear-gradient(to bottom, black 80%, transparent);
+        }
+
+        /* افکت انعطاف پذیر نوری (Reflection) */
+        .card::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 50%);
+            pointer-events: none;
+        }
+
+        .hint {
+            position: fixed;
+            bottom: 40px;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 13px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
     </style>
 </head>
@@ -62,32 +96,37 @@
 
     <div class="scene">
         <div class="stack" id="stack">
-            <div class="cardo"><img src="https://picsum.photos/400/600?random=1"></div>
-            <div class="cardo"><img src="https://picsum.photos/400/600?random=2"></div>
-            <div class="cardo"><img src="https://picsum.photos/400/600?random=3"></div>
-            <div class="cardo"><img src="https://picsum.photos/400/600?random=4"></div>
-            <div class="cardo"><img src="https://picsum.photos/400/600?random=5"></div>
-            <div class="cardo"><img src="https://picsum.photos/400/600?random=6"></div>
-            <div class="cardo"><img src="https://picsum.photos/400/600?random=7"></div>
-            <div class="cardo"><img src="https://picsum.photos/400/600?random=8"></div>
-            <div class="cardo"><img src="https://picsum.photos/400/600?random=9"></div>
-            <div class="cardo"><img src="https://picsum.photos/400/600?random=10"></div>
+            <div class="card"><img src="https://picsum.photos/600/900?random=1"></div>
+            <div class="card"><img src="https://picsum.photos/600/900?random=2"></div>
+            <div class="card"><img src="https://picsum.photos/600/900?random=3"></div>
+            <div class="card"><img src="https://picsum.photos/600/900?random=4"></div>
+            <div class="card"><img src="https://picsum.photos/600/900?random=5"></div>
+            <div class="card"><img src="https://picsum.photos/600/900?random=6"></div>
+            <div class="card"><img src="https://picsum.photos/600/900?random=7"></div>
+            <div class="card"><img src="https://picsum.photos/600/900?random=8"></div>
+            <div class="card"><img src="https://picsum.photos/600/900?random=9"></div>
+            <div class="card"><img src="https://picsum.photos/600/900?random=10"></div>
         </div>
     </div>
+    
+    <div class="hint">Swipe to explore</div>
 
     <script>
         const stack = document.getElementById('stack');
-        const cards = document.querySelectorAll('.cardo');
+        const cards = Array.from(document.querySelectorAll('.card'));
         
         let isOpen = false;
         let isDragging = false;
         let startX = 0;
-        let scrollPos = 0;
+        let scrollValue = 0;
+        let targetScroll = 0;
+        const step = 280; // فاصله بین کارت‌ها
 
+        // مقداردهی اولیه به صورت انباشته
         function init() {
             cards.forEach((card, i) => {
-                card.style.transform = `translateY(${i * 10}px) translateZ(${i * -15}px)`;
-                card.style.zIndex = 10 - i;
+                card.style.transform = `translateY(${i * 4}px) translateZ(${-i * 40}px) scale(${1 - i * 0.02})`;
+                card.style.zIndex = cards.length - i;
             });
         }
         init();
@@ -95,60 +134,62 @@
         stack.addEventListener('click', () => {
             if (!isOpen) {
                 isOpen = true;
-                stack.classList.add('opened');
-                updateCards();
+                update();
             }
         });
 
+        // مدیریت درگ با اینرسی نرم
         window.addEventListener('pointerdown', e => { if(isOpen) { isDragging = true; startX = e.clientX; } });
-        window.addEventListener('pointerup', () => isDragging = false);
+        window.addEventListener('pointerup', () => {
+            isDragging = false;
+            // Snapping: قفل شدن روی نزدیک‌ترین کارت
+            targetScroll = Math.round(targetScroll / step) * step;
+            update();
+        });
+
         window.addEventListener('pointermove', e => {
             if (!isDragging || !isOpen) return;
-            scrollPos += (startX - e.clientX) * 2.5;
+            const delta = startX - e.clientX;
+            targetScroll += delta * 1.5;
             startX = e.clientX;
-            scrollPos = Math.max(0, Math.min(scrollPos, 2200));
-            updateCards();
+            update();
         });
 
         window.addEventListener('wheel', e => {
             if (!isOpen) return;
-            scrollPos += e.deltaY;
-            scrollPos = Math.max(0, Math.min(scrollPos, 2200));
-            updateCards();
+            targetScroll += e.deltaY * 0.5;
+            update();
         });
 
-        function updateCards() {
+        function update() {
+            // محدودیت اسکرول
+            const maxScroll = (cards.length - 1) * step;
+            targetScroll = Math.max(0, Math.min(targetScroll, maxScroll));
+            
             cards.forEach((card, i) => {
-                const z = (i * -220) + (scrollPos * 0.9);
-                const x = (i * 60) - (scrollPos * 0.25);
-                
-                // محاسبه فاصله تا نقطه فوکوس (مثلاً وقتی Z نزدیک به 0 است)
-                const distanceFromFocus = Math.abs(z);
-                let scale = 1;
-                let translateY = 0;
+                const cardPos = (i * step) - targetScroll;
+                const distanceNormalized = cardPos / step;
+                const absDistance = Math.abs(distanceNormalized);
 
-                // اگر کارت در محدوده جلویی باشد (فوکوس)
-                if (distanceFromFocus < 150) {
-                    // هرچه به مرکز نزدیکتر، اسکیل بیشتر و جابجایی رو به بالا بیشتر
-                    const factor = (150 - distanceFromFocus) / 150; 
-                    scale = 1 + (factor * 0.15); // تا ۱۵ درصد بزرگتر
-                    translateY = factor * -40;   // تا ۴۰ پیکسل بالاتر
-                }
-
-                const opacity = z > 600 ? 0 : (z < -1600 ? 0 : 1);
+                // محاسبات هندسی اپل-مانند
+                // کارت‌ها در مرکز کاملاً صاف و در کناره‌ها کمی منحرف می‌شوند
+                const x = cardPos * 0.9;
+                const z = -absDistance * 120;
+                const scale = 1 - (absDistance * 0.15);
+                const rotateY = distanceNormalized * -12; // چرخش ملایم کناری
+                const opacity = 1 - (absDistance * 0.4);
+                const blur = Math.min(absDistance * 4, 10); // مات شدن کارت‌های دور
 
                 card.style.transform = `
                     translateX(${x}px) 
                     translateZ(${z}px) 
-                    translateY(${translateY}px) 
-                    rotateY(15deg) 
+                    rotateY(${rotateY}deg)
                     scale(${scale})
                 `;
-                card.style.zIndex = Math.round(z + 5000);
-                card.style.opacity = opacity;
                 
-                // افکت اختیاری: تار کردن کارت‌های دور
-                card.style.filter = `blur(${distanceFromFocus > 300 ? '2px' : '0px'})`;
+                card.style.opacity = Math.max(0, opacity);
+                card.style.filter = `blur(${blur}px)`;
+                card.style.zIndex = Math.round(1000 - absDistance * 100);
             });
         }
     </script>

@@ -1,82 +1,89 @@
 
 // card 3d
 
-const stack = document.getElementById('stack');
-        const cards = document.querySelectorAll('.cardo');
-        
-        let isOpen = false;
-        let isDragging1 = false;
-        let startX = 0;
-        let scrollPos = 0;
 
-        function init() {
-            cards.forEach((card, i) => {
-                card.style.transform = `translateY(${i * 10}px) translateZ(${i * -15}px)`;
-                card.style.zIndex = 10 - i;
-            });
-        }
-        init();
+const depthStackEl = document.getElementById('depthStack');
+const depthCards = Array.from(document.querySelectorAll('.depth-card'));
 
-        stack.addEventListener('click', () => {
-            if (!isOpen) {
-                isOpen = true;
-                stack.classList.add('opened');
-                updateCards();
-            }
-        });
+let stackActivated = false;
+let dragActive = false;
+let pointerStartX = 0;
+let scrollTarget = 0;
 
-        window.addEventListener('pointerdown', e => { if(isOpen) { isDragging1 = true; startX = e.clientX; } });
-        window.addEventListener('pointerup', () => isDragging1 = false);
-        window.addEventListener('pointermove', e => {
-            if (!isDragging1 || !isOpen) return;
-            scrollPos += (startX - e.clientX) * 2.5;
-            startX = e.clientX;
-            scrollPos = Math.max(0, Math.min(scrollPos, 2200));
-            updateCards();
-        });
+const cardGap = 280;
 
-        window.addEventListener('wheel', e => {
-            if (!isOpen) return;
-            scrollPos += e.deltaY;
-            scrollPos = Math.max(0, Math.min(scrollPos, 2200));
-            updateCards();
-        });
+function setupDepthStack() {
+    depthCards.forEach((card, index) => {
+        card.style.transform = `
+            translateY(${index * 4}px)
+            translateZ(${-index * 40}px)
+            scale(${1 - index * 0.02})
+        `;
+        card.style.zIndex = depthCards.length - index;
+    });
+}
+setupDepthStack();
 
-        function updateCards() {
-            cards.forEach((card, i) => {
-                const z = (i * -220) + (scrollPos * 0.9);
-                const x = (i * 60) - (scrollPos * 0.25);
-                
-                // محاسبه فاصله تا نقطه فوکوس (مثلاً وقتی Z نزدیک به 0 است)
-                const distanceFromFocus = Math.abs(z);
-                let scale = 1;
-                let translateY = 0;
+depthStackEl.addEventListener('click', () => {
+    if (!stackActivated) {
+        stackActivated = true;
+        renderDepth();
+    }
+});
 
-                // اگر کارت در محدوده جلویی باشد (فوکوس)
-                if (distanceFromFocus < 150) {
-                    // هرچه به مرکز نزدیکتر، اسکیل بیشتر و جابجایی رو به بالا بیشتر
-                    const factor = (150 - distanceFromFocus) / 150; 
-                    scale = 1 + (factor * 0.15); // تا ۱۵ درصد بزرگتر
-                    translateY = factor * -40;   // تا ۴۰ پیکسل بالاتر
-                }
+window.addEventListener('pointerdown', e => {
+    if (!stackActivated) return;
+    dragActive = true;
+    pointerStartX = e.clientX;
+});
 
-                const opacity = z > 600 ? 0 : (z < -1600 ? 0 : 1);
+window.addEventListener('pointerup', () => {
+    dragActive = false;
+    scrollTarget = Math.round(scrollTarget / cardGap) * cardGap;
+    renderDepth();
+});
 
-                card.style.transform = `
-                    translateX(${x}px) 
-                    translateZ(${z}px) 
-                    translateY(${translateY}px) 
-                    rotateY(15deg) 
-                    scale(${scale})
-                `;
-                card.style.zIndex = Math.round(z + 5000);
-                card.style.opacity = opacity;
-                
-                // افکت اختیاری: تار کردن کارت‌های دور
-                card.style.filter = `blur(${distanceFromFocus > 300 ? '2px' : '0px'})`;
-            });
-            }
+window.addEventListener('pointermove', e => {
+    if (!dragActive || !stackActivated) return;
+    const delta = pointerStartX - e.clientX;
+    scrollTarget += delta * 1.5;
+    pointerStartX = e.clientX;
+    renderDepth();
+});
 
+window.addEventListener('wheel', e => {
+    if (!stackActivated) return;
+    scrollTarget += e.deltaY * 0.5;
+    renderDepth();
+});
+
+function renderDepth() {
+    const maxScroll = (depthCards.length - 1) * cardGap;
+    scrollTarget = Math.max(0, Math.min(scrollTarget, maxScroll));
+
+    depthCards.forEach((card, index) => {
+        const relativePos = (index * cardGap) - scrollTarget;
+        const norm = relativePos / cardGap;
+        const absNorm = Math.abs(norm);
+
+        const moveX = relativePos * 0.9;
+        const moveZ = -absNorm * 120;
+        const scale = 1 - absNorm * 0.15;
+        const rotateY = norm * -12;
+        const opacity = 1 - absNorm * 0.4;
+        const blur = Math.min(absNorm * 4, 10);
+
+        card.style.transform = `
+            translateX(${moveX}px)
+            translateZ(${moveZ}px)
+            rotateY(${rotateY}deg)
+            scale(${scale})
+        `;
+        card.style.opacity = Math.max(0, opacity);
+        card.style.filter = `blur(${blur}px)`;
+        card.style.zIndex = Math.round(1000 - absNorm * 100);
+    });
+}
 
 
 gsap.registerPlugin(ScrollTrigger);
