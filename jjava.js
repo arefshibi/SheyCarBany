@@ -1,9 +1,3 @@
-function lockscroll(){
-  document.documentElement.style.overflow = "hidden";
-}
-function unlockscroll(){
-  document.documentElement.style.overflow ="";
-}
 
 const mpOverlay = document.getElementById("mpOverlay");
 const mpModal = document.getElementById("mpModal");
@@ -720,6 +714,14 @@ const storytxt = [
 let index = 0;
 let raf = null;
 let storyFocused = false;
+
+function lockscroll(){
+  document.documentElement.style.overflow = "hidden";
+}
+function unlockscroll(){
+  document.documentElement.style.overflow ="";
+}
+
 
 
 /* =========================
