@@ -63,6 +63,7 @@ window.mpOpenModal = function (serviceKey){
   mpModal.style.transition = "none";
   mpModal.style.transform = "translateY(100%)";
   mpOverlay.style.display = "flex";
+ lockScroll();
 
 
   setTimeout(() => {
@@ -88,6 +89,7 @@ function mpCloseModal() {
 
   setTimeout(() => {
     mpOverlay.style.display = "none";
+    unlockScroll();
   }, 400);
 }
 
