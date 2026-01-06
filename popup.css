@@ -1,0 +1,161 @@
+/* Trigger */
+.mp-trigger {
+  width: 250px;
+  padding: 20px;
+  background: #fff;
+  border-radius: 20px;
+  text-align: center;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0 10px 20px rgba(0,0,0,.05);
+  border: 1px solid #e5e5e5;
+}
+
+/* Overlay */
+.mp-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.4);
+  display: none;
+  justify-content: center;
+  align-items: flex-end;
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity .3s ease;
+}
+
+.mp-overlay.mp-active {
+  display: flex;
+  opacity: 1;
+}
+
+/* Modal */
+.mp-modal {
+  width: 100%;
+  max-width: 420px;
+  max-height: 90vh;
+  background: #fff;
+  border-radius: 25px 25px 0 0;
+  transform: translateY(100%);
+  transition: transform .4s cubic-bezier(.25,.46,.45,.94);
+  display: flex;
+  flex-direction: column;
+  touch-action: none;
+}
+
+/* Drag */
+.mp-drag-area {
+  padding: 15px 0 10px;
+  cursor: grab;
+}
+
+.mp-drag-handle {
+  width: 40px;
+  height: 5px;
+  background: #e0e0e0;
+  border-radius: 10px;
+  margin: auto;
+}
+
+/* Body */
+.mp-body {
+  padding: 0 20px 20px;
+  overflow-y: auto;
+  text-align: center;
+  direction: ltr;
+}
+
+.mp-header h1 {
+  font-size: 26px;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.mp-header h1 span {
+  color: #d61f5d;
+}
+
+.mp-header p {
+  font-size: 13px;
+  color: #8e8e93;
+  margin-bottom: 25px;
+}
+
+/* Price Card */
+.mp-price-card {
+  height: 180px;
+  border-radius: 24px;
+  margin: 0 10px 25px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+.mp-card-bg {
+  position: absolute;
+  inset: 0;
+  background: url("https://images.unsplash.com/photo-1621905251918-48416bd8575a?q=80&w=1000&auto=format&fit=crop")
+    center / cover no-repeat;
+}
+
+.mp-card-blur {
+  position: absolute;
+  inset: 0;
+  background: rgba(214,31,93,.4);
+  backdrop-filter: blur(8px);
+}
+
+.mp-price-content {
+  position: relative;
+  z-index: 2;
+}
+
+.mp-price {
+  font-size: 50px;
+  font-weight: bold;
+}
+
+.mp-price-unit {
+  font-size: 14px;
+}
+
+/* Features */
+.mp-features {
+  list-style: none;
+  text-align: left;
+  margin: 0 20px 30px;
+}
+
+.mp-features li {
+  font-size: 15px;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+}
+
+.mp-features li::before {
+  content: "✓";
+  margin-right: 12px;
+  font-weight: bold;
+  color: #d61f5d;
+}
+
+/* Footer */
+.mp-footer {
+  padding: 20px;
+  border-top: 1px solid #f2f2f7;
+}
+
+.mp-btn {
+  width: 100%;
+  padding: 18px;
+  border-radius: 30px;
+  font-size: 17px;
+  font-weight: 700;
+  background: #f2f2f7;
+  border: none;
+  cursor: pointer;
+}

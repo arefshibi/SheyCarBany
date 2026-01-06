@@ -1,89 +1,70 @@
 
-// card 3d
 
+const mpOverlay = document.getElementById("mpOverlay");
+const mpModal = document.getElementById("mpModal");
+const mpDragArea = document.getElementById("mpDragArea");
 
-const depthStackEl = document.getElementById('depthStack');
-const depthCards = Array.from(document.querySelectorAll('.depth-card'));
+let mpStartY = 0;
+let mpCurrentY = 0;
+let mpDragging = false;
 
-let stackActivated = false;
-let dragActive = false;
-let pointerStartX = 0;
-let scrollTarget = 0;
+function mpOpenModal() {
+  mpModal.style.transition = "none";
+  mpModal.style.transform = "translateY(100%)";
+  mpOverlay.style.display = "flex";
 
-const cardGap = 280;
-
-function setupDepthStack() {
-    depthCards.forEach((card, index) => {
-        card.style.transform = `
-            translateY(${index * 4}px)
-            translateZ(${-index * 40}px)
-            scale(${1 - index * 0.02})
-        `;
-        card.style.zIndex = depthCards.length - index;
-    });
+  setTimeout(() => {
+    mpOverlay.classList.add("mp-active");
+    mpModal.style.transition =
+      "transform .4s cubic-bezier(.25,.46,.45,.94)";
+    mpModal.style.transform = "translateY(0)";
+  }, 50);
 }
-setupDepthStack();
 
-depthStackEl.addEventListener('click', () => {
-    if (!stackActivated) {
-        stackActivated = true;
-        renderDepth();
+function mpCloseModal() {
+  mpModal.style.transition =
+    "transform .4s cubic-bezier(.25,.46,.45,.94)";
+  mpModal.style.transform = "translateY(100%)";
+  mpOverlay.classList.remove("mp-active");
+
+  setTimeout(() => {
+    mpOverlay.style.display = "none";
+  }, 400);
+}
+
+/* Drag Logic */
+mpDragArea.addEventListener("touchstart", e => {
+  mpStartY = e.touches[0].clientY;
+  mpDragging = true;
+  mpModal.style.transition = "none";
+});
+
+window.addEventListener(
+  "touchmove",
+  e => {
+    if (!mpDragging) return;
+    mpCurrentY = e.touches[0].clientY - mpStartY;
+    if (mpCurrentY > 0) {
+      mpModal.style.transform = `translateY(${mpCurrentY}px)`;
     }
+  },
+  { passive: false }
+);
+
+window.addEventListener("touchend", () => {
+  if (!mpDragging) return;
+  mpDragging = false;
+
+  if (mpCurrentY > 150) {
+    mpCloseModal();
+  } else {
+    mpModal.style.transition = "transform .3s ease-out";
+    mpModal.style.transform = "translateY(0)";
+  }
+  mpCurrentY = 0;
 });
 
-window.addEventListener('pointerdown', e => {
-    if (!stackActivated) return;
-    dragActive = true;
-    pointerStartX = e.clientX;
-});
 
-window.addEventListener('pointerup', () => {
-    dragActive = false;
-    scrollTarget = Math.round(scrollTarget / cardGap) * cardGap;
-    renderDepth();
-});
-
-window.addEventListener('pointermove', e => {
-    if (!dragActive || !stackActivated) return;
-    const delta = pointerStartX - e.clientX;
-    scrollTarget += delta * 1.5;
-    pointerStartX = e.clientX;
-    renderDepth();
-});
-
-window.addEventListener('wheel', e => {
-    if (!stackActivated) return;
-    scrollTarget += e.deltaY * 0.5;
-    renderDepth();
-});
-
-function renderDepth() {
-    const maxScroll = (depthCards.length - 1) * cardGap;
-    scrollTarget = Math.max(0, Math.min(scrollTarget, maxScroll));
-
-    depthCards.forEach((card, index) => {
-        const relativePos = (index * cardGap) - scrollTarget;
-        const norm = relativePos / cardGap;
-        const absNorm = Math.abs(norm);
-
-        const moveX = relativePos * 0.9;
-        const moveZ = -absNorm * 120;
-        const scale = 1 - absNorm * 0.15;
-        const rotateY = norm * -12;
-        const opacity = 1 - absNorm * 0.4;
-        const blur = Math.min(absNorm * 4, 10);
-
-        card.style.transform = `
-            translateX(${moveX}px)
-            translateZ(${moveZ}px)
-            rotateY(${rotateY}deg)
-            scale(${scale})
-        `;
-        card.style.opacity = Math.max(0, opacity);
-        card.style.filter = `blur(${blur}px)`;
-        card.style.zIndex = Math.round(1000 - absNorm * 100);
-    });
-}
 
 
 gsap.registerPlugin(ScrollTrigger);
