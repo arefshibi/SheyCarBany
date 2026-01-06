@@ -67,7 +67,7 @@ window.mpOpenModal = function (serviceKey){
     featurebox.appendChild(li);
   });
   mpModal.style.transition = "none";
-  mpModal.style.transform = "translateY(80%)";
+  mpModal.style.transform = "translateY(60%)";
   mpOverlay.style.display = "flex";
   navvi.classList.add('popup');
   navvi.style.transition = "opacity .3s ease-out"
