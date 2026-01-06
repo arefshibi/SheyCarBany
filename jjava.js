@@ -721,12 +721,6 @@ let index = 0;
 let raf = null;
 let storyFocused = false;
 
-function lockscroll(){
-  document.documentElement.style.overflow = "hidden";
-}
-function unlockscroll(){
-  document.documentElement.style.overflow ="";
-}
 
 /* =========================
    2. DOM ELEMENTS
