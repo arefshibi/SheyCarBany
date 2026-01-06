@@ -1,4 +1,9 @@
-
+function lockscroll(){
+  document.documentElement.style.overflow = "hidden";
+}
+function unlockscroll(){
+  document.documentElement.style.overflow ="";
+}
 
 const mpOverlay = document.getElementById("mpOverlay");
 const mpModal = document.getElementById("mpModal");
