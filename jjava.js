@@ -50,6 +50,7 @@ function lockwin(){
 function unlockwin (){
   document.body.style.overflow = "";
 }
+  const navvi = document.querySelector('.nav');
 
 window.mpOpenModal = function (serviceKey){
 
@@ -59,7 +60,6 @@ window.mpOpenModal = function (serviceKey){
   document.getElementById("mptitle").innerText = dataa.title;
   document.getElementById("mptext").innerText = dataa.text;
   const featurebox = document.getElementById("mpfeatures");
-  const navvi = document.querySelector('.nav');
   featurebox.innerText = "";
   dataa.features.forEach(item => {
     const li = document.createElement("li");
@@ -69,6 +69,8 @@ window.mpOpenModal = function (serviceKey){
   mpModal.style.transition = "none";
   mpModal.style.transform = "translateY(80%)";
   mpOverlay.style.display = "flex";
+  navvi.classList.add('popup');
+  navvi.style.transition = "opacity .3s ease-out"
   lockwin();
 
 
@@ -92,9 +94,13 @@ function mpCloseModal() {
     "transform .4s cubic-bezier(.25,.46,.45,.94)";
   mpModal.style.transform = "translateY(100%)";
   mpOverlay.classList.remove("mp-active");
+        navvi.classList.remove('popup');
+navvi.style.transition = "opacity .3s ease-out"
 
   setTimeout(() => {
     mpOverlay.style.display = "none";
+
+
     unlockwin();
   }, 400);
 }
