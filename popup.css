@@ -34,13 +34,14 @@
   width: 100%;
   max-width: 420px;
   max-height: 90vh;
-  background: #fff;
+  background: #000000ae;
   border-radius: 25px 25px 0 0;
   transform: translateY(100%);
   transition: transform .4s cubic-bezier(.25,.46,.45,.94);
   display: flex;
   flex-direction: column;
   touch-action: none;
+  backdrop-filter: blur(8px);
 }
 
 /* Drag */
@@ -67,12 +68,13 @@
 
 .mp-header h1 {
   font-size: 26px;
+  color: white;
   font-weight: 800;
   margin-bottom: 8px;
 }
 
 .mp-header h1 span {
-  color: #d61f5d;
+  color: #ffffff;
 }
 
 .mp-header p {
@@ -104,7 +106,7 @@
 .mp-card-blur {
   position: absolute;
   inset: 0;
-  background: rgba(214,31,93,.4);
+  background: rgba(255, 255, 255, 0.4);
   backdrop-filter: blur(8px);
 }
 
@@ -136,11 +138,14 @@
   align-items: center;
 }
 
-.mp-features li::before {
+.mp-features li::after {
   content: "✓";
+  direction: rtl;
+  padding: 10px;
+  text-align: right;
   margin-right: 12px;
   font-weight: bold;
-  color: #d61f5d;
+  color: #c65528;
 }
 
 /* Footer */

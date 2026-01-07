@@ -8,10 +8,62 @@ let mpStartY = 0;
 let mpCurrentY = 0;
 let mpDragging = false;
 
-function mpOpenModal() {
+
+const mpServicesData = {
+
+ppf: { title : "PPF Protection",
+        text : "محافظ کامل بدنه با کاور شفاف ضد خش",
+        features : ["self-healing film","anti scratch", "uv protection", "high gloss finish"]
+},
+
+ceramic : {
+  title : "Ceramic Coating",
+  text : "سرامیک نانو چندلایه",
+   features : ["self-healing film","anti scratch", "uv protection", "high gloss finish"]
+
+},
+detailing : {
+  title : "Detailing",
+  text : "سرامیک نانو چندلایه",
+   features : ["self-healing film","anti scratch", "uv protection", "high gloss finish"]
+
+},
+painting : {
+  title : "Painting",
+  text : "سرامیک نانو چندلایه",
+   features : ["self-healing film","anti scratch", "uv protection", "high gloss finish"]
+
+},
+light : {
+  title : "headlight services",
+  text : "سرامیک نانو چندلایه",
+   features : ["self-healing film","anti scratch", "uv protection", "high gloss finish"]
+
+},
+
+
+}
+
+
+window.mpOpenModal = function (serviceKey){
+
+  const dataa = mpServicesData[serviceKey];
+  if(!dataa) return;
+
+  document.getElementById("mptitle").innerText = dataa.title;
+  document.getElementById("mptext").innerText = dataa.text;
+  const featurebox = document.getElementById("mpfeatures");
+  const navvi = document.querySelector('.nav');
+  featurebox.innerText = "";
+  dataa.features.forEach(item => {
+    const li = document.createElement("li");
+    li.innerText = item;
+    featurebox.appendChild(li);
+  });
   mpModal.style.transition = "none";
   mpModal.style.transform = "translateY(100%)";
   mpOverlay.style.display = "flex";
+
 
   setTimeout(() => {
     mpOverlay.classList.add("mp-active");
@@ -19,7 +71,14 @@ function mpOpenModal() {
       "transform .4s cubic-bezier(.25,.46,.45,.94)";
     mpModal.style.transform = "translateY(0)";
   }, 50);
+
+
 }
+
+
+  
+
+
 
 function mpCloseModal() {
   mpModal.style.transition =
@@ -63,6 +122,7 @@ window.addEventListener("touchend", () => {
   }
   mpCurrentY = 0;
 });
+
 
 
 
