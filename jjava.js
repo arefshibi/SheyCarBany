@@ -67,7 +67,7 @@ window.mpOpenModal = function (serviceKey){
     featurebox.appendChild(li);
   });
   mpModal.style.transition = "none";
-  mpModal.style.transform = "translateY(100%)";
+  mpModal.style.transform = "translateY(80%)";
   mpOverlay.style.display = "flex";
   lockwin();
 
