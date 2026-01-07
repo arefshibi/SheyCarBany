@@ -1872,6 +1872,7 @@
     }
     .nav.popup{
         opacity:0;
+display:none;
         user-select: none;
         
     }
