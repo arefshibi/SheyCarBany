@@ -1,4 +1,5 @@
 
+
 const mpOverlay = document.getElementById("mpOverlay");
 const mpModal = document.getElementById("mpModal");
 const mpDragArea = document.getElementById("mpDragArea");
@@ -43,6 +44,12 @@ light : {
 
 }
 
+function lockwin(){
+  document.body.style.overflow = "hidden";
+}
+function unlockwin (){
+  document.body.style.overflow = "";
+}
 
 window.mpOpenModal = function (serviceKey){
 
@@ -62,7 +69,7 @@ window.mpOpenModal = function (serviceKey){
   mpModal.style.transition = "none";
   mpModal.style.transform = "translateY(100%)";
   mpOverlay.style.display = "flex";
- lockScroll();
+  lockwin();
 
 
   setTimeout(() => {
@@ -88,7 +95,7 @@ function mpCloseModal() {
 
   setTimeout(() => {
     mpOverlay.style.display = "none";
-    unlockScroll();
+    unlockwin();
   }, 400);
 }
 
@@ -721,8 +728,6 @@ function lockscroll(){
 function unlockscroll(){
   document.documentElement.style.overflow ="";
 }
-
-
 
 /* =========================
    2. DOM ELEMENTS
