@@ -23,6 +23,7 @@
      padding:0;
      box-sizing:border-box;
      font-family: 'Inter', sans-serif, 'Vazir';
+     outline: 1px red solid;
 }
  body {
      font-family: 'Inter', sans-serif, 'Vazir';
